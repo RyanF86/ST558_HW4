@@ -4,3 +4,16 @@ format: html
 Author: Evan Whitfield (For this file)
 ---
 
+```{r}
+library(httr)
+response <- GET("https://newsapi.org/v2/everything?q=Iran&from=2026-05-22&language=en&pageSize=50&apiKey=173ec253cb06408abbf28061323e5fb4")
+
+str(response, max.level = 1)
+```
+
+```{r}
+library(jsonlite)
+parsed_response <- fromJSON(rawToChar(response$content))
+parsed_response
+```
+
