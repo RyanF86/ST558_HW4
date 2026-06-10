@@ -4,7 +4,7 @@ format: html
 Author: Evan Whitfield (For this file)
 ---
 
-# Task 1
+# Task 1 - Querying an API and a Tidy-Style Function
 
 ## Number 1
 
@@ -73,6 +73,42 @@ str(Liverpool_articles, max.level = 2)
 cat(Liverpool_articles$articles[1,]$content)
 ```
 
-# Task 2
+# Task 2 - Summarizing Roller Coaster Data
+
+## Read in Data
+```{r}
+#| warning: False
+library(tidyverse)
+coaster_data <- read_csv("../HW4DataFiles/635USrollercoasters.csv")
+```
+## Basic EDA
+
+Initial Data Look
+```{r}
+str(coaster_data)
+```
+It does not look like any of the variables (num or chr) need to be switched. We will want to switch some factors.
+```{r}
+coaster_data
+```
+
+Removing Latitude and Longitude 
+```{r}
+coaster_data <- coaster_data |>
+  select(-"Latitude", -"Longitude")
+
+psych::describe(coaster_data)
+```
+
+Now let's look and see the rate of missing values.
+```{r}
+colSums(is.na(coaster_data))
+```
+
+## Categorical Variables
+
+## Numeric Variables (and across groups)
+
+
 
 

@@ -138,8 +138,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="task-1" class="level1">
-<h1>Task 1</h1>
+<section id="task-1---querying-an-api-and-a-tidy-style-function" class="level1">
+<h1>Task 1 - Querying an API and a Tidy-Style Function</h1>
 <section id="number-1" class="level2">
 <h2 class="anchored" data-anchor-id="number-1">Number 1</h2>
 <div class="cell">
@@ -154,13 +154,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>List of 10
  $ url        : chr "https://newsapi.org/v2/everything?q=Iran&amp;from=2026-05-20&amp;language=en&amp;pageSize=50&amp;apiKey=173ec253cb06408abbf28061323e5fb4"
  $ status_code: int 200
- $ headers    :List of 14
+ $ headers    :List of 16
   ..- attr(*, "class")= chr [1:2] "insensitive" "list"
  $ all_headers:List of 1
  $ cookies    :'data.frame':    0 obs. of  7 variables:
  $ content    : raw [1:37455] 7b 22 73 74 ...
- $ date       : POSIXct[1:1], format: "2026-06-10 18:09:19"
- $ times      : Named num [1:6] 0 0.129 0.166 0.204 0.325 ...
+ $ date       : POSIXct[1:1], format: "2026-06-10 18:51:18"
+ $ times      : Named num [1:6] 0 0.00718 0.03334 0.07016 0.12731 ...
   ..- attr(*, "names")= chr [1:6] "redirect" "namelookup" "connect" "pretransfer" ...
  $ request    :List of 7
   ..- attr(*, "class")= chr "request"
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ status      : chr "ok"
- $ totalResults: int 17482
+ $ totalResults: int 17504
  $ articles    :'data.frame':   50 obs. of  8 variables:</code></pre>
 </div>
 </div>
@@ -253,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ status      : chr "ok"
- $ totalResults: int 27584
+ $ totalResults: int 27625
  $ articles    :'data.frame':   50 obs. of  8 variables:
   ..$ source     :'data.frame': 50 obs. of  2 variables:
   ..$ author     : chr [1:50] NA NA NA NA ...
@@ -271,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ status      : chr "ok"
- $ totalResults: int 5251
+ $ totalResults: int 5255
  $ articles    :'data.frame':   50 obs. of  8 variables:
   ..$ source     :'data.frame': 50 obs. of  2 variables:
   ..$ author     : chr [1:50] "BBC Sport" "Aadam Patel" "Ben Collins" "Harry Poole" ...
@@ -292,10 +292,161 @@ The Dutchman, 47, guided the Reds to their 20th league title in his debut season
 </div>
 </section>
 </section>
-<section id="task-2" class="level1">
-<h1>Task 2</h1>
+<section id="task-2---summarizing-roller-coaster-data" class="level1">
+<h1>Task 2 - Summarizing Roller Coaster Data</h1>
+<section id="read-in-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-data">Read in Data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../HW4DataFiles/635USrollercoasters.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="basic-eda" class="level2">
+<h2 class="anchored" data-anchor-id="basic-eda">Basic EDA</h2>
+<p>Initial Data Look</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(coaster_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spc_tbl_ [635 × 20] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ Coaster        : chr [1:635] "Adrenaline Peak" "Adventure Express" "Afterburn" "Aftershock" ...
+ $ Park           : chr [1:635] "Oaks Amusement Park" "Kings Island" "Carowinds" "Silverwood Theme Park" ...
+ $ City           : chr [1:635] "Portland" "Mason" "Charlotte" "Athol" ...
+ $ State          : chr [1:635] "Oregon" "Ohio" "North Carolina" "Idaho" ...
+ $ Census Region  : chr [1:635] "West" "Midwest" "South" "West" ...
+ $ Year Opened    : num [1:635] 2018 1991 1999 2008 2010 ...
+ $ AgeGroup       : chr [1:635] "3:Newest" "2:Recent" "2:Recent" "3:Newest" ...
+ $ TopSpeed       : num [1:635] 45 35 62 65.6 22 67 35 66 48 50 ...
+ $ MaxHeight      : num [1:635] 72 63 113 192 25 ...
+ $ Scale          : chr [1:635] "Extreme" "Thrill" "Extreme" "Extreme" ...
+ $ Type           : chr [1:635] "Steel" "Steel" "Steel" "Steel" ...
+ $ Design         : chr [1:635] "Sit Down" "Sit Down" "Inverted" "Inverted" ...
+ $ Drop           : num [1:635] 70 47 110 177 22.5 170 20 147 80 144 ...
+ $ Length         : num [1:635] 1050 2963 2956 1204 628 ...
+ $ Duration       : num [1:635] 66 140 167 92 47 190 100 143 110 110 ...
+ $ Inversions?    : chr [1:635] "Yes" "No" "Yes" "Yes" ...
+ $ # of Inversions: num [1:635] 3 0 6 3 0 6 0 0 0 4 ...
+ $ Make           : chr [1:635] "Gerstlauer Amusement Rides GmbH" "Arrow Dynamics" "Bolliger &amp; Mabillard" "Vekoma" ...
+ $ Latitude       : num [1:635] 45.5 39.4 35.3 47.9 28 ...
+ $ Longitude      : num [1:635] -122.7 -84.3 -80.8 -116.7 -82.6 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   Coaster = col_character(),
+  ..   Park = col_character(),
+  ..   City = col_character(),
+  ..   State = col_character(),
+  ..   `Census Region` = col_character(),
+  ..   `Year Opened` = col_double(),
+  ..   AgeGroup = col_character(),
+  ..   TopSpeed = col_double(),
+  ..   MaxHeight = col_double(),
+  ..   Scale = col_character(),
+  ..   Type = col_character(),
+  ..   Design = col_character(),
+  ..   Drop = col_double(),
+  ..   Length = col_double(),
+  ..   Duration = col_double(),
+  ..   `Inversions?` = col_character(),
+  ..   `# of Inversions` = col_double(),
+  ..   Make = col_character(),
+  ..   Latitude = col_double(),
+  ..   Longitude = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+</div>
+</div>
+<p>It does not look like any of the variables (num or chr) need to be switched. We will want to switch some factors.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>coaster_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 635 × 20
+   Coaster     Park  City  State `Census Region` `Year Opened` AgeGroup TopSpeed
+   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
+ 1 Adrenaline… Oaks… Port… Oreg… West                     2018 3:Newest     45  
+ 2 Adventure … King… Mason Ohio  Midwest                  1991 2:Recent     35  
+ 3 Afterburn   Caro… Char… Nort… South                    1999 2:Recent     62  
+ 4 Aftershock  Silv… Athol Idaho West                     2008 3:Newest     65.6
+ 5 Air Grover  Busc… Tampa Flor… South                    2010 3:Newest     22  
+ 6 Alpengeist  Busc… Will… Virg… South                    1997 2:Recent     67  
+ 7 Alpine Bob… Grea… Quee… New … Northeast                1998 2:Recent     35  
+ 8 American E… Six … Gurn… Illi… Midwest                  1981 2:Recent     66  
+ 9 American T… Six … Eure… Miss… Midwest                  2008 3:Newest     48  
+10 Anaconda    King… Dosw… Virg… South                    1991 2:Recent     50  
+# ℹ 625 more rows
+# ℹ 12 more variables: MaxHeight &lt;dbl&gt;, Scale &lt;chr&gt;, Type &lt;chr&gt;, Design &lt;chr&gt;,
+#   Drop &lt;dbl&gt;, Length &lt;dbl&gt;, Duration &lt;dbl&gt;, `Inversions?` &lt;chr&gt;,
+#   `# of Inversions` &lt;dbl&gt;, Make &lt;chr&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Removing Latitude and Longitude</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="ot">&lt;-</span> coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">"Latitude"</span>, <span class="sc">-</span><span class="st">"Longitude"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(coaster_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                vars   n    mean      sd median trimmed     mad  min  max range
+Coaster*           1 635  241.13  141.17  238.0  239.90  182.36    1  482   481
+Park*              2 635  106.90   56.46  108.0  108.63   77.10    1  197   196
+City*              3 635   85.79   51.50   83.0   85.92   69.68    1  171   170
+State*             4 635   19.74   11.41   21.0   19.63   14.83    1   40    39
+Census Region*     5 635    2.52    1.03    3.0    2.53    1.48    1    4     3
+Year Opened        6 635 1999.42   18.20 2002.0 2002.40   13.34 1920 2020   100
+AgeGroup*          7 635    2.48    0.68    3.0    2.60    0.00    1    3     2
+TopSpeed           8 561   42.24   19.37   45.0   42.17   20.76    6  128   122
+MaxHeight          9 627   76.80   61.51   64.3   68.59   59.75    5  456   451
+Scale*            10 635    2.12    1.21    2.0    2.03    1.48    1    4     3
+Type*             11 635    1.17    0.37    1.0    1.08    0.00    1    2     1
+Design*           12 635    3.96    0.60    4.0    4.00    0.00    1    7     6
+Drop              13 507   77.18   63.63   70.0   68.93   63.75    0  418   418
+Length            14 602 1938.41 1401.86 1490.0 1794.54 1570.07   48 7359  7311
+Duration          15 569  106.04   52.75  101.0  101.53   43.00   20  540   520
+Inversions?*      16 635    1.27    0.44    1.0    1.21    0.00    1    2     1
+# of Inversions   17 635    0.92    1.77    0.0    0.49    0.00    0    8     8
+Make*             18 599   27.86   17.84   27.0   28.02   25.20    1   53    52
+                 skew kurtosis    se
+Coaster*         0.06    -1.20  5.60
+Park*           -0.26    -1.25  2.24
+City*            0.00    -1.29  2.04
+State*          -0.04    -1.37  0.45
+Census Region*  -0.12    -1.13  0.04
+Year Opened     -2.01     5.09  0.72
+AgeGroup*       -0.96    -0.33  0.03
+TopSpeed         0.21     0.38  0.82
+MaxHeight        1.66     5.14  2.46
+Scale*           0.62    -1.21  0.05
+Type*            1.80     1.23  0.01
+Design*          0.81    14.02  0.02
+Drop             1.43     3.38  2.83
+Length           0.83     0.29 57.14
+Duration         2.30    13.10  2.21
+Inversions?*     1.05    -0.91  0.02
+# of Inversions  1.88     2.49  0.07
+Make*           -0.04    -1.50  0.73</code></pre>
+</div>
+</div>
+<p>Now let’s look and see the rate of missing values.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(coaster_data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Coaster            Park            City           State   Census Region 
+              0               0               0               0               0 
+    Year Opened        AgeGroup        TopSpeed       MaxHeight           Scale 
+              0               0              74               8               0 
+           Type          Design            Drop          Length        Duration 
+              0               0             128              33              66 
+    Inversions? # of Inversions            Make 
+              0               0              36 </code></pre>
+</div>
+</div>
+</section>
+<section id="categorical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h2>
+</section>
+<section id="numeric-variables-and-across-groups" class="level2">
+<h2 class="anchored" data-anchor-id="numeric-variables-and-across-groups">Numeric Variables (and across groups)</h2>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
