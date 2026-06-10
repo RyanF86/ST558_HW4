@@ -4,16 +4,75 @@ format: html
 Author: Evan Whitfield (For this file)
 ---
 
+# Task 1
+
+## Number 1
+
 ```{r}
 library(httr)
-response <- GET("https://newsapi.org/v2/everything?q=Iran&from=2026-05-22&language=en&pageSize=50&apiKey=173ec253cb06408abbf28061323e5fb4")
+response <- GET("https://newsapi.org/v2/everything?q=Iran&from=2026-05-20&language=en&pageSize=50&apiKey=173ec253cb06408abbf28061323e5fb4")
 
 str(response, max.level = 1)
 ```
 
+Look at the `content`.
+
 ```{r}
 library(jsonlite)
+library(tibble)
 parsed_response <- fromJSON(rawToChar(response$content))
-parsed_response
+str(parsed_response, max.level = 1)
 ```
+
+Pull a single article.
+
+```{r}
+trump_article <- parsed_response$articles[4, ]
+str(trump_article, max.level = 1)
+```
+
+Ehh. Let's print it out better.
+
+```{r}
+print(trump_article)
+```
+```{r}
+trump_article$content
+```
+
+
+## Function Making
+
+```{r}
+article_finder <- function(subject, 
+                           date = format(Sys.Date() - 30, "%Y-%m-%d"), 
+                           key = "173ec253cb06408abbf28061323e5fb4") {
+  URL <- paste0("https://newsapi.org/v2/everything?q=",
+                 subject,
+                 "&from=",
+                 date,
+                 "&language=en&pageSize=50&apiKey=",
+                 key)
+  response <- httr::GET(URL)
+  
+  parsed_response <- fromJSON(rawToChar(response$content))
+}
+```
+
+```{r}
+football_articles <- article_finder("Football")
+str(football_articles, max.level = 2)
+```
+
+```{r}
+Liverpool_articles <- article_finder("Liverpool")
+str(Liverpool_articles, max.level = 2)
+```
+
+```{r}
+cat(Liverpool_articles$articles[1,]$content)
+```
+
+# Task 2
+
 

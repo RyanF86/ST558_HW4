@@ -5,6 +5,31 @@ format: html
 editor: visual
 ---
 
-## Test
+```{r}
+#| include: false
+# load packages that may be used
+library(tidyverse)
+library(readxl)
+library(DBI)
+library(knitr)
+library(httr)
+library(jsonlite)
+```
 
-1.  Test
+## Task 1 - Querying an API and a Tidy-Style Function
+
+1.  Use GET() from the httr package to return information about a topic that you are interested in that has been in the news lately (store the result as an R object).
+
+```{r}
+RFKey <- "27554db1fa15488a995b7935d17bdf94" # R.Friedman API key for newsapi.org
+
+APIData <- GET(paste0("https://newsapi.org/v2/everything?q=SpaceX&from=2026-06-01&language=en&pageSize=50&apiKey=", RFKey)) # Gets data on topic "SpaceX" from 6/1/2026 onward.
+```
+
+2. Parse what is returned and find your way to the data frame that has the actual article information in it. 
+
+```{r}
+parsed <- fromJSON(rawToChar(APIData$content))
+parsed
+```
+
