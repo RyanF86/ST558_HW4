@@ -1,0 +1,114 @@
+---
+title: "Evans_Version"
+format: html
+Author: Evan Whitfield (For this file)
+---
+
+# Task 1 - Querying an API and a Tidy-Style Function
+
+## Number 1
+
+```{r}
+library(httr)
+response <- GET("https://newsapi.org/v2/everything?q=Iran&from=2026-05-20&language=en&pageSize=50&apiKey=173ec253cb06408abbf28061323e5fb4")
+
+str(response, max.level = 1)
+```
+
+Look at the `content`.
+
+```{r}
+library(jsonlite)
+library(tibble)
+parsed_response <- fromJSON(rawToChar(response$content))
+str(parsed_response, max.level = 1)
+```
+
+Pull a single article.
+
+```{r}
+trump_article <- parsed_response$articles[4, ]
+str(trump_article, max.level = 1)
+```
+
+Ehh. Let's print it out better.
+
+```{r}
+print(trump_article)
+```
+```{r}
+trump_article$content
+```
+
+
+## Function Making
+
+```{r}
+article_finder <- function(subject, 
+                           date = format(Sys.Date() - 30, "%Y-%m-%d"), 
+                           key = "173ec253cb06408abbf28061323e5fb4") {
+  URL <- paste0("https://newsapi.org/v2/everything?q=",
+                 subject,
+                 "&from=",
+                 date,
+                 "&language=en&pageSize=50&apiKey=",
+                 key)
+  response <- httr::GET(URL)
+  
+  parsed_response <- fromJSON(rawToChar(response$content))
+}
+```
+
+```{r}
+football_articles <- article_finder("Football")
+str(football_articles, max.level = 2)
+```
+
+```{r}
+Liverpool_articles <- article_finder("Liverpool")
+str(Liverpool_articles, max.level = 2)
+```
+
+```{r}
+cat(Liverpool_articles$articles[1,]$content)
+```
+
+# Task 2 - Summarizing Roller Coaster Data
+
+## Read in Data
+```{r}
+#| warning: False
+library(tidyverse)
+coaster_data <- read_csv("../HW4DataFiles/635USrollercoasters.csv")
+```
+## Basic EDA
+
+Initial Data Look
+```{r}
+str(coaster_data)
+```
+It does not look like any of the variables (num or chr) need to be switched. We will want to switch some factors.
+```{r}
+coaster_data
+```
+
+Removing Latitude and Longitude 
+```{r}
+coaster_data <- coaster_data |>
+  select(-"Latitude", -"Longitude")
+
+psych::describe(coaster_data)
+```
+
+Now let's look and see the rate of missing values.
+```{r}
+colSums(is.na(coaster_data))
+```
+
+## Categorical Variables
+
+## Numeric Variables (and across groups)
+
+
+
+
