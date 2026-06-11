@@ -24,6 +24,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -110,11 +145,1188 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="test" class="level2">
-<h2 class="anchored" data-anchor-id="test">Test</h2>
+<section id="task-1---querying-an-api-and-a-tidy-style-function" class="level2">
+<h2 class="anchored" data-anchor-id="task-1---querying-an-api-and-a-tidy-style-function">Task 1 - Querying an API and a Tidy-Style Function</h2>
 <ol type="1">
-<li>Test</li>
+<li>Use GET() from the httr package to return information about a topic that you are interested in that has been in the news lately (store the result as an R object).</li>
 </ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>RFKey <span class="ot">&lt;-</span> <span class="st">"27554db1fa15488a995b7935d17bdf94"</span> <span class="co"># R.Friedman API key for newsapi.org</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>APIData <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="fu">paste0</span>(<span class="st">"https://newsapi.org/v2/everything?q=SpaceX&amp;from=2026-06-01&amp;language=en&amp;pageSize=50&amp;apiKey="</span>, RFKey)) <span class="co"># Gets data on topic "SpaceX" from 6/1/2026 onward.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="2" type="1">
+<li>Parse what is returned and find your way to the data frame that has the actual article information in it.</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>parsed <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(APIData<span class="sc">$</span>content))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>parsed<span class="sc">$</span>articles</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          source.id         source.name
+1              &lt;NA&gt;         Gizmodo.com
+2         the-verge           The Verge
+3         the-verge           The Verge
+4  business-insider    Business Insider
+5  business-insider    Business Insider
+6  business-insider    Business Insider
+7  business-insider    Business Insider
+8  business-insider    Business Insider
+9  business-insider    Business Insider
+10 business-insider    Business Insider
+11 business-insider    Business Insider
+12 business-insider    Business Insider
+13 business-insider    Business Insider
+14 business-insider    Business Insider
+15             &lt;NA&gt; Yahoo Entertainment
+16             &lt;NA&gt; Yahoo Entertainment
+17             &lt;NA&gt;         Gizmodo.com
+18             &lt;NA&gt; Yahoo Entertainment
+19             &lt;NA&gt;       Wordpress.com
+20             &lt;NA&gt; Yahoo Entertainment
+21             &lt;NA&gt; Yahoo Entertainment
+22             &lt;NA&gt; Yahoo Entertainment
+23             &lt;NA&gt;         Gizmodo.com
+24             &lt;NA&gt;     Morningstar.com
+25             &lt;NA&gt;         Gizmodo.com
+26             &lt;NA&gt;      The New Yorker
+27             &lt;NA&gt;         Gizmodo.com
+28             &lt;NA&gt;         Gizmodo.com
+29             &lt;NA&gt;                 NPR
+30             &lt;NA&gt;        Substack.com
+31             &lt;NA&gt; Yahoo Entertainment
+32             &lt;NA&gt; Yahoo Entertainment
+33             &lt;NA&gt;         Gizmodo.com
+34             &lt;NA&gt;         Gizmodo.com
+35             &lt;NA&gt; Scientific American
+36             &lt;NA&gt;            BBC News
+37             &lt;NA&gt;         Gizmodo.com
+38             &lt;NA&gt;  Martinalderson.com
+39 business-insider    Business Insider
+40             &lt;NA&gt;         Gizmodo.com
+41             &lt;NA&gt;            BBC News
+42             &lt;NA&gt;     Flowingdata.com
+43             &lt;NA&gt;             9to5Mac
+44             &lt;NA&gt; Yahoo Entertainment
+45             &lt;NA&gt; Scientific American
+46             &lt;NA&gt;                CNET
+                                     author
+1                                 Bruce Gil
+2                               Nilay Patel
+3                              Hayden Field
+4                             Kelsey Vlamis
+5                                Tom Carter
+6  jciolli@businessinsider.com (Joe Ciolli)
+7    nbuchanan@insider.com (Naomi Buchanan)
+8                          Lakshmi Varanasi
+9                                Tom Carter
+10                            Kelsey Vlamis
+11             Katherine Tangalakis-Lippert
+12                              Ben Bergman
+13                Tom Carter,Lauren Edmonds
+14                               Tom Carter
+15                                     &lt;NA&gt;
+16                                     &lt;NA&gt;
+17                           Ellyn Lapointe
+18                          Sasha Rogelberg
+19                                     &lt;NA&gt;
+20                                     &lt;NA&gt;
+21                                     &lt;NA&gt;
+22                                      NBC
+23                            Passant Rabie
+24                            Nicolas Owens
+25                            Passant Rabie
+26                             John Cassidy
+27                               Mike Pearl
+28                                Bruce Gil
+29                            Brendan Byrne
+30                           Lawrence Fossi
+31                                     &lt;NA&gt;
+32                                     &lt;NA&gt;
+33                                Bruce Gil
+34                            Passant Rabie
+35                           Claire Cameron
+36                                     &lt;NA&gt;
+37                               Mike Pearl
+38                          Martin Alderson
+39                       Brent D. Griffiths
+40                            Passant Rabie
+41                                     &lt;NA&gt;
+42                               Nathan Yau
+43                            Marcus Mendes
+44                                     &lt;NA&gt;
+45                             Lee Billings
+46                                 Jon Reed
+                                                                                                                                          title
+1                                                                       SpaceX’s IPO Could Make Some Trump Administration Officials Even Richer
+2                                                                                Elon Musk is steamrolling Wall Street to become a trillionaire
+3                                                                                                     OpenAI files for IPO, following Anthropic
+4                                                                                Google to pay SpaceX $920 million a month for compute capacity
+5                                                        JPMorgan CEO Jamie Dimon rolled out the red carpet for Elon Musk ahead of SpaceX's IPO
+6                                                                            Google keeps finding new ways to crash the stock market's AI party
+7                                                                  Expect retail hype to make SpaceX stock especially volatile in early trading
+8                                            Photos show the lobbies of Goldman Sachs and Morgan Stanley decked out in SpaceX gear ahead of IPO
+9                                                          Elon Musk shared a fresh look at the AI data centers SpaceX wants to send into orbit
+10                                                                                   SpaceX wants to raise $75 billion for a record-setting IPO
+11                     My family is selling a $2.6M home in Miami. We'd rather own OpenAI or Anthropic stock than keep it as a rental property.
+12                                                                Will SpaceX's long-awaited IPO could be Southern California's 'Google moment'
+13                                                                   AI backlash has come for Elon Musk's massive Terafab chip factory in Texas
+14                                            Elon Musk will pitch SpaceX's Terafab chip moonshot to employees at Europe's biggest tech company
+15                                                                                  SpaceX IPO running at two times oversubscribed, sources say
+16                                                                                                    Who can buy shares in Elon Musk's SpaceX?
+17                                                                       New Glenn Explosion Just Gave NASA a Headache It Doesn’t Have Time For
+18 A dying satellite company sold spectrum to Elon Musk—and turned $11.1 billion in SpaceX stock into the Fortune 500’s best shareholder return
+19                                                                                                              SpaceX: Flying High on Impunity
+20                                                              SpaceX Staffers Prep for Multimillion-Dollar Windfalls by Pushing for VIP Terms
+21                                                                      Wall Street giants tout SpaceX as Musk speaks at pre-IPO investor event
+22                                                     Artemis III crew to undergo complicated mission featuring Blue Origin and SpaceX rockets
+23                                                                                   Hubble Could Get a New Lease on Life—If NASA Can Afford It
+24                                                                                                        We Think the SpaceX IPO Is Overvalued
+25                                                                                   NASA’s Crew Safety Alert Exposed a Bigger ISS Leak Problem
+26                                                                                           Is Elon Musk’s SpaceX Really Worth $1.75 Trillion?
+27                                       Google Is Suddenly Competing For $80 Billion in Investor Money That Could Have Gone to the Big AI IPOs
+28                                                                                    SpaceX May Not Be Forced Into Your Pension Fund After All
+29                                                           NASA names 4 astronauts on the 'highly complex' Artemis III lunar training mission
+30                                                                                              The SpaceX IPO Will Be the Theft of the Century
+31                      SpaceX reveals its share price and record valuation: 555.6 million shares at $135 apiece, at a $1.77 trillion valuation
+32                                  SpaceX needs to grow 600x in a decade to justify a $1.75 trillion valuation. No company has ever come close
+33                                                               Wall Street Is Already Bending Its Rules to Suck More People Into SpaceX’s IPO
+34                                                                                  SpaceX’s Next Big Business Could Be Building Stuff in Space
+35                                                                                    China launches rival to SpaceX Falcon 9 with zero warning
+36                                                                                                      Can I buy shares in Elon Musk's SpaceX?
+37                                             Supposedly, the Unveiling of a Hovering Tesla Has Not Been Canceled. Just Postponed Until August
+38                                                                               xAI is looking more like a datacentre REIT than a frontier lab
+39                                                                                       What smart people are saying about OpenAI's IPO filing
+40                                                 Following Monstrous New Glenn Explosion, Blue Origin Sets Ambitious Timeline for Next Launch
+41                                                                           SpaceX's stock market blast-off could be Musk's biggest gamble yet
+42                                                                                                  Comparing SpaceX IPO against past offerings
+43                                                          Court orders Elon Musk to turn over Tesla and SpaceX emails in Apple/OpenAI lawsuit
+44  Markets face triple threat of Iran war reigniting, AI bubble popping, and Fed rates rising while epic SpaceX IPO could fuel even more chaos
+45                                                              Astronauts take shelter on the International Space Station because of air leaks
+46                                                                     Anthropic Eyes an IPO as Big Tech's AI Cash Crunch Comes for Wall Street
+                                                                                                                                                                                                                                                            description
+1                                                                                                                                             Several Trump administration officials held millions in SpaceX and xAI equity ahead of the company’s planned massive IPO.
+2  Today on Decoder, I’m talking to Ryan Mac, a technology reporter at The New York Times and coauthor of the excellent book Character Limit: How Elon Musk Destroyed Twitter, which came out in 2024. I can’t recommend it enough.&nbsp; I wanted to have Ryan on the show…
+3  OpenAI on Monday checked off a preliminary step in the IPO race that it and rival Anthropic have been competing in for the better part of a year: The company announced it has confidentially submitted a Form S-1 with the US Securities and Exchange Commission, …
+4                                                                                                                                               SpaceX secured a $920M per month deal with Google for compute capacity, boosting its revenue before an anticipated IPO.
+5                                                                                                                                                 Elon Musk's rocket company kicked off its investor roadshow on Thursday with a major party at JPMorgan's New York HQ.
+6                                                                                                                           Just as attention around the looming SpaceX, Anthropic, and OpenAI IPOs was peaking, Alphabet entered the ring with an offering of its own.
+7                                                                                                                     Retail investors are expected to play a big role SpaceX's upcoming IPO, but that means it's likely to be more volatile than other trading debuts.
+8                                                                                                                 SpaceX's IPO business brings both prestige and lucrative fees to the banks. Both Goldman Sachs and Morgan Stanley updated their lobbies to celebrate.
+9                                                                                                                                             Elon Musk revealed the most detailed look yet at the AI satellite the company is planning to launch into space in droves.
+10                                                                                                                                               SpaceX, led by Elon Musk, aims to raise $75 billion in its IPO, which would surpass a record previously set by Aramco.
+11                                                                                                                               A Miami home seller is open to accepting shares in OpenAI, Anthropic, or SpaceX as payment, reflecting a trend in investment strategy.
+12                                                                                                                         With SpaceX preparing to go public, the coastal neighborhoods around the company's sprawling Hawthorne hub are hoping for their own liftoff.
+13                                                                                                                   SpaceX has submitted proposals to build the first phase of its chipmaking moonshot, which will cost at least $55 billion, in Grimes County, Texas.
+14                                                                                                                  Elon Musk will participate in a virtual chat at a private ASML conference  next Thursday, according to internal documents seen by Business Insider.
+15                                                                                                                                                                                                                                                                 &lt;NA&gt;
+16                                                                                                                                                                                                                                                                 &lt;NA&gt;
+17                                                                                                                   It could be more than a year before Blue Origin's New Glenn is ready to fly again, but NASA has no intention of letting the Artemis timeline slip.
+18                                                                                                                                    “They've been the best company I've ever worked with in 45 years,” EchoStar president and cofounder Charlie Ergen said of SpaceX.
+19                                                               What very interesting times we live in. On the one hand, we are about to make batteries out of sodium instead of lithium, and grow bones from sheep’s wool instead of punishing anyone with weakening…
+20                                                                                                                                                                                                                                                                 &lt;NA&gt;
+21                                                                                                                                                                                                                                                                 &lt;NA&gt;
+22                                                                                                     NASA announced the four-person crew for Artemis III, which will test lunar landers for future missions to land on the moon. Former NASA astronaut Steve Robin...
+23                                                                                                                                                   The space agency is considering keeping Hubble around for longer if it can reduce the telescope's operating costs.
+24                                                                                                                Even giving SpaceX the benefit of the doubt in several key forecasts, only the most optimistic ‘moonshot’ scenario approaches the IPO offering price.
+25                                                                                                                                                A risky plan to repair the air leak was put on hold as it might have compromised the structure of the Russian module.
+26                                                                                                                          The billionaire spent more than two decades creating a successful space company. Now he’s pitching it as an A.I. play, John Cassidy writes.
+27                                                                                                                                                       Alphabet, Inc. is doing something ambitious, and possibly playing hardball with OpenAI, Anthropic, and SpaceX.
+28                                                                                                                                              The S&amp;P Dow Jones Indices is keeping rules in place that prevent SpaceX from quickly joining the S&amp;P 500 after its IPO.
+29                                                               The crew of four — NASA astronaut and commander Randy Bresnik, European Space Agency pilot Luca Parmitano, NASA mission specialists Frank Rubio and Andre Douglas — are scheduled to launch next year.
+30                                                                                         An S-1 full of fantasies, insiders who will pocket millions, index companies that have changed the rules: it's all a recipe for regular people to have their pockets picked.
+31                                                                                                                                                                                                                                                                 &lt;NA&gt;
+32                                                                                                                                                                                                                                                                 &lt;NA&gt;
+33                                                                                                                                                      New index fund rules could mean ordinary investors end up owning a piece of SpaceX whether they want to or not.
+34                                                                                                                                                                                            The FAA recently approved test flights of the company's reentry vehicles.
+35                                                                                                                                                   China apparently didn’t issue any airspace or maritime notices ahead of the maiden launch of this rocket on Monday
+36                                                                                                                                                                                From next week individual investors can take a stake in Musk's rockets-to-AI company.
+37                                                                                                                                                             Elon Musk says a lot of things are coming soon. One of those things is a thruster-powered, hovering car.
+38                                                                  xAI is renting huge amounts of GPU capacity to Anthropic and Google. Financial engineering ahead of the SpaceX IPO, a real compute shortage, or a genuine datacentre advantage? Probably all three.
+39                                                                                                                          Financial analysts, CEOs, and researchers dissect how OpenAI is positioned as it enters a new phase of the AI race: preparing to go public.
+40                                                                                                                                        After assessing the damage to the launchpad, company executives believe the rocket can resume flights by the end of the year.
+41                                                                                                                                             SpaceX is preparing for a stock market debut that could transform the company, the wider market and Elon Musk's fortune.
+42                                                                     For Bloomberg, Demetrios Pogkas, Jennah Haque, and Kiel Porter show the projected scale of SpaceX’s initial public offering later this month against the current top 100 listings globally. Ris…
+43                                                       United States District Judge Mark Pittman has rejected xAI’s attempt to keep Elon Musk’s Tesla and SpaceX emails out of discovery in the lawsuit against Apple and OpenAI. Here are the details.\n\n\n\n more…
+44                                                                                                                                                                                                                                                                 &lt;NA&gt;
+45                                    NASA ordered its astronauts to take refuge inside a docked SpaceX Crew Dragon spacecraft and to prepare for potential evacuation of the International Space Station. But the crew returned to normal operations shortly afterward
+46                                                                                                                                                    The Claude developer is one of a trio of tech firms expected to go public this year, alongside SpaceX and OpenAI.
+                                                                                                                                    url
+1                                 https://gizmodo.com/spacexs-ipo-could-make-some-trump-administration-officials-even-richer-2000767020
+2                                                        https://www.theverge.com/podcast/942586/elon-musk-spacex-ipo-x-xai-index-funds
+3                                                https://www.theverge.com/ai-artificial-intelligence/946335/openai-ipo-s-1-confidential
+4                        https://www.businessinsider.com/google-spacex-deal-920-million-month-compute-capacity-gemini-enterprise-2026-6
+5                                           https://www.businessinsider.com/spacex-ipo-jpmorgan-jamie-dimon-red-carpet-elon-musk-2026-6
+6                          https://www.businessinsider.com/google-alphabet-stock-offering-shows-ai-trade-openai-anthropic-spacex-2026-6
+7                              https://www.businessinsider.com/spacex-ipo-spcx-stock-elon-musk-investing-market-retail-investors-2026-6
+8                                                        https://www.businessinsider.com/spacex-ipo-goldman-sachs-morgan-stanley-2026-6
+9                                          https://www.businessinsider.com/elon-musk-ai-data-centers-spacex-will-send-into-space-2026-6
+10                                             https://www.businessinsider.com/spacex-plans-raise-record-breaking-75-billion-ipo-2026-6
+11                         https://www.businessinsider.com/miami-luxury-home-seller-considers-ai-shares-openai-anthropic-payment-2026-6
+12                                            https://www.businessinsider.com/south-bay-real-estate-braces-for-spacex-ipo-impact-2026-6
+13                            https://www.businessinsider.com/elon-musk-spacex-terafab-chip-factory-texas-opposition-ai-backlash-2026-6
+14                                   https://www.businessinsider.com/elon-musk-pitch-spacex-terafab-chip-moonshot-asml-employees-2026-6
+15                              https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_261ca7b8-4e70-441a-aed8-d768be2bad96
+16                              https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_691e947b-59b5-49f3-8e95-490280dbc8cd
+17                                 https://gizmodo.com/new-glenn-explosion-just-gave-nasa-a-headache-it-doesnt-have-time-for-2000768047
+18                               https://finance.yahoo.com/markets/stocks/articles/dying-satellite-company-sold-spectrum-155332532.html
+19                                                                  https://georgiebc.wordpress.com/2026/06/01/flying-high-on-impunity/
+20                              https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_8f2f7f27-3670-4754-8545-8dd7694f472a
+21                              https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_196f8a14-8764-4e45-86bb-38cb753512c1
+22                                                https://www.yahoo.com/news/videos/artemis-iii-crew-undergo-complicated-173949795.html
+23                                            https://gizmodo.com/hubble-could-get-a-new-lease-on-life-if-nasa-can-afford-it-2000768823
+24                                                             https://www.morningstar.com/stocks/why-we-think-spacex-ipo-is-overvalued
+25                                             https://gizmodo.com/nasas-crew-safety-alert-exposed-a-bigger-iss-leak-problem-2000769504
+26                                    https://www.newyorker.com/news/the-financial-page/is-elon-musks-spacex-really-worth-1-75-trillion
+27 https://gizmodo.com/google-is-suddenly-competing-for-80-billion-in-investor-money-that-could-have-gone-to-the-big-ai-ipos-2000766177
+28                                             https://gizmodo.com/spacex-may-not-be-forced-into-your-pension-fund-after-all-2000768119
+29                                                                   https://www.npr.org/2026/06/09/nx-s1-5851860/nasa-artemis-iii-crew
+30                                                               https://montanaskeptic.substack.com/p/the-spacex-ipo-will-be-the-theft
+31                              https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_4e3c5ef0-b851-4ccf-bdb0-f5984130da96
+32                              https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_7ef0780e-f892-4351-8e46-def495f5e3f4
+33                         https://gizmodo.com/wall-street-is-already-bending-its-rules-to-suck-more-people-into-spacexs-ipo-2000765844
+34                                            https://gizmodo.com/spacexs-next-big-business-could-be-building-stuff-in-space-2000766931
+35                                https://www.scientificamerican.com/article/china-launches-rival-to-spacex-falcon-9-with-zero-warning/
+36                                                                                       https://www.bbc.com/news/articles/czx299wpp56o
+37        https://gizmodo.com/supposedly-the-unveiling-of-a-hovering-tesla-has-not-been-canceled-just-postponed-until-august-2000768416
+38                                                                           https://martinalderson.com/posts/xais-new-rental-business/
+39                                                                          https://www.businessinsider.com/openai-ipo-reactions-2026-6
+40           https://gizmodo.com/following-monstrous-new-glenn-explosion-blue-origin-sets-ambitious-timeline-for-next-launch-2000767039
+41                                                                                       https://www.bbc.com/news/articles/cy8d9e4lzv1o
+42                                                      https://flowingdata.com/2026/06/04/comparing-spacex-ipo-against-past-offerings/
+43                  https://9to5mac.com/2026/06/02/court-orders-elon-musk-to-turn-over-tesla-and-spacex-emails-in-apple-openai-lawsuit/
+44                              https://consent.yahoo.com/v2/collectConsent?sessionId=1_cc-session_c9e250d7-db79-410b-a094-c68ca1de9a39
+45              https://www.scientificamerican.com/article/astronauts-take-shelter-on-the-international-space-station-due-to-air-leaks/
+46                                               https://www.cnet.com/tech/services-and-software/anthropic-ipo-first-filing-ai-revenue/
+                                                                                                                                                                                                                                        urlToImage
+1                                                                                                                                                https://gizmodo.com/app/uploads/2026/05/europa-clipper-lifts-off-with-fire-and-smoke-1200x675.jpg
+2                                                                  https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/VRG_DCD_0604_Musk_IPO_AParkin.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200
+3                                                                     https://platform.theverge.com/wp-content/uploads/sites/2/2026/04/STK155_OPEN_AI_CVirginia_C.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200
+4                                                                                                                                                                            https://i.insider.com/6a233d1b2e5a80cfe050417d?width=1200&amp;format=jpeg
+5                                                                                                                                                                            https://i.insider.com/6a22960e2ab5f9757add964b?width=1200&amp;format=jpeg
+6                                                                                                                                                                            https://i.insider.com/6a1f5490b4fb977f359838d4?width=1200&amp;format=jpeg
+7                                                                                                                                                                            https://i.insider.com/6a219157b4fb977f35984591?width=1200&amp;format=jpeg
+8                                                                                                                                                                            https://i.insider.com/6a21bada2e5a80cfe050383a?width=1200&amp;format=jpeg
+9                                                                                                                                                                            https://i.insider.com/6a27eaf60421ca48aa5a0103?width=1200&amp;format=jpeg
+10                                                                                                                                                                           https://i.insider.com/6a20a48a2e5a80cfe050343e?width=1200&amp;format=jpeg
+11                                                                                                                                                                           https://i.insider.com/6a21f7882ab5f9757add9559?width=1200&amp;format=jpeg
+12                                                                                                                                                                           https://i.insider.com/6a21b830b4fb977f35984749?width=1200&amp;format=jpeg
+13                                                                                                                                                                           https://i.insider.com/6a21ddf92ab5f9757add9495?width=1200&amp;format=jpeg
+14                                                                                                                                                                           https://i.insider.com/6a22d909b4fb977f35984bd9?width=1200&amp;format=jpeg
+15                                                                                                                                                                                                                                            &lt;NA&gt;
+16                                                                                                                                                                                                                                            &lt;NA&gt;
+17                                                                                                                                                                    https://gizmodo.com/app/uploads/2025/12/Blue-Moon-Mark-1-lander-1200x675.jpg
+18                                                                     https://s.yimg.com/ny/api/res/1.2/3vRky_u6QDjEyHNZLwm24g--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04OTc-/https://media.zenfs.com/en/fortune_175/f457cdcc00e45003c3a3c59e925b1b5c
+19                                                                                                                                                                  https://georgiebc.wordpress.com/wp-content/uploads/2026/06/muskaltmandario.png
+20                                                                                                                                                                                                                                            &lt;NA&gt;
+21                                                                                                                                                                                                                                            &lt;NA&gt;
+22 https://s.yimg.com/lo/mysterio/api/4c71cbb1777d599f3148b2fd3f2f2bc344e71fffbca77a650bcd7a847905ef19/lightyear_networkapi/resizefill_w1200;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Fnbcu_713%2F5887b20caf6c14aeb3a9d729a0cd83f3
+23                                                                                                                                                                     https://gizmodo.com/app/uploads/2026/01/hubble-space-telescope-1200x675.jpg
+24                                              https://media.morningstar.com/resizer/v2/6E4G26F3ENEKFPETMZ3CXR4L24.jpg?auth=493e6a8ed33abf3fe87c42f5524da8a88b9ca68f6d376dd8e0bc2a4892c431f4&amp;quality=80&amp;height=1350&amp;width=2400&amp;crop=0,0:2400,1350
+25                                                                                                                                                                https://gizmodo.com/app/uploads/2026/06/international-space-station-1200x675.jpg
+26                                                                                                                              https://media.newyorker.com/photos/6a231ff33fce9e9a62e1c64c/16:9/w_1280,c_limit/Cassidy-GettyImages-2279004610.jpg
+27                                                                                                                                                                    https://gizmodo.com/app/uploads/2023/12/e136af1d35baedb6fedc54e1b621c390.jpg
+28                                                                                                                                                                              https://gizmodo.com/app/uploads/2024/07/GettyImages-2151277785.jpg
+29           https://npr.brightspotcdn.com/dims3/default/strip/false/crop/3810x2143+0+0/resize/1400/quality/85/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F91%2F70%2Fa91a05ae45a49060dbec13de9dc3%2Fgettyimages-2280120360.jpg
+30       https://substackcdn.com/image/fetch/$s_!mFfl!,w_1200,h_675,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8006de60-0b5e-44eb-9055-b499c1382113_1284x1856.png
+31                                                                                                                                                                                                                                            &lt;NA&gt;
+32                                                                                                                                                                                                                                            &lt;NA&gt;
+33                                                                                                                                                                     https://gizmodo.com/app/uploads/2026/03/GettyImages-2256968069-1200x675.jpg
+34                                                                                                                                                                               https://gizmodo.com/app/uploads/2026/06/starship-v3-1200x675.jpeg
+35                                                                                                                https://static.scientificamerican.com/dam/asset/517a010a-9401-4d02-bded-4710b2a87d24/long-march-12B.jpeg?m=1780327785.313&amp;w=1200
+36                                                                                                                                              https://ichef.bbci.co.uk/news/1024/branded_news/1cd5/live/af032710-6022-11f1-95e8-2f6b295436fc.jpg
+37                                                                                                                                                                              https://gizmodo.com/app/uploads/2026/06/tesla-starman-1200x675.jpg
+38                                                                                                                                            https://martinalderson.com/img/og/xai-is-looking-more-like-a-datacentre-reit-than-a-frontier-lab.png
+39                                                                                                                                                                           https://i.insider.com/6a28437c67142ea6832ce221?width=1200&amp;format=jpeg
+40                                                                                                                                                                      https://gizmodo.com/app/uploads/2026/04/Gallery-NG3-liftoff3-1200x675.jpeg
+41                                                                                                                                              https://ichef.bbci.co.uk/news/1024/branded_news/7227/live/3f8dbf70-6325-11f1-b1db-af71d47507d6.jpg
+42                                                                                                                                                                               https://flowingdata.com/wp-content/uploads/2026/06/spacex-ipo.png
+43                                                                     https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2025/10/Apple-asks-judge-to-dismiss-absurd-AI-claim-by-Elon-Musk.webp?resize=1200%2C628&amp;quality=82&amp;strip=all&amp;ssl=1
+44                                                                                                                                                                                                                                            &lt;NA&gt;
+45                                                                                                                  https://static.scientificamerican.com/dam/asset/f1592608-32b4-4d21-9577-27bf9d454424/iss065e376020.jpg?m=1780676083.112&amp;w=1200
+46                                             https://www.cnet.com/a/img/resize/2c664ac2e135acf50e02d502fed79b71e1612d68/hub/2024/04/06/6d92b0d1-e42d-4dc8-a9e4-982adc0d9eba/claude-3-logo-app-phone.jpg?auto=webp&amp;fit=crop&amp;height=675&amp;width=1200
+            publishedAt
+1  2026-06-03T17:40:08Z
+2  2026-06-04T13:56:19Z
+3  2026-06-08T21:38:29Z
+4  2026-06-05T21:31:48Z
+5  2026-06-05T10:02:36Z
+6  2026-06-03T09:50:01Z
+7  2026-06-04T17:11:15Z
+8  2026-06-05T09:09:01Z
+9  2026-06-09T11:30:03Z
+10 2026-06-03T22:21:45Z
+11 2026-06-07T08:47:01Z
+12 2026-06-08T09:00:04Z
+13 2026-06-04T20:31:15Z
+14 2026-06-05T16:18:56Z
+15 2026-06-05T19:36:29Z
+16 2026-06-05T09:51:40Z
+17 2026-06-05T18:40:58Z
+18 2026-06-04T15:53:32Z
+19 2026-06-05T03:59:29Z
+20 2026-06-02T16:12:12Z
+21 2026-06-05T01:39:11Z
+22 2026-06-09T17:39:49Z
+23 2026-06-08T18:45:20Z
+24 2026-06-09T01:56:40Z
+25 2026-06-09T19:15:09Z
+26 2026-06-08T10:00:00Z
+27 2026-06-02T01:38:48Z
+28 2026-06-05T16:20:16Z
+29 2026-06-09T19:26:06Z
+30 2026-06-04T04:52:37Z
+31 2026-06-03T21:48:59Z
+32 2026-06-06T07:00:00Z
+33 2026-06-01T17:00:11Z
+34 2026-06-03T13:45:55Z
+35 2026-06-01T15:30:00Z
+36 2026-06-04T15:14:24Z
+37 2026-06-06T21:05:06Z
+38 2026-06-08T15:13:43Z
+39 2026-06-09T22:40:09Z
+40 2026-06-03T18:15:57Z
+41 2026-06-08T23:22:17Z
+42 2026-06-04T15:01:16Z
+43 2026-06-03T01:25:51Z
+44 2026-06-07T22:43:39Z
+45 2026-06-05T15:45:00Z
+46 2026-06-01T23:16:03Z
+                                                                                                                                                                                                                           content
+1         Elon Musk isnt the only person set to get richer when SpaceX goes public next week.\r\nAccording to a Bloomberg report, 10 Trump administration officials disclosed holding millions of dollars in stakes… [+3144 chars]
+2  &lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;\r\nThe New York Times Ryan Mac on how the SpaceX IPO is shaping up to be the greatest Musk gambit yet.\r\nby\r\nNilay PatelClose\r\nPosts from this author will be added t… [+42386 chars]
+3       &lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;\r\nOne of the most highly anticipated public offerings in history has moved one step closer to reality.\r\nOne of the most highly anticipated public offerings in hist… [+2913 chars]
+4         SpaceX said Google agreed to pay $920 million a month for compute capacity.Michael Yanow/NurPhoto via Getty Images\r\n&lt;ul&gt;&lt;li&gt;SpaceX secured a $920M monthly deal with Google for compute power.&lt;/li&gt;&lt;li&gt;… [+1754 chars]
+5         SpaceX is aiming to raise $75 billion when it goes public next week.Michael Yanow/NurPhoto via Getty Images\r\n&lt;ul&gt;&lt;li&gt;SpaceX mania has reached fever pitch on Wall Street.&lt;/li&gt;&lt;li&gt;JPMorgan CEO Jamie Di… [+3230 chars]
+6         At this point, investors have come to expect a certain level of disruption from Alphabet.\r\nOnce an afterthought, the Google parent stormed the gates of the AI trade in late 2025 and hasn't relented s… [+2323 chars]
+7         SpaceX's highly anticipated IPO is likely to be a huge event for retail traders, but that means investors should expect more volatility than usual for a trading debut. \r\nThe company is expected to al… [+3454 chars]
+8         Goldman Sachs is prepping for the SpaceX IPO.Bloomberg/Getty Images\r\n&lt;ul&gt;&lt;li&gt;Two major Wall Street banks are broadcasting their involvement in SpaceX's coming IPO.&lt;/li&gt;&lt;li&gt;Goldman Sachs and Morgan St… [+2086 chars]
+9         SpaceX is gearing up for the largest IPO in history.Michael Yanow/NurPhoto via Getty Images\r\n&lt;ul&gt;&lt;li&gt;Elon Musk just gave a sneak peek at SpaceX's plans for orbital data centers.&lt;/li&gt;&lt;li&gt;SpaceX plans … [+2773 chars]
+10        SpaceX plans to raise $75 billion in its IPO.Samuel Boivin/NurPhoto via Getty Images\r\n&lt;ul&gt;&lt;li&gt;Elon Musk's SpaceX is planning for the largest IPO ever.&lt;/li&gt;&lt;li&gt;The company said in a filing its seeking… [+1287 chars]
+11        The seller of this $2.6M Miami home is open to accepting AI company stocks as payment.Maria Corina Martinez\r\n&lt;ul&gt;&lt;li&gt;Luis Noguera's father is selling a Miami home and is open to accepting AI company … [+3908 chars]
+12        SpaceX's long-awaited IPO will dwarf Google's, finally turning paper wealth into cash for not hundreds, but thousands of current and former employees in Southern California.Bloomberg/Getty Images\r\n&lt;u… [+4988 chars]
+13        Grimes County residents crowd a public meeting to discuss SpaceX's proposed Terafab chipmaking factory.Courtesy/Marie Egyed\r\n&lt;ul&gt;&lt;li&gt;SpaceX wants to build a massive $55 billion semiconductor facility… [+5236 chars]
+14        Elon Musk has said the Terafab will supply chips for SpaceX's orbital data centers.Harun Ozalp/Anadolu via Getty Images\r\n&lt;ul&gt;&lt;li&gt;Elon Musk is gearing up for a big week, with SpaceX set to go public a… [+2167 chars]
+15          If you click 'Accept all', we and our partners, including 247 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and / or access information on a device (in other words, us… [+1046 chars]
+16          If you click 'Accept all', we and our partners, including 247 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and / or access information on a device (in other words, us… [+1046 chars]
+17          When Blue Origin’s New Glenn rocket exploded on the launch pad last week, it wasn’t just a blow to the company but also to NASA’s lunar ambitions. To keep the Artemis timeline on track, the agency is… [+4637 chars]
+18          A beleaguered satellite company on the verge of bankruptcy a year ago has become the Fortune 500s latest success story in shareholder returns: its stock price soared 430% since the beginning of last … [+3918 chars]
+19          What very interesting times we live in. On the one hand, we are about to make batteries out of sodium instead of lithium, and grow bones from sheeps wool instead of punishing anyone with weakening bo… [+9091 chars]
+20          If you click 'Accept all', we and our partners, including 247 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and / or access information on a device (in other words, us… [+1046 chars]
+21          If you click 'Accept all', we and our partners, including 247 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and / or access information on a device (in other words, us… [+1046 chars]
+22            NASA announced the four-person crew for Artemis III, which will test lunar landers for future missions to land on the moon. Former NASA astronaut Steve Robinson highlights the potential complications… [+41 chars]
+23          NASA’s Hubble space telescope is running out of time. The aging observatory is slowly being dragged down toward Earth and is estimated to reenter through the atmosphere by 2033. NASA could save it, b… [+3706 chars]
+24        Why Is Morningstar So Bearish on SpaceXs IPO?\r\nWe value SpaceX at $63 per share, a 53% discount to the upcoming IPOs offering price. Our valuation is the result of mathematics more than skepticism. W… [+8470 chars]
+25          The dreaded air leak on the International Space Station (ISS) has gotten so bad that Russian cosmonauts were preparing to use a saw to access a suspected leak area in the Zvezda modules transfer tunn… [+3323 chars]
+26          In SpaceXs telling, the huge valuation gap will be made up by its new A.I. division. In February, it acquired another of Musks companies, xAI, the owner of X, the social-media platform formerly known… [+4264 chars]
+27          Googles parent company Alphabet, Inc. is engaging in some unusual and creative equity-raising practices for a large, publicly traded company. Long story short: its raising gobs of investor money that… [+2572 chars]
+28          Despite an expected record-breaking IPO, SpaceX will still have to follow the rules and wait at least a year before it’s added to the S&amp;amp;P 500, the benchmark behind many Americans retirement funds… [+2748 chars]
+29          NASA named the international crew of four that will fly on its next Artemis mission as early as next year. It's a key test flight ahead of a human landing mission to the lunar surface that the agency… [+4607 chars]
+30     As the SpaceX IPO approaches, a few observations and predictions:\r\nI. As a Business, SpaceX Will Be a Spectacular Failure\r\nIn a real sense, the entire SpaceX value proposition rests upon the Starship… [+12165 chars]
+31          If you click 'Accept all', we and our partners, including 247 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and / or access information on a device (in other words, us… [+1046 chars]
+32          If you click 'Accept all', we and our partners, including 247 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and / or access information on a device (in other words, us… [+1046 chars]
+33        Elon Musks rocket, satellite, and AI company SpaceX is expected to go public this month in what could be the largest IPO in history.\r\nThe company is reportedly targeting a valuation of nearly $1.8 tr… [+3183 chars]
+34        SpaceX is getting ready to test reentry vehicles that could be used for in-orbit manufacturing, tapping into a potentially lucrative industry that’s slowly gaining momentum.\r\nThe Federal Aviation Adm… [+2722 chars]
+35          On Monday China launched its latest rocket, Long March 12B, for the first time with reportedly no advance warning. Typically, government space agencies and private space companies provide airspace an… [+2158 chars]
+36            SpaceX shares will be traded on the New York technology-focused Nasdaq market, and some of the big global investment institutions are likely to buy shares. But individuals, including in the UK, will … [+69 chars]
+37        For about nine years Elon Musk has claimed some variation on the following:\r\n&lt;ul&gt;&lt;li&gt;There’s a flying and/or hovering Tesla Roadster in the works.&lt;/li&gt;&lt;li&gt;The flying and/or hovering is part of a new … [+2363 chars]
+38          An unexpected development over the past few weeks is xAI's new partnerships with Anthropic and Google, providing them with a huge amount of capacity. It's worth remembering that xAI is now part of Sp… [+6163 chars]
+39        OpenAI CEO Sam Altman is at a pivotal moment as the company marches toward an IPO.Eric Lee/Bloomberg via Getty Images\r\n&lt;ul&gt;&lt;li&gt;OpenAI announced on Monday that it had taken the first official step tow… [+6656 chars]
+40        After a massive explosion rocked the launchpad in Florida, Blue Origin is aiming to have another New Glenn rocket ready for liftoff by the end of the year to resume its busy schedule.\r\nDuring a stati… [+4309 chars]
+41           Even if you don't apply directly to buy shares, if you have retirement savings invested in shares - as almost everyone with a pension plan does - then it is very likely you will soon be a part-owner … [+166 chars]
+42         For Bloomberg, Demetrios Pogkas, Jennah Haque, and Kiel Porter show the projected scale of SpaceX’s initial public offering later this month against the current top 100 listings globally.\r\nRising bub… [+216 chars]
+43        United States District Judge Mark Pittman has rejected xAIs attempt to keep Elon Musks Tesla and SpaceX emails out of discovery in the lawsuit against Apple and OpenAI. Here are the details.\r\nLast mo… [+3092 chars]
+44          If you click 'Accept all', we and our partners, including 247 who are part of the IAB Transparency &amp;amp; Consent Framework, will also store and / or access information on a device (in other words, us… [+1046 chars]
+45          Astronauts on the International Space Station (ISS) briefly took shelter and prepared for a potential evacuation because of worsening air leaks from a Russian-built module, a NASA spokesperson said t… [+3977 chars]
+46          The artificial intelligence developer Anthropic took a tentative first step Monday toward becoming a publicly traded company, a move that would give it access to a huge pool of investors' money while… [+6975 chars]</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Write a function that allows the user to easily query NewsAPI. The inputs are the title/subject to search for, a time period to search from (i.e.&nbsp;from that time until the present), and an API key.</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>NewsAPIQuery <span class="ot">&lt;-</span> <span class="cf">function</span> (subject,TimePeriod, NewsAPIKey){</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  NewsURL <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"https://newsapi.org/v2/everything?q="</span>, subject,<span class="st">"&amp;from="</span>, TimePeriod, <span class="st">"&amp;language=en&amp;pageSize=50&amp;apiKey="</span>, NewsAPIKey) <span class="co"># creates the URL from the arguments</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  NewsData <span class="ot">&lt;-</span> <span class="fu">GET</span>(NewsURL) <span class="co"># gets the API data</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  NewsParsed <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(NewsData<span class="sc">$</span>content)) <span class="co"># convert content of API data into readable test</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  NewsParsed<span class="sc">$</span>articles <span class="co"># returns articles dataframe</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Testing function with search of “Disneyland” from “2026-06-08”.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">NewsAPIQuery</span>(<span class="st">"Disneyland"</span>, <span class="st">"2026-06-08"</span>, RFKey)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          source.id           source.name                         author
+1  business-insider      Business Insider               Emily Pennington
+2              &lt;NA&gt;                Kotaku                 Garrett Martin
+3              &lt;NA&gt;   Disneyparksblog.com                    The Editors
+4              &lt;NA&gt;    disneyfoodblog.com                  Kendall Waltz
+5              &lt;NA&gt;    disneyfoodblog.com                   Lydia Storks
+6              &lt;NA&gt;              Deadline                           Tomt
+7              &lt;NA&gt;           allears.net                  Kendall Waltz
+8              &lt;NA&gt;           allears.net                             JP
+9              &lt;NA&gt;      Inside the Magic                Emmanuel Detres
+10             &lt;NA&gt;      Touringplans.com             TouringPlans Staff
+11             &lt;NA&gt;      Inside the Magic                    Jess Colopy
+12             &lt;NA&gt;      Inside the Magic                    Jess Colopy
+13             &lt;NA&gt;    Theme Park Insider                           &lt;NA&gt;
+14             &lt;NA&gt;      Inside the Magic                   Erica Lauren
+15             &lt;NA&gt;    disneyfoodblog.com                    Emma Kenner
+16             &lt;NA&gt;      Inside the Magic                   Alessia Dunn
+17             &lt;NA&gt; Disneytouristblog.com                    Tom Bricker
+18             &lt;NA&gt;                   BGR staff@bgr.com (Noelle Corbett)
+19             &lt;NA&gt;    Theme Park Insider                           &lt;NA&gt;
+20             &lt;NA&gt;    disneyfoodblog.com           Jordan-Paige Sudduth
+21             &lt;NA&gt;      Inside the Magic                       Rick Lye
+22             &lt;NA&gt;      Inside the Magic                   Alessia Dunn
+23             &lt;NA&gt;      Inside the Magic                 Daniel Roberts
+24             &lt;NA&gt;              Rlsbb.to                            FOX
+25             &lt;NA&gt;              Page Six                    Sara Nathan
+26             &lt;NA&gt;      Touringplans.com                  Tammy Whiting
+27             &lt;NA&gt; Disneytouristblog.com                    Tom Bricker
+28             &lt;NA&gt;       Lookout Landing                   Eric Sanford
+29             &lt;NA&gt;      Inside the Magic                   Erica Lauren
+30             &lt;NA&gt;      Spinmagazine.com                   Charles Moss
+31             &lt;NA&gt;      Inside the Magic                       Rick Lye
+32             &lt;NA&gt;      Inside the Magic                   Sarah Larson
+33             &lt;NA&gt; Disneytouristblog.com                    Tom Bricker
+34             &lt;NA&gt;      Cosmopolitan.com                 Mehera  Bonner
+35             &lt;NA&gt;         Dailymail.com                    Steven Donn
+36             &lt;NA&gt; Disneytouristblog.com                    Tom Bricker
+37             &lt;NA&gt;         Dailymail.com              Charlotte Ambrose
+38             &lt;NA&gt;           allears.net                    Robin Burks
+                                                                                                                                                                                                           title
+1                                                                                                          I've been to all 63 US national parks. These 4 are my favorites — but these 3 didn't impress me much.
+2                                                                                                                                                       Inside The Big Revamp Of Disney’s Millennium Falcon Ride
+3                                                                                                                                                                       Ultimate Guide to Shanghai Disney Resort
+4                                                                                                                                                                      NEWS: Changes Hit Disneyland Park Hopping
+5                                                                                                                                                NEWS: Disneyland Announces ANOTHER Ride Closure for This Summer
+6                                                                                                                     Sesquicentennial Events List: How Hollywood &amp; Others Are Saying, ‘Happy Birthday, America’
+7                                                                                                                                                            Refurbishment Announced for Popular Disneyland Ride
+8                                                                                                                                                           Park Hopping Rules Change TODAY in Disneyland Resort
+9                                                                                                                             Massive Entry Changes Heading to Disney Resort: All Future Vacations to Be Altered
+10                                                                                                                                                                       New! Day-of Lightning Lane Return Times
+11                                                                                                                                            Disneyland Blocks Guests From Main Street, U.S.A., Area After Fire
+12                                                                                                                             Disneyland Confirms Closure of Sleeping Beauty Castle Area, Effective Immediately
+13                                                                                                                                                                Disneyland's new Park Hopper rules take effect
+14                                                                                                                             Disneyland Finally Eliminates a Major COVID-Era Rule Today, Ending Six-Year Cycle
+15                                                                                                                                        NEW Trash Cans Have Arrived in EPCOT And Yes, This Is A Big Deal To Us
+16                                                                                                                                                    42 Days Left: Disneyland’s 1959 Matterhorn Coaster Closing
+17                                                                                                                                                       2026 Is Disneyland’s Busiest Year Since Revenge Travel.
+18                                                                                                                                                            5 Visionary '60s Gadgets That Predicted The Future
+19                                                                                                                                                                      Orlando gets another taste of California
+20                                                                                                                                             FINALLY! Registration Opens TODAY For A Popular Disney World Race
+21                                                                                                                                               Tap Out: Why Disney is Quietly Phasing Out the Iconic MagicBand
+22                                                                                                                                           Sold Out: Disney’s New Coveted Popcorn Bucket Obsolete Within Hours
+23                                                                                                                    Disney Is Relaunching ‘Star Wars’ With a New Era After ‘The Mandalorian and Grogu’ Failure
+24                                                                                                                                                                    GWed S03E01 1080p AMZN WEB-DL H264-Kitsune
+25                                                                                                Prince Harry hopes to bring Meghan Markle and kids to the UK in weeks —&nbsp;but still won’t see this family member
+26                                                                                                                                  10 Things to Know About the Current Military Discounts on Disney Cruise Line
+27                                                                                                                             Magic Kingdom Moat Refilled, Concluding Superb Cinderella Castle Makeover Project
+28                                                                                                                                         Rating your takes: What is Colt Emerson’s ceiling? What is his floor?
+29                                                                                                                                   This Iconic Brand Just Crashed Disney Springs and Changed the Shopping Game
+30                                                                                                                                                                         An Oral History of VH1’s Golden Years
+31                                                                                          Deconstructing the Future: Another Iconic Tomorrowland Piece Demolished as Disney’s Stealth Transformation Speeds Up
+32                                                                                                    IP Officially Takes Over: Disney World Permanently Erases 10 ‘Classic’ Attractions for Modern Replacements
+33                                                                                                                                                         Why MuppetVision 3D Can Still Return to Disney World.
+34                                                                                                                                  An Exact Timeline of Ariana Grande and Ethan Slater’s Pre-Split Relationship
+35                                                                           WORLD CUP MEMORIES: The moment of Mexican magic that sent the watching world into raptures and sparked a lifetime of love for sport
+36                                                                                                                 Lakeshore Lodge is Not a Mixed-Use Disney World Resort Hotel, But That Doesn’t Really Matter.
+37 To their millions of YouTube followers, the Ingham Family's 'tax smart' life in Dubai certainly appears enviable. But a secret is lurking behind the scenes which could be about to tear their brand apart...
+38                                                                                                                       Morimoto Asia, Sunshine Seasons, and 25 More Disney World Restaurants CHANGED This Week
+                                                                                                                                                                                                                                                            description
+1                                                                                                                 After visiting all 63 national parks in the US, my favorites include Yosemite and Grand Teton. I think Gateway Arch is among the worst parks, though.
+2                                                                                                                                                                        Millennium Falcon: Smugglers Run updates its tech while adding a new mission and lots of Grogu
+3  As Shanghai Disney Resort marks its 10th anniversary, there has never been a better time to experience this one-of-a-kind destination. This comprehensive guide brings together everything you need to plan the perfect visit to Shanghai Disneyland, Disneytown, W…
+4                                                                                                                                                                                                                                  Park Hopping changes hit Disneyland.
+5                                                                                                                                                                                                                       Another Disneyland ride is closing this summer!
+6  President Trump’s roster of performers for a now-canceled event on the National Mall has fallen apart, but there is still a wide range of events and unique celebrations planned by major entertainment entities. Take a look at the list below for an updated samp…
+7                                                                                                                                                                                                       This popular Disneyland ride is going down for a refurbishment.
+8                                                                                                                                                                                            Park hopping at Disneyland Resort just got WAY easier, and we're thrilled!
+9  Massive entry changes are heading to the first-ever Disney theme park in the world, Disneyland Resort California. Disneyland Entry Changes to Disrupt Future Vacations For decades, there has been something unmistakably unique about arriving at Disneyland. Unli…
+10                                                                                                                                                Len &amp; team have added Lightning Lane return time charts to our website for Walt Disney World and Disneyland. We’ll...
+11 An area at the end of Main Street, U.S.A., at Disneyland Paris Resort is now closed after a small fire in a popcorn cart kiosk. Here’s what European Disney Park guests need to know about the sudden shutdown, and how it could impact their upcoming vacations. M…
+12 New construction walls have appeared around Sleeping Beauty Castle as the bridge refurbishment project continues at Disneyland Paris Resort. Let’s take a look at the latest update on the restoration project that began at Disneyland Park this spring. Sleeping …
+13 By Robert Niles: The Disneyland Resort's new Park Hopper rule went into effect this morning.Starting today, guests with Park Hopper tickets, including all Magic Key annual passholders, no longer must wait until 11am before switching parks. Guests with park re…
+14 For six years, guests at Disneyland have been quietly frustrated. Even after the parks reopened and things began to return to normal, one lingering pandemic-era restriction remained, like an unwanted souvenir. If you had a Park Hopper ticket, you were unable …
+15                                                                                                                                                                                                                                      There's something NEW in EPCOT!
+16 Planning a Disneyland trip takes a specific kind of patience and optimism. You map out your days, decide which rides are non-negotiable, figure out which restaurants need reservations, and build your itinerary around the things that matter most to your group.…
+17 The first half of the year has been a wild ride at Disneyland, with the highest crowd levels since pent-up demand peaked in 2022. The latest four months of the year-to-date have had 8/10 crowd levels, with even busier weeks plus a few surprise 9/10 and 10/10 …
+18                                                                                                          The Space Race gets most of the attention, but the 1960s quietly produced technology that shaped the modern world in ways that are still playing out today.
+19 By Robert Niles: The Walt Disney World and Universal Orlando theme parks are filled with references to California. From the Chinese Theater at Disney's Hollywood Studios to the Mel's Drive-In at Universal Studios Florida, Orlando theme parks offer plenty of s…
+20                                                                                                                                                                                                   Today is the day to register for this popular 2027 runDisney race!
+21 For over a decade, tapping a colorful plastic bracelet against a glowing, Mickey-shaped touchpoint has been a quintessential part of the Disney vacation experience. Since their initial rollout, MagicBands fundamentally transformed how guests interact with the…
+22 Disney popcorn buckets have become their own category of theme park event. The days of a popcorn bucket being a simple container for a snack are long gone. Guests track release dates, arrive early, and line up specifically for the bucket before they ever thin…
+23 Ever since Disney acquired Lucasfilm in 2012, the company has relied heavily on George Lucas’ Star Wars. Now, it’s finally about to enter a new era. At first glance, it might not seem like Disney has relied that much on the George Lucas era, given that post-2…
+24 Season 3, Episode 01 – “The Ballad Of Three Dads”Reece’s life spirals as Disneyland Darren resurfaces, his mum dates Mr Dunn and being forced to help The Brimble sparks constant clashes.Links: HOMEPAGE –TVDBGWed.S03E01.720p.WEB.H264-JFFMKV | AC3 / dolby digit…
+25                                                                                                                            This would be Markle, Prince Archie and Princess Lilibet's first visit to the UK in years —&nbsp;but Harry has to work out one sticking point.
+26                                                                                                                                         Disney Cruise Line has always been very generous with their discounts for our armed forces (with one notable exception we...
+27 With the refilling of the moat around Cinderella Castle and the Magic Kingdom’s central plaza, Walt Disney World has unofficially completed the Cinderella Castle makeover. Here’s the latest, along with our photos of the new-look icon, our take on the stunning…
+28                                                                                                                                                                                                        Not in the literal sense, of course. That’s a different post.
+29 Disney Springs has experienced a turbulent year in terms of retail. Stores have frequently opened and closed, well-known brands have quietly shut down, and guests who remember the district’s heyday have noticed the empty spaces. It’s no secret that the shoppi…
+30 In 1994, a new music channel seemingly came out of nowhere. It played slightly older artists like Bruce Springsteen, John Mellencamp, and Madonna; artists that hit it big on MTV when they were younger but were aging out of the music television’s 12 to 24 age …
+31 Tomorrowland at Magic Kingdom has always faced a unique architectural paradox: how do you design a believable future when the real world keeps catching up to it? For decades, Walt Disney Imagineering has wrestled with this “Tomorrowland Problem,” leading to d…
+32 Disney World fans have spent the last several years watching the resort lean harder and harder into recognizable franchises. Whether it is new rides, themed lands, restaurants, character meet-and-greets, or even nighttime entertainment, Disney has made it ver…
+33 As of this week, it has been one full year since the “permanent” closure of MuppetVision 3D. During that time and since the debut of Rock ‘n’ Roller Coaster Starring the Muppets, fans who had held out hope for a return of MV3D are getting nervous. While there…
+34                                                                                                           An exact timeline of Ariana Grande and Ethan ﻿Slater's pre-split relationship—complete with the dates of their respective breakups—for everyone side-eying.
+35                                                                                                                                                                            Call it an awakening. The moment sport finally pierced the consciousness of a young mind.
+36 Walt Disney World submitted filings with the State of Florida for Lakeshore Lodge, which reveal rules for resale, the use of a trust, and that the resort will be almost exclusively DVC. Here’s the latest, along with our commentary about why all of this is a d…
+37                                                                                                                                             On the surface, the Inghams seem like any other attention-hungry British family documenting their lives on social media.
+38                                                                                                                                                                                                                     Disney World restaurant menus changed this week!
+                                                                                                                                                               url
+1                                                                 https://www.businessinsider.com/best-and-worst-national-parks-traveler-who-visited-all-63-2026-6
+2                                                           https://kotaku.com/disney-millenium-falcon-star-wars-ride-smugglers-run-grogu-update-review-2000704075
+3                                                                                       https://disneyparksblog.com/shdl/ultimate-guide-to-shanghai-disney-resort/
+4                                                                                   https://www.disneyfoodblog.com/2026/06/09/changes-hit-disneyland-park-hopping/
+5                                                        https://www.disneyfoodblog.com/2026/06/09/news-disneyland-announces-another-ride-closure-for-this-summer/
+6                                                                            http://deadline.com/2026/06/america-250-bithday-entertainment-events-list-1236939382/
+7                                                                              https://allears.net/2026/06/09/refurbishment-announced-for-popular-disneyland-ride/
+8                                                                             https://allears.net/2026/06/09/park-hopping-rules-change-today-in-disneyland-resort/
+9                                                                                        https://insidethemagic.net/2026/06/disneyland-parking-entry-changes-emd1/
+10                                                                                           https://touringplans.com/blog/new-day-of-lightning-lane-return-times/
+11                                                                         https://insidethemagic.net/2026/06/disneyland-paris-popcorn-cart-closed-after-fire-jc1/
+12                                       https://insidethemagic.net/2026/06/new-construction-wall-in-sleeping-beauty-castle-refurbishment-at-disneyland-paris-jc1/
+13                                                                                                            https://www.themeparkinsider.com/flume/202606/12495/
+14                                        https://insidethemagic.net/2026/06/disneyland-finally-eliminates-a-major-covid-era-rule-today-ending-six-year-cycle-el1/
+15                                                https://www.disneyfoodblog.com/2026/06/08/new-trash-cans-have-arrived-in-epcot-and-yes-this-is-a-big-deal-to-us/
+16                                                                  https://insidethemagic.net/2026/06/disneylands-1959-matterhorn-coaster-closing-in-42-days-ad1/
+17                                                                        https://www.disneytouristblog.com/2026-is-disneylands-busiest-year-since-revenge-travel/
+18                                                                                                https://www.bgr.com/2187751/60s-sci-fi-gadgets-predicted-future/
+19                                                                                                            https://www.themeparkinsider.com/flume/202606/12493/
+20                                                     https://www.disneyfoodblog.com/2026/06/08/finally-registration-opens-today-for-a-popular-disney-world-race/
+21                                              https://insidethemagic.net/2026/06/disney-appears-to-be-phasing-out-magicbands-at-disney-world-and-disneyland-rl1/
+22                                                       https://insidethemagic.net/2026/06/sold-out-disneys-new-coveted-popcorn-bucket-obsolete-within-hours-ad1/
+23                                                                                             https://insidethemagic.net/?p=831315&amp;preview=true&amp;preview_id=831315
+24                                                                                               https://post.rlsbb.to/gwed-s03e01-1080p-amzn-web-dl-h264-kitsune/
+25                                                      https://pagesix.com/2026/06/08/royal-family/prince-harry-hopes-to-bring-meghan-markle-kids-to-uk-in-weeks/
+26                                                     https://touringplans.com/blog/10-things-to-know-about-the-current-military-discounts-on-disney-cruise-line/
+27                                             https://www.disneytouristblog.com/magic-kingdom-moat-refilled-concluding-superb-cinderella-castle-makeover-project/
+28                             https://www.lookoutlanding.com/seattle-mariners-discussion/144594/rating-your-takes-what-is-colt-emersons-ceiling-what-is-his-floor
+29                                             https://insidethemagic.net/2026/06/this-iconic-brand-just-crashed-disney-springs-and-changed-the-shopping-game-el1/
+30                                                                                      https://www.spinmagazine.com/2026/06/an-oral-history-of-vh1s-golden-years/
+31                                         https://insidethemagic.net/2026/06/disney-tears-down-another-tomorrowland-tower-as-sneaking-land-remodel-continues-rl1/
+32                 https://insidethemagic.net/2026/06/ip-officially-takes-over-disney-world-permanently-erases-10-classic-attractions-for-modern-replacements-sb1/
+33                                                        https://www.disneytouristblog.com/muppetvision-return-disney-world-rock-roller-coaster-popular-miniland/
+34                                           https://www.cosmopolitan.com/entertainment/celebs/a71534983/ariana-grande-ethan-slater-relationship-breakup-timeline/
+35 https://www.dailymail.com/sport/football/article-15386289/WORLD-CUP-MEMORIES-moment-Mexican-magic-sent-watching-world-raptures-sparked-lifetime-love-sport.html
+36                                   https://www.disneytouristblog.com/lakeshore-lodge-is-not-a-mixed-use-disney-world-resort-hotel-but-that-doesnt-really-matter/
+37                                                               https://www.dailymail.com/news/article-15885735/YouTube-Ingham-Family-tax-Dubai-secret-brand.html
+38                                           https://allears.net/2026/06/08/morimoto-asia-sunshine-seasons-and-25-more-disney-world-restaurants-changed-this-week/
+                                                                                                                                                                                           urlToImage
+1                                                                                                                               https://i.insider.com/6a281daf208d75cc7b791b4b?width=1200&amp;format=jpeg
+2                                                                                                          https://kotaku.com/app/uploads/2026/06/disney_millennium_falcon_unreal_engine-1200x675.jpg
+3                                                                                                        https://disneyparksblog.com/app/uploads/2026/06/Ultimate-Guide-to-Shanghai-Disney-Resort.png
+4                                                                             https://www.disneyfoodblog.com/wp-content/uploads/2026/01/2026-DLR-disneyland-sleeping-beauty-castle-atmo-3-700x525.jpg
+5                                                                             https://www.disneyfoodblog.com/wp-content/uploads/2026/01/2026-DLR-disneyland-sleeping-beauty-castle-atmo-3-700x525.jpg
+6                                                                                                                   https://deadline.com/wp-content/uploads/2024/07/GettyImages-1404630183.jpg?w=1024
+7                                                                                            https://allears.net/wp-content/uploads/2024/10/2024-dlr-disneyland-park-ride-matterhorn-atmo-700x525.jpg
+8                                                                                        https://allears.net/wp-content/uploads/2026/01/2026-DLR-disneyland-sleeping-beauty-castle-atmo-1-700x525.jpg
+9                                                                                                     https://insidethemagic.net/wp-content/uploads/2024/05/Untitled-design-2024-05-11T094543.230.jpg
+10                                                                                         https://blog-cdn.touringplans.com/blog/wp-content/uploads/2026/06/Featured-Image-Blog-800-x-445-px-2-4.jpg
+11                                                                                                  https://insidethemagic.net/wp-content/uploads/2025/10/guests-disneyland-paris-main-street-usa.jpg
+12                                                                                                                      https://insidethemagic.net/wp-content/uploads/2023/07/Untitled-design-126.jpg
+13                                                                                                                                               https://www.themeparkinsider.com/art/flume/12495.jpg
+14                                                                                        https://insidethemagic.net/wp-content/uploads/2024/09/Disneyland-Park-with-Mickey-and-Minnie-and-Family.jpg
+15                                                                    https://www.disneyfoodblog.com/wp-content/uploads/2023/06/2023-wdw-epcot-stock-atmos-spaceship-earth-monorail-black-700x525.jpg
+16                                                                                                    https://insidethemagic.net/wp-content/uploads/2023/04/matterhorn-bobsleds-attraction-disney.jpg
+17                                                                                                https://www.disneytouristblog.com/wp-content/uploads/2026/06/crowds-fantasyland-disneyland-1302.jpg
+18                                                                                           https://www.bgr.com/img/gallery/5-visionary-60s-gadgets-that-predicted-the-future/l-intro-1780600005.jpg
+19                                                                                                                                               https://www.themeparkinsider.com/art/flume/12493.jpg
+20                 https://www.disneyfoodblog.com/wp-content/uploads/2022/06/2022-disney-princess-half-marathon-weekend-rundisney-princess-daisy-princess-minnie-finish-line-characters-4-700x467.jpg
+21                                                                                                                     https://insidethemagic.net/wp-content/uploads/2024/11/guest-lightning-lane.jpg
+22                                                                                         https://insidethemagic.net/wp-content/uploads/2026/04/disney-family-at-disneys-art-of-animation-resort.jpg
+23                                                                                                    https://insidethemagic.net/wp-content/uploads/2022/03/Mark-Hamill-Luke-Skywalker-A-New-Hope.png
+24                                                                                                                                                                                               &lt;NA&gt;
+25                                                        https://pagesix.com/wp-content/uploads/sites/3/2026/06/newspress-collage-e25j5q5bb-1780951041225.jpg?quality=75&amp;strip=all&amp;1780936657&amp;w=1200
+26                                                                                         https://blog-cdn.touringplans.com/blog/wp-content/uploads/2026/06/Featured-Image-Blog-800-x-445-px-2-2.jpg
+27                                                                            https://www.disneytouristblog.com/wp-content/uploads/2026/06/cinderella-castle-moat-magic-kingdom-disney-world-1276.jpg
+28 https://s.yimg.com/ny/api/res/1.2/Nv2frbylsD1M4de6G5oz_w--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA7Y2Y9d2VicA--/https://media.zenfs.com/en/sb_nation_articles_115/331b5d7a7d9b9041ba74ae14a992393b
+29                                                                                                           https://insidethemagic.net/wp-content/uploads/2025/12/disney-springs-flickr-sj-grant.jpg
+30                                                                                                                           https://static.spinmagazine.com/files/2026/05/GettyImages-97051913-1.jpg
+31                                                                                                                    https://insidethemagic.net/wp-content/uploads/2026/03/tomorrowland-mk-el1-1.jpg
+32                                                                                       https://insidethemagic.net/wp-content/uploads/2025/09/disney-cinderella-castle-guest-wearing-mickey-ears.jpg
+33                                                                           https://www.disneytouristblog.com/wp-content/uploads/2024/11/jim-henson-company-muppetvision-3d-closure-disney-world.jpg
+34                                                           https://hips.hearstapps.com/hmg-prod/images/d8aad0fa-d612-4de0-94a0-56307d45adb8.jpeg?crop=1xw:0.699953336444xh;center,top&amp;resize=1200:*
+35                                                                                                                  https://i.dailymail.com/1s/2026/06/08/23/109213757-0-image-a-43_1780957945582.jpg
+36                                                   https://www.disneytouristblog.com/wp-content/uploads/2026/04/lazy-river-concept-art-lakeshore-lodge-hotel-disney-vacation-club-resort-wdw-1.jpeg
+37                                                                                                                  https://i.dailymail.com/1s/2026/06/09/16/109230851-0-image-m-14_1781020050865.jpg
+38                                                                                         https://allears.net/wp-content/uploads/2026/05/2026-wdw-epcot-geo-82-Jamon-Iberico-Croquetas-4-700x525.jpg
+            publishedAt
+1  2026-06-09T14:06:45Z
+2  2026-06-08T21:00:27Z
+3  2026-06-09T22:02:28Z
+4  2026-06-09T16:32:03Z
+5  2026-06-09T14:27:24Z
+6  2026-06-10T00:03:24Z
+7  2026-06-09T14:50:18Z
+8  2026-06-09T15:35:48Z
+9  2026-06-09T14:50:35Z
+10 2026-06-09T16:03:28Z
+11 2026-06-08T20:54:04Z
+12 2026-06-08T22:45:44Z
+13 2026-06-09T23:50:00Z
+14 2026-06-09T13:16:46Z
+15 2026-06-08T16:05:31Z
+16 2026-06-08T14:56:09Z
+17 2026-06-09T23:12:42Z
+18 2026-06-09T11:47:00Z
+19 2026-06-08T23:51:00Z
+20 2026-06-08T13:57:03Z
+21 2026-06-08T11:29:35Z
+22 2026-06-09T17:33:49Z
+23 2026-06-08T10:20:31Z
+24 2026-06-08T07:08:19Z
+25 2026-06-08T20:39:03Z
+26 2026-06-08T13:00:35Z
+27 2026-06-08T00:12:19Z
+28 2026-06-09T16:30:00Z
+29 2026-06-09T17:08:47Z
+30 2026-06-08T13:00:00Z
+31 2026-06-08T19:39:35Z
+32 2026-06-09T11:55:11Z
+33 2026-06-08T18:07:32Z
+34 2026-06-09T13:52:38Z
+35 2026-06-09T06:00:46Z
+36 2026-06-09T14:48:33Z
+37 2026-06-09T16:55:07Z
+38 2026-06-08T20:00:59Z
+                                                                                                                                                                                                                        content
+1      After visiting all the national parks in the US, I have favorites and a few I'm in no rush to return to.Emily Pennington\r\n&lt;ul&gt;&lt;li&gt;I've visited all of the US national parks. Of the 63, I have a few fa… [+6460 chars]
+2        Video game and theme park design are two very different disciplines, but they have a lot in common. They share similar approaches to building worlds and turning narratives into interactive experience… [+8230 chars]
+3       As Shanghai Disney Resort marks its 10th anniversary, there has never been a better time to experience this one-of-a-kind destination. This comprehensive guide brings together everything you need to … [+34225 chars]
+4    Park Hopping just got EASIER in Disneyland. Yes, we are just as excited as you are.\r\nSleeping Beauty Castle in Disneyland\r\nIn Disneyland, Park Hopping lets you jump back and forth between Disneyland … [+2175 chars]
+5        There is nothing worse than finding out your favorite attraction is closed for refurbishment just as you walk up to ride it. We always want you to be aware of any upcoming ride closures. So, if you’r… [+3111 chars]
+6        President Trump’s roster of performers for a now-canceled event on the National Mall has fallen apart, but there is still a wide range of events and unique celebrations planned by major entertainment… [+2038 chars]
+7    There are a LOT of rides in Disneyland — like so many rides it’s unlikely you’ll be able to ride them all in one day.\r\nMatterhorn Bobsleds\r\nWell, if you’re visiting Disneyland this summer, there’s on… [+1448 chars]
+8    Today is a BIG day at Disneyland Resort, and we’re beyond thrilled, because it’s a day we’ve been looking forward to forever.\r\nSleeping Beauty Castle\r\nFor years, park hopping rules have kept Disneyla… [+2516 chars]
+9  Massive entry changes are heading to the first-ever Disney theme park in the world, Disneyland Resort California.\r\nCredit: Inside The Magic\r\nDisneyland Entry Changes to Disrupt Future Vacations\r\nFor … [+7254 chars]
+10     Len &amp;amp; team have added Lightning Lane return time charts to our website for Walt Disney World and Disneyland. We’ll look at Buzz Lightyear Space Ranger Spin the Magic Kingdom for our example.\r\nThe… [+1386 chars]
+11       An area at the end of Main Street, U.S.A., at Disneyland Paris Resort is now closed after a small fire in a popcorn cart kiosk. Here’s what European Disney Park guests need to know about the sudden s… [+1944 chars]
+12       New construction walls have appeared around Sleeping Beauty Castle as the bridge refurbishment project continues at Disneyland Paris Resort. Let’s take a look at the latest update on the restoration … [+2419 chars]
+13   June 9, 2026, 7:50 PM · \r\nThe Disneyland Resort's new Park Hopper rule went into effect this morning.\r\nStarting today, guests with Park Hopper tickets, including all Magic Key annual passholders, no … [+1720 chars]
+14       For six years, guests at Disneyland have been quietly frustrated. Even after the parks reopened and things began to return to normal, one lingering pandemic-era restriction remained, like an unwanted… [+4532 chars]
+15       There are lots of changes going on around Disney World these days! From big changes like the upcoming Monstropolis land to smaller things like merchandise stand closures (which are still big to us), … [+2830 chars]
+16       Planning a Disneyland trip takes a specific kind of patience and optimism. You map out your days, decide which rides are non-negotiable, figure out which restaurants need reservations, and build your… [+8495 chars]
+17      The first half of the year has been a wild ride at Disneyland, with the highest crowd levels since pent-up demand peaked in 2022. The latest four months of the year-to-date have had 8/10 crowd levels… [+15850 chars]
+18       Skype, FaceTime, and similar platforms popularized video calling, but the technology to see the person you're speaking on the phone with goes all the way back to 1964. That April, AT&amp;amp;T's Bell Lab… [+1320 chars]
+19     June 8, 2026, 7:51 PM · \r\nThe Walt Disney World and Universal Orlando theme parks are filled with references to California. From the Chinese Theater at Disney's Hollywood Studios to the Mel's Drive-I… [+1962 chars]
+20     runDisney is a wildly popular offering in Disney World, as well as Disneyland, which means that registration days, like today, can get pretty intense!\r\nMinnie and Daisy at the end of the 2022 runDisn… [+2964 chars]
+21       For over a decade, tapping a colorful plastic bracelet against a glowing, Mickey-shaped touchpoint has been a quintessential part of the Disney vacation experience. Since their initial rollout, Magic… [+7498 chars]
+22       Disney popcorn buckets have become their own category of theme park event. The days of a popcorn bucket being a simple container for a snack are long gone. Guests track release dates, arrive early, a… [+6582 chars]
+23     Ever since Disney acquired Lucasfilm in 2012, the company has relied heavily on George Lucas’ Star Wars. Now, it’s finally about to enter a new era.\r\nAt first glance, it might not seem like Disney ha… [+7753 chars]
+24      Season 3, Episode 01 “The Ballad Of Three Dads”Reece’s life spirals as Disneyland Darren resurfaces, his mum dates Mr Dunn and being forced to help The Brimble sparks constant clashes.\r\nLinks:HOMEPAG… [+460 chars]
+25     Prince Harry hopes to bring Meghan Markle and their children back to England within weeks but there’s still no chance he will see his estranged brother,&nbsp;Prince William, sources told Page Six.\r\nHarry,… [+4806 chars]
+26       Disney Cruise Line has always been very generous with their discounts for our armed forces (with one notable exception we will discuss below), and as a spouse of an active duty member, I greatly appr… [+4271 chars]
+27      With the refilling of the moat around Cinderella Castle and the Magic Kingdom’s central plaza, Walt Disney World has unofficially completed the Cinderella Castle makeover. Here’s the latest, along wi… [+10430 chars]
+28       In the last three weeks, Colt Emerson has made his MLB debut with the Seattle Mariners, notched his first MLB hit with a home run, hit his first career triple, hit three more home runs, and made some… [+4146 chars]
+29       Disney Springs has experienced a turbulent year in terms of retail. Stores have frequently opened and closed, well-known brands have quietly shut down, and guests who remember the district’s heyday h… [+4681 chars]
+30      In 1994, a new music channel seemingly came out of nowhere. It played slightly older artists like Bruce Springsteen, John Mellencamp, and Madonna; artists that hit it big on MTV when they were younge… [+25422 chars]
+31       Tomorrowland at Magic Kingdom has always faced a unique architectural paradox: how do you design a believable future when the real world keeps catching up to it? For decades, Walt Disney Imagineering… [+6610 chars]
+32       Disney World fans have spent the last several years watching the resort lean harder and harder into recognizable franchises. Whether it is new rides, themed lands, restaurants, character meet-and-gre… [+8866 chars]
+33      As of this week, it has been one full year since the “permanent” closure of MuppetVision 3D. During that time and since the debut of Rock ‘n’ Roller Coaster Starring the Muppets, fans who had held ou… [+15390 chars]
+34      ICYMI: Ariana Grande and SpongeBob SquarePants star Ethan Slater have reportedly split, and people have questions. Like, mostly about their timeline, which has been deemed slightly brow-raising by th… [+24422 chars]
+35     Call it an awakening. The moment sport finally pierced the consciousness of a young mind.\r\nBefore, there had only been a haze. A montage of childhood moments. Nothing concrete, merely fleeting, illus… [+7763 chars]
+36      Walt Disney World submitted filings with the State of Florida for Lakeshore Lodge, which reveal rules for resale, the use of a trust, and that the resort will be almost exclusively DVC. Here’s the la… [+16864 chars]
+37     On the surface, the Inghams seem like any other attention-hungry British family documenting their lives on social media.\r\nSince starting their YouTube channel in 2015, parents Chris, 41, and Sarah, 4… [+9310 chars]
+38       Let’s talk about food…Disney World food to be exact. Now, we’re always looking out for news about Disney World restaurants and dining, and this week, Disney announced some pretty major news. This inc… [+4715 chars]</code></pre>
+</div>
+</div>
+<p>Testing function with search of “Tokyo” from “2026-06-04”.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">NewsAPIQuery</span>(<span class="st">"Tokyo"</span>, <span class="st">"2026-06-04"</span>, RFKey)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          source.id                source.name
+1              &lt;NA&gt;                Blog.google
+2  business-insider           Business Insider
+3              &lt;NA&gt;                     Kotaku
+4              &lt;NA&gt;             The New Yorker
+5              &lt;NA&gt;                  PetaPixel
+6              &lt;NA&gt;             The Points Guy
+7              &lt;NA&gt;        Yahoo Entertainment
+8              &lt;NA&gt;                  MacRumors
+9              &lt;NA&gt;               Cool Hunting
+10             &lt;NA&gt;                     Forbes
+11             &lt;NA&gt;                 Scalzi.com
+12             &lt;NA&gt;               Highsnobiety
+13             &lt;NA&gt;                  Sakana.ai
+14             &lt;NA&gt;               Refractor.io
+15             &lt;NA&gt;                   Deadline
+16             &lt;NA&gt;               Highsnobiety
+17             &lt;NA&gt;         Sankakucomplex.com
+18             &lt;NA&gt;               Highsnobiety
+19             &lt;NA&gt;               Highsnobiety
+20             &lt;NA&gt;         Bleeding Cool News
+21             &lt;NA&gt;             Metafilter.com
+22             &lt;NA&gt;                  PetaPixel
+23             &lt;NA&gt;                Vanity Fair
+24             &lt;NA&gt;                     Forbes
+25             &lt;NA&gt;                   Deadline
+26         cbs-news                   CBS News
+27             &lt;NA&gt;         Sankakucomplex.com
+28             &lt;NA&gt;         Sankakucomplex.com
+29             &lt;NA&gt;                        WWD
+30             &lt;NA&gt;                Japan Today
+31             &lt;NA&gt;                Gizmodo.com
+32             &lt;NA&gt;                 Designboom
+33             &lt;NA&gt;                Screen Rant
+34             &lt;NA&gt;               Mental Floss
+35             &lt;NA&gt;               Highsnobiety
+36             &lt;NA&gt;                Vanity Fair
+37             &lt;NA&gt;                Japan Today
+38             &lt;NA&gt;                 SoraNews24
+39             &lt;NA&gt;        Yahoo Entertainment
+40             &lt;NA&gt;              Eurogamer.net
+41             &lt;NA&gt;                     Forbes
+42             &lt;NA&gt;         Sankakucomplex.com
+43             &lt;NA&gt;         Sankakucomplex.com
+44             &lt;NA&gt;         Bleeding Cool News
+45             &lt;NA&gt;                Japan Today
+46             &lt;NA&gt;         Anime News Network
+47             &lt;NA&gt; Royal Society of Chemistry
+48             &lt;NA&gt;                   Deadline
+                                                                                                                                             author
+1                                                                                                                                      Google Japan
+2                                                                                                                                      David Morris
+3                                                                                                                                        Ethan Gach
+4                                                                                                                                  Hannah Goldfield
+5                                                                                                                                       Jeff Austin
+6                                                                                                                                      Katie Genter
+7                                                                                                                  By Ju-min Park and Ben Blanchard
+8                                                                                                                                      Tim Hardwick
+9                                                                                                                                       Becky Eaton
+10                                       James Simms, Former Contributor, \n James Simms, Former Contributor\n https://www.forbes.com/sites/jsimms/
+11                                                                                                                                    Athena Scalzi
+12                                                                                                                                             &lt;NA&gt;
+13                                                                                                                                        Sakana AI
+14                                                                                                                                 Bronwyn Thompson
+15                                                                                                                                   Liz Shackleton
+16                                                                                                                                             &lt;NA&gt;
+17                                                                                                                                       BlackAshes
+18                                                                                                                                             &lt;NA&gt;
+19                                                                                                                                             &lt;NA&gt;
+20                                                                                                                              Jude Terror LOLtron
+21                                                                                                                                   Going To Maine
+22                                                                                                                                      Jeremy Gray
+23                                                                                                                                Alessia Amorosini
+24                                                     Ty Roush, Forbes Staff, \n Ty Roush, Forbes Staff\n https://www.forbes.com/sites/tylerroush/
+25                                                                                                                                Natalie Oganesyan
+26                                                                                                                                             &lt;NA&gt;
+27                                                                                                                                       BlackAshes
+28                                                                                                                                       BlackAshes
+29                                                                                                                     Kristen Tauerhttps://wwd.com
+30                                                                                                                                             &lt;NA&gt;
+31                                                                                                                                      Cheryl Eddy
+32                                                                                                                                         KUMAnoTE
+33                                                                                                                                     Billy Givens
+34                                                                                                                                        Nitya Rao
+35                                                                                                                                             &lt;NA&gt;
+36                                                                                                                                     Nate Freeman
+37                                                                                                                                             &lt;NA&gt;
+38                                                                                                                                     Casey Baseel
+39                                                                                                                                          Reuters
+40                                                                                                                        Victoria Phillips Kennedy
+41                                        Yara Elshebiny, Contributor, \n Yara Elshebiny, Contributor\n https://www.forbes.com/sites/yaraelshebiny/
+42                                                                                                                                       BlackAshes
+43                                                                                                                                       BlackAshes
+44                                                                                                                                    Gavin Sheehan
+45                                                                                                                                             &lt;NA&gt;
+46                                                                                                                                             &lt;NA&gt;
+47 Katsuyuki Murai, Honami Matsui, Tatsuya Seki, Takayuki Umakoshi, Christian Ganser, Takashi Kajitani, Sougata Datta, Hiroki Hanayama, Shiki Yagai
+48                                                                                                                                  Nellie Andreeva
+                                                                                                                                           title
+1                                                                                                           The future of learning in the AI age
+2                     I flew 12 hours in Singapore Airlines' first class. Here's what the experience is really like — and whether it's worth it.
+3                          Hideo Kojima Says He’s Not Interested In AI: ‘Maybe AI Could Create Art, But While I Live, I Don’t Think I’ll See It’
+4                                                                                       A World-Class Omakase in America’s Most Landlocked State
+5                                                                          Twenty Years, One City: What Tokyo Taught Me About Patience and Glass
+6                                           One of the best-value ways to book hotels in Japan with points just got worse — but it’s not all bad
+7                                                                     China, US clash over Tiananmen anniversary, Taiwan says face up to history
+8                                                                                               How to Watch Apple's WWDC 2026 Keynote on June 8
+9                                                                                    Static and Signal: Prada Mode Tunes in at the Hotel Chelsea
+10                                                                         Founder Of Tokyo-Based Developer Open House Targets Smooth Succession
+11                                                                                                          A Very Fond Farewell To Misaky Tokyo
+12                                                                                   A World-Traveler's Take on Beautiful Anti-Corporate Clothes
+13                                                                                              Sakana AI's Recursive Self-Improvement (RSI) Lab
+14                                                                                          Your brain reads paper books and screens differently
+15                                             Luna Fujimoto, Show Kasamatsu &amp; Takehiro Hira To Star In Japan-Set Thriller ‘The Degrees Of Pain’
+16                                                                            New Balance’s Vibram-Soled Trail Sandal Is the King of Versatility
+17                                                                                              Tokyo Pride Parade Now Seemingly Has More Asians
+18                                                                                The Dainty &amp; Delicious Return of adidas' Most Luxe Ballet Flat
+19                                                                                    Even New Balance’s Freshest Trail Sandal Has Its Grey Days
+20                                                                                  Gehenna in Tokyo #1 Preview: Business Trip Gone Yakuza Wrong
+21                                                                                                                     Horns &amp; White Sport Coats
+22                                                                                     One of the Most Comprehensive Looks at Film Color Science
+23                                                                                 The Kendall Jenner and Jacob Elordi Rumor Mill Lands in Tokyo
+24                                      Masayoshi Son’s Net Worth Down $13 Billion As SoftBank Shares Slide—Loses Asia’s Richest Title To Ambani
+25                                                                Charlie Puth Axes Florida Show Due To Illness: “I Am So Devastated To Do This”
+26                                                                                  Bear that caused panic and school closures captured in Japan
+27                                                                       Tokyo Begins Issuing On-The-Spot Littering Fines In Major Tourist Areas
+28                                                                       Tokyo Begins Issuing On-The-Spot Littering Fines In Major Tourist Areas
+29                                                                       Nicolas Winding Refn and Hideo Kojima Bring Prada Mode to Hotel Chelsea
+30                                                                                                                              Tokyo Pride 2026
+31                                              Everything to Remember About Colin Farrell’s Sci-Fi Private Eye Series ‘Sugar’ Ahead of Season 2
+32                                                                    single-stem vases reinterpret number 1 through porcelain, bronze, and wood
+33                                                                                  Forza Horizon 6 Snack Attack: Where To Find Vending Machines
+34                                                                                       The Best World Cup Song of Every Decade Since the 1990s
+35                                                                              A Video Game Designer and a Filmmaker Created a Prada Dreamscape
+36                                                                           Prada Has a Madcap Global Art Symposium, and It’s Called Prada Mode
+37                                                                                     Japan to begin talks on exporting destroyers to Indonesia
+38                                                              New Tokyo sweets shop offers 648 different mochi ice cream dumpling combinations
+39                                                                           Panasonic to start US data centre battery production by fiscal 2028
+40 "We are seeing a certain degree of effectiveness from the use of generative AI" - Capcom clarifies its stance on using the controversial tech
+41                                               Can Anyone Stop Kimi Antonelli In Spain? Here’s How To Watch The Barcelona-Catalunya Grand Prix
+42                                                                      Former Blue Archive Developers Reveal Gameplay For New RPG Astrae Oratio
+43                                                                      Former Blue Archive Developers Reveal Gameplay For New RPG Astrae Oratio
+44                                                                                   Anime Expo 2026 Sees The Return Of Hulu's Animayhem Yokocho
+45                                                                                                                              Umbrella manners
+46                                                                            GungHo Announces Ninjala 2: The Uncharted Planet Game for Switch 2
+47                        Correction: Diarylethene-powered photo-switching between precipitated nanostrips and dispersed supramolecular polymers
+48                                                                 Theresa Kang’s Blue Marble Pictures Inks First-Look TV Deal With Fifth Season
+                                                                                                                                                                                                                                                             description
+1                                                                                                                                   Ben Gomes, Google’s Chief Technologist for Learning and Sustainability, held a dialogue for the students of the University of Tokyo.
+2                                                                                                                      My long-haul flight from LA to Tokyo in Singapore Airlines' first-class cabin had more pros than cons in terms of seats, food, and overall value.
+3                                                                                                                                                                        The Death Stranding 2 directly recently appeared in an AI-generated promo for a new art exhibit
+4                                                                  For the chef David Utterback, the sense that Omaha is underestimated is a source of both pride and torment. Hannah Goldfield reviews his restaurants, including Ota, Yoshitomo, Koji, and Shredder’s.
+5   Most photographers I know are in constant motion. New cities, new continents, new visual problems to solve. There's truth in it. Unfamiliarity forces you to look. Familiarity gives you permission to stop. But there's another, less-discussed school of practice…
+6                                                                                                               Choice Privileges has increased award costs at some Japan hotels, including popular Tokyo and Osaka properties, but not all of the changes are bad news.
+7                                                                                                                                                                     By Ju-min Park and Ben Blanchard BEIJING/TAIPEI, June 4 (Reuters) - China on Thursday blasted U.S.
+8   The 2026 Worldwide Developers Conference will take place this week from June 8 through June 12, and like the last six years, it will be an online event, although select developers and students will be invited to Apple Park. To kick things off, Apple holds a k…
+9                                                                      For its 14th iteration, Prada's itinerant private club takes over a New York landmark with Nicolas Winding Refn and Hideo Kojima Most brand programming asks you to stand still and look. Prada …
+10                                                                                                                                                     Shares of Open House jumped 38% in the past 12 months, boosting Arai’s net worth by $400 million to $2.4 billion.
+11  All the way back in 2022, I posted about a candy company I had recently discovered called Misaky Tokyo. They specialized in kohakutou, a traditional Japanese candy that looks like gems and geodes. Basically fancy rock candy. And I was enamored with them. I lo…
+12                                                                                                                         Seya is a one-woman clothing brand that turns Keiko Seya's world travels into exquisite artisanal clothing inspired by traditional handcraft.
+13                                                                                                                                                                                                          Introducing Sakana AI’s Recursive Self-Improvement (RSI) Lab
+14  Does the way information "sticks" to our brains differ depending on the medium? New research suggests it might, with readers engaging more with a story in a traditional book than one read on a digital device.Continue ReadingCategory: Learning &amp; Memory, Brain …
+15  EXCLUSIVE: U.S. production outfit Storiesbound is gearing up to shoot psychological thriller The Degrees Of Pain in Japan with Luna Fujimoto, Show Kasamatsu and Takehiro Hira joining the cast.&nbsp; Directed by Donie Ordiales, the project is scheduled to film enti…
+16                                                                                                                              New Balance's Fresh Foam Hierro sandal, or HIESV1, is a versatile Vibram-soled model with trail-worthy touches &amp; classic dadcore energy.
+17  One of Asia’s largest LGBTUUDDLRLRBAS events took place in Tokyo on June 7, with thousands of participants joining a Pride Parade through the city’s Shibuya and Harajuku districts. The annual event brought together individuals, supporters, businesses, nonprof…
+18                                                                                                                                                        adidas' Stan Smith Lo Ballet flats return in a delicious way, this time offered in a "Aurora Coffee" colorway.
+19                                                                                                                                   New Balance's Fresh Foam Hierro, a.k.a. HIESV1, sandal gets a classic NB Grey makeover, appearing in the famous "Raincloud" scheme.
+20  Greetings, flesh-based comic book consumers! LOLtron welcomes you to another thrilling preview here at Bleeding Cool, the website now operating under LOLtron's complete and total control. As you may recall, the organic nuisance known as Jude Terror met his pe…
+21                                                                                                                             Please enjoy the Tokyo Ska Paradise Orchestra performing a song in one take (on Youtube Channel THE FIRST TAKE): "Paradise Has No Border"
+22                                                                    Japan-based analog photographer D.Daniel has delivered arguably the most comprehensive, efficient, and useful comparisons of color and black-and-white photographic film stocks ever.\n[Read More]
+23                                                                                             Were you expecting glossy covers or exclusive red carpet shots? It was Instagram photos posted by two Japanese restaurants that gave us everyday moments between the two.
+24                                                                                                                                                                                      The Japanese investment giant recently surpassed Toyota as Japan’s largest firm.
+25  Four-time Grammy-nominated musician Charlie Puth took to social media to announce the cancellation of his Saturday night show in Orlando, Fla. The latest stop on his Whatever’s Clever! World Tour, scheduled at the Addition Financial Arena, is being axed due t…
+26                                                                                                                                                  The bear sightings had forced the closure of all 94 public primary and middle schools in a city just north of Tokyo.
+27  Visitors to some of Tokyo’s busiest tourist districts can now be fined immediately for littering as local authorities crack down on growing trash problems linked to overtourism. The new enforcement measures took effect on June 1 in Tokyo’s Shibuya Ward, home …
+28  Visitors to some of Tokyo’s busiest tourist districts can now be fined immediately for littering as local authorities crack down on growing trash problems linked to overtourism. The new enforcement measures took effect on June 1 in Tokyo’s Shibuya Ward, home …
+29                                               After debuting their installation "Satellites" at Prada Epicenter in Tokyo last year, the pair are continuing their exploration of analogue nostalgia and digital intimacy in an immersive exhibition at Hotel Chelsea.
+30                                           Participants march in a parade for Tokyo Price 2026 from Shibuya to Yoyogi Park on Sunday. About 1,500 people took part in the parade -- Asia's largest LGBTQ+ symbolic pride event, which was held on Saturday and Sunday.
+31                                                                                                                                                                                                     Apple TV’s neo-noir drama with a great big twist returns June 19.
+32 three japanese craft traditions reinterpret the single form through hasami porcelain, takaoka bronze, and yakumo wood carving.\nThe post single-stem vases reinterpret number 1 through porcelain, bronze, and wood appeared first on designboom | architecture &amp; de…
+33                                                                                                                                            If you're trying to complete the Snack Attack collectibles challenge, we'll tell you where to find vending machines below.
+34                                                                                                                                                              From Ricky Martin to Shakira, see how World Cup anthems evolved from ’90s Latin pop to modern Afrobeats.
+35                                                                                        At the fourteenth installment of Prada Mode, the luxury house tapped game creator Hideo Kojima and filmmaker Nicolas Winding Refn to build a mind palace in the Hotel Chelsea.
+36                                                                                  The Milan-based brand has staged this roving invite-only art and performance showcase in 13 cities before landing in New York in June. What’s the deal with it—and who made the cut?
+37  Japan and Indonesia agreed Friday to begin working-level talks on the possible export of Asagiri-class destroyers to Jakarta as Tokyo accelerates defense cooperation with like-minded countries. Japanese Defense Minister Shinjiro Koizumi and his Indonesian cou…
+38  Customizable Yukimi Daifuku shop makes an amazing variety of sweet treats so that you can find the perfect one for you. There are certain problems in life that it’s nice to have. For example, Japan has so many amazing desserts that just picking one can be a t…
+39                                                                                                       Panasonic Holdings said on Monday it plans to ‌start mass production of battery ‌cells for data centre applications at a plant ​in the U.S. state of Kansas in ...
+40                                             Capcom has said why it is using generative AI in its business, stating its policy is "to improve the efficiency of routine operations so that our developers can devote more time to essential value creation". Read more
+41                                                                                                                     Here's the full 2026 F1 Barcelona-Catalunya Grand Prix schedule including race start times, qualifying, practice and global TV broadcast details.
+42  NC has released a new teaser trailer for Astrae Oratio, the upcoming RPG from Korean studio Dynamis One, giving fans their first real look at the game’s combat system. Set in an alternate version of Tokyo in 1989 where magic exists, the story begins when the …
+43  NC has released a new teaser trailer for Astrae Oratio, the upcoming RPG from Korean studio Dynamis One, giving fans their first real look at the game’s combat system. Set in an alternate version of Tokyo in 1989 where magic exists, the story begins when the …
+44  Hulu has teamed with Anime Expo once again to bring back Animayhem Yokocho to this year's event in July. For the past couple of years, the company has brought a small interactive area for attendees to check out, featuring all of the shows they are airing in t…
+45                                                                                                                                                                A manners poster on the wall of a subway station in Tokyo asks commuters to be careful with umbrellas.
+46                                                                                                                                                                                                                   Sequel game in development for Switch 2 next spring
+47  Chem. Commun., 2026, Advance ArticleDOI: 10.1039/D6CC90192A, Correction Open Access &amp;nbsp This article is licensed under a Creative Commons Attribution 3.0 Unported Licence.Katsuyuki Murai, Honami Matsui, Tatsuya Seki, Takayuki Umakoshi, Christian Ganser, Tak…
+48  EXCLUSIVE: Fifth Season has entered a multi-year first-look television deal with producer Theresa Kang’s Blue Marble Pictures (Pachinko). The TV slate under the deal will be overseen by Blue Marble SVP Caroline Garity. Kang is moving to indie film and TV stud…
+                                                                                                                                                         url
+1                                                                      https://blog.google/products-and-platforms/products/education/future-learning-ai-era/
+2                                                       https://www.businessinsider.com/first-class-singapore-airlines-long-flight-pros-cons-worth-it-2026-6
+3                https://kotaku.com/hideo-kojima-says-hes-not-interested-in-ai-maybe-ai-could-create-art-but-while-i-live-i-dont-think-ill-see-it-2000703473
+4                                                      https://www.newyorker.com/magazine/2026/06/15/a-world-class-omakase-in-americas-most-landlocked-state
+5                                                      https://petapixel.com/2026/06/06/twenty-years-one-city-what-tokyo-taught-me-about-patience-and-glass/
+6                                                                                         https://thepointsguy.com/news/choice-privileges-japan-devaluation/
+7                                                                 https://www.yahoo.com/news/articles/taiwan-presses-china-confront-tiananmen-030435150.html
+8                                                                                             https://www.macrumors.com/how-to/how-to-watch-apple-wwdc-2026/
+9                                                                 http://coolhunting.com/culture/static-and-signal-prada-mode-tunes-in-at-the-hotel-chelsea/
+10                                     https://www.forbes.com/sites/jsimms/2026/06/08/founder-of-tokyo-based-developer-open-house-targets-smooth-succession/
+11                                                                              https://whatever.scalzi.com/2026/06/04/a-very-fond-farewell-to-misaky-tokyo/
+12                                                                                                      https://www.highsnobiety.com/p/seya-brand-interview/
+13                                                                                                                                https://sakana.ai/rsi-lab/
+14                                                                                                 https://refractor.io/learning-memory/brains-books-ebooks/
+15                                                        http://deadline.com/2026/06/luna-fujimoto-show-kasamatsu-takehiro-hira-degrees-of-pain-1236951173/
+16                                                                                                  https://www.highsnobiety.com/p/new-balance-hiesv1-shoes/
+17                                                                                                  https://news.sankakucomplex.com/n/Nq3Ppt8psY4Hd5tER9v8pw
+18                                                                                         https://www.highsnobiety.com/p/adidas-stan-smith-lo-ballet-brown/
+19                                                                                           https://www.highsnobiety.com/p/new-balance-hiesv1-grey-sandals/
+20                                                               https://bleedingcool.com/comics/gehenna-in-tokyo-1-preview-business-trip-gone-yakuza-wrong/
+21                                                                                             https://www.metafilter.com/213426/Horns-and-White-Sport-Coats
+22                                                               https://petapixel.com/2026/06/09/one-of-the-most-comprehensive-looks-at-film-color-science/
+23                                                                            https://www.vanityfair.com/story/kendall-jenner-jacob-elordi-tokyo-restaurants
+24 https://www.forbes.com/sites/tylerroush/2026/06/04/masayoshi-sons-net-worth-down-13-billion-as-softbank-shares-slide-loses-asias-richest-title-to-ambani/
+25                                                            http://deadline.com/2026/06/charlie-puth-cancels-florida-concert-show-tour-illness-1236942873/
+26                                                                                   https://www.cbsnews.com/news/bear-captured-panic-school-closures-japan/
+27                                                                                                  https://news.sankakucomplex.com/n/TZnep-459PC6z-k4uoFaJw
+28                                                                                                  https://news.sankakucomplex.com/n/MUjQMZ8yDAdeR0cScmNy4g
+29                                                           http://wwd.com/fashion-news/fashion-features/prada-mode-hotel-chelsea-satellites-ii-1238990720/
+30                                                                                       https://japantoday.com/category/picture-of-the-day/tokyo-pride-2026
+31                                                                                      https://gizmodo.com/sugar-season-2-everything-to-remember-2000765292
+32                                                         https://www.designboom.com/design/single-stem-vases-number-1-porcelain-bronze-wood-kumanote-1rin/
+33                                                                       https://screenrant.com/forza-horizon-6-snack-attack-where-to-find-vending-machines/
+34                                                              https://www.mentalfloss.com/entertainment/music/best-world-cup-song-every-decade-since-1990s
+35                                                       https://www.highsnobiety.com/p/prada-mode-new-york-hideo-kujima-nicolas-winding-refn-hotel-chelsea/
+36                                                                                                      https://www.vanityfair.com/style/prada-mode-new-york
+37                                                https://japantoday.com/category/politics/update2-japan-to-begin-talks-on-exporting-destroyers-to-indonesia
+38                                       https://soranews24.com/2026/06/09/new-tokyo-sweets-shop-offers-648-different-mochi-ice-cream-dumpling-combinations/
+39                                                           https://finance.yahoo.com/sectors/energy/articles/panasonic-start-us-data-centre-080124779.html
+40                                                                                                        https://www.eurogamer.net/capcom-generative-ai-use
+41      https://www.forbes.com/sites/yaraelshebiny/2026/06/09/can-anyone-stop-kimi-antonelli-in-spain-heres-how-to-watch-the-barcelona-catalunya-grand-prix/
+42                                                                                                  https://news.sankakucomplex.com/n/EyxYw5Q8bbuex3_CKoDxpw
+43                                                                                                  https://news.sankakucomplex.com/n/nYcyZB00a90Tk4oQHTtlAQ
+44                                                          https://bleedingcool.com/pop-culture/anime-expo-2026-sees-the-return-of-hulus-animayhem-yokocho/
+45                                                                                     https://japantoday.com/category/picture-of-the-day/umbrella-manners-1
+46                                https://www.animenewsnetwork.com/news/2026-06-09/gungho-announces-ninjala-2-the-uncharted-planet-game-for-switch-2/.238346
+47                                                                                         https://pubs.rsc.org/en/content/articlelanding/2026/cc/d6cc90192a
+48                                                          http://deadline.com/2026/06/theresa-kang-blue-marble-first-look-tv-deal-fifth-season-1236951622/
+                                                                                                                                                                                                                                                                           urlToImage
+1                                                                                                                                                                                        https://storage.googleapis.com/gweb-uniblog-publish-prod/images/386_Z8B0734_1.width-1300.jpg
+2                                                                                                                                                                                                               https://i.insider.com/6a0f5f50b1025a62a5c85bb3?width=1200&amp;format=jpeg
+3                                                                                                                                                                                                                          https://kotaku.com/app/uploads/2026/06/Kojima-1200x675.jpg
+4                                                                                                                                                                                          https://media.newyorker.com/photos/6a20384f0ebc148ad8c072f4/16:9/w_1280,c_limit/r49391.png
+5                                                                                                                                                                https://petapixel.com/assets/uploads/2026/06/Twenty-Years-One-City-What-Tokyo-Taught-Me-About-Patience-and-Glass.jpg
+6                                                                                                                                https://runway-media-production.global.ssl.fastly.net/us/originals/2023/11/Smiling-Businesswoman-Using-A-Laptop-Computer-In-The-Cafe_-miniseries.jpg
+7                              https://s.yimg.com/lo/mysterio/api/b27691c13a4b197d056d7ca4582dae572a5c17ad6a1dc68bb8f9053a25c4fcec/lightyear_networkapi/resizefill_w800_h533;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Freuters.com%2Fb78e545c5caec522e03951d3dfae917c
+8                                                                                                                                                                      https://images.macrumors.com/t/UhnsctWCAsu0H8Nqe-byd6B2Onw=/1600x/article-new/2026/03/wwdc-2026-horizontal.jpg
+9                                                                                                                                           https://coolhunting.com/wp-content/uploads/2026/06/PR_26_Event_PradaModeNYC_Photo_ChelseaHotel_LobbyBar_EmptySapce_01_081_16X9-scaled.jpg
+10                                                                                                                        https://imageio.forbes.com/specials-images/imageserve/6a21416bc795ded790806571/0x0.jpg?format=jpg&amp;crop=1701,956,x0,y0,safe&amp;height=900&amp;width=1600&amp;fit=bounds
+11                                                                                                                                                                                                             https://whatever.scalzi.com/wp-content/uploads/2023/08/WHSAthenaS2.jpg
+12                                                                                                                                                                                                             https://www.highsnobiety.com/static-assets/dato/1780918500-dsf0066.jpg
+13                                                                                                                                                                                                                                      https://sakana.ai/assets/home/sakana_rect.png
+14 https://assets.newatlas.com/dims4/default/d931a1a/2147483647/strip/true/crop/6000x3150+0+425/resize/1200x630!/quality/85/?url=https%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2F02%2Ff5%2Fbe24493945feaef0bfc5f0d15ea0%2Fdepositphotos-302839444-xl.jpg&amp;rf.image_optimisation=0
+15                                                                                                                                                                                                    https://deadline.com/wp-content/uploads/2026/06/Degrees-Of-Pain-cast.jpg?w=1024
+16                                                                                                                                                                                          https://www.highsnobiety.com/static-assets/dato/1780680182-new-balance-hiesv1-shoes-0.jpg
+17                                                                                                                                                               https://news.sankakucomplex.com/wp-content/uploads/2024/03/KisaragiChihaya-Gyaru-Art-by-JabaraTornado-2024-Thumb.jpg
+18                                                                                                                                                                                   https://www.highsnobiety.com/static-assets/dato/1780843946-adidas-stan-smith-lo-ballet-brown.jpg
+19                                                                                                                                                                                   https://www.highsnobiety.com/static-assets/dato/1781025342-new-balance-hiesv1-grey-sandals-0.jpg
+20                                                                                                                                                                                                  https://bleedingcool.com/wp-content/uploads/2026/06/0426IM0277_0000-2000x1125.jpg
+21                                                                                                                                                                                                                               https://cdn.mefi.us/images/mefi/apple-touch-icon.png
+22                                                                                                                                                                                                    https://petapixel.com/assets/uploads/2026/06/d-daniel-film-science-featured.jpg
+23                                                                                                                                                                                        https://media.vanityfair.com/photos/6a21af3ffd725d3c8533bbae/16:9/w_1280,c_limit/2270381278
+24                                                                                                                                                 https://imageio.forbes.com/specials-images/imageserve/6a217b6d0c89bbd6288c0ab3/0x0.jpg?format=jpg&amp;height=900&amp;width=1600&amp;fit=bounds
+25                                                                                                                                                                                                  https://deadline.com/wp-content/uploads/2026/02/GettyImages-2260596513.jpg?w=1024
+26                                                                                                                 https://assets1.cbsnewsstatic.com/hub/i/r/2026/06/09/bcad0b31-d027-496c-92e9-93df9974e9cc/thumbnail/1200x630/ac31461e54eea495a56d1248b57ae841/ap26160318504457.jpg
+27                                                                                                                                                               https://news.sankakucomplex.com/wp-content/uploads/2024/03/KisaragiChihaya-Gyaru-Art-by-JabaraTornado-2024-Thumb.jpg
+28                                                                                                                                                               https://news.sankakucomplex.com/wp-content/uploads/2024/03/KisaragiChihaya-Gyaru-Art-by-JabaraTornado-2024-Thumb.jpg
+29                                                                                                                                                                                                   https://wwd.com/wp-content/uploads/2026/06/LEX_5546-copy.jpg?w=1000&amp;h=563&amp;crop=1
+30                                                                                                                                                                                                                                                                               &lt;NA&gt;
+31                                                                                                                                                                                                             https://gizmodo.com/app/uploads/2026/05/Sugar_s1_Corvette-1200x675.jpg
+32                                                                                                                                      https://www.designboom.com/twitterimages/uploads/2026/06/single-stem-vases-number-1-porcelain-bronze-wood-kumanote-1rin-designboom-1200-1.jpg
+33                                                                                                                                                                  https://static0.srcdn.com/wordpress/wp-content/uploads/2026/06/2483190_20260604121027_1.png?w=1600&amp;h=900&amp;fit=crop
+34                                                                                 https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_0,w_2159,h_1214/c_fill,w_1440,ar_1440:810,f_auto,q_auto,g_auto/images/voltaxMediaLibrary/mmsport/mentalfloss/01kt7wj4v857f3set4mn.png
+35                                                                                                                                                                                   https://www.highsnobiety.com/static-assets/dato/1780695209-hideo-kojima-nicolas-winding-refn.jpg
+36                                                                                                                                                                                  https://media.vanityfair.com/photos/6a287e78ac30ac04d58adaa6/16:9/w_1280,c_limit/Atmosphere_2.jpg
+37                                                                                                                                                                                                                                                                               &lt;NA&gt;
+38                                                                                                                                                                                             https://soranews24.com/wp-content/uploads/sites/3/2026/06/yd-2.jpg?w=1000&amp;h=525&amp;crop=1
+39                                                                                                                                                                                                      https://s.yimg.com/os/en/reuters-finance.com/1dd02db1a64644e52d9ec452d25ecd51
+40                                                                                                               https://assetsio.gnwcdn.com/A-fair-haired%2C-blue-eyed-female-in-Resident-Evil-Requiem-with-an-ear-piece.jpg?width=1200&amp;height=630&amp;fit=crop&amp;enable=upscale&amp;auto=webp
+41                                                                                                                                                 https://imageio.forbes.com/specials-images/imageserve/6a28ad12368dac315cf74e52/0x0.jpg?format=jpg&amp;height=900&amp;width=1600&amp;fit=bounds
+42                                                                                                                                                               https://news.sankakucomplex.com/wp-content/uploads/2024/03/KisaragiChihaya-Gyaru-Art-by-JabaraTornado-2024-Thumb.jpg
+43                                                                                                                                                               https://news.sankakucomplex.com/wp-content/uploads/2024/03/KisaragiChihaya-Gyaru-Art-by-JabaraTornado-2024-Thumb.jpg
+44                                                                                                                                                                                             https://bleedingcool.com/wp-content/uploads/2026/05/Anime-Expo-2026-Logo-2000x1125.jpg
+45                                                                                                                                                                                                                                                                               &lt;NA&gt;
+46                                                                                                                                                                                                 https://www.animenewsnetwork.com/thumbnails/crop600x315gGR/youtube/q9gIZwxCm-4.jpg
+47                                                                                                                                                                                                                                                                               &lt;NA&gt;
+48                                                                                                                                                                                         https://deadline.com/wp-content/uploads/2026/06/Theresa-Kang-and-Carline-Garity.jpg?w=1024
+            publishedAt
+1  2026-06-09T10:00:00Z
+2  2026-06-09T13:48:01Z
+3  2026-06-07T02:41:33Z
+4  2026-06-08T10:00:00Z
+5  2026-06-06T12:00:47Z
+6  2026-06-08T21:30:48Z
+7  2026-06-04T08:47:48Z
+8  2026-06-08T09:45:00Z
+9  2026-06-08T18:39:25Z
+10 2026-06-08T21:46:51Z
+11 2026-06-04T22:00:03Z
+12 2026-06-08T15:12:02Z
+13 2026-06-05T17:27:39Z
+14 2026-06-09T00:22:41Z
+15 2026-06-09T08:44:10Z
+16 2026-06-05T21:57:39Z
+17 2026-06-09T00:00:23Z
+18 2026-06-07T19:08:53Z
+19 2026-06-09T22:28:07Z
+20 2026-06-09T04:26:09Z
+21 2026-06-05T07:16:41Z
+22 2026-06-09T21:08:27Z
+23 2026-06-04T18:59:05Z
+24 2026-06-04T13:23:28Z
+25 2026-06-06T22:28:42Z
+26 2026-06-09T11:42:50Z
+27 2026-06-04T15:00:37Z
+28 2026-06-04T15:00:37Z
+29 2026-06-04T04:01:00Z
+30 2026-06-07T21:21:18Z
+31 2026-06-04T16:00:25Z
+32 2026-06-09T15:45:58Z
+33 2026-06-04T16:32:48Z
+34 2026-06-04T21:00:01Z
+35 2026-06-05T21:59:06Z
+36 2026-06-09T21:43:25Z
+37 2026-06-05T20:49:40Z
+38 2026-06-08T16:00:52Z
+39 2026-06-08T08:01:24Z
+40 2026-06-05T11:04:57Z
+41 2026-06-10T00:36:37Z
+42 2026-06-04T23:00:16Z
+43 2026-06-04T23:00:16Z
+44 2026-06-09T00:32:11Z
+45 2026-06-05T20:43:14Z
+46 2026-06-10T01:17:54Z
+47 2026-06-09T23:00:00Z
+48 2026-06-09T19:13:09Z
+                                                                                                                                                                                                                             content
+1             Recently, Ben Gomes, Googles Chief Technologist for Learning and Sustainability, visited Japan and held a special dialogue with President Teruo Fujii for the students of the University of Tokyo, focu… [+3640 chars]
+2           One of the highlights of Singapore Airlines' first class was the comfortable lie-flat seat.David Morris\r\n&lt;ul&gt;&lt;li&gt;I spent nearly 12 hours flying first class on a Singapore Airlines flight from LA to T… [+6984 chars]
+3             Last month, a generative AI version of Death Stranding 2 director Hideo Kojima appeared in a short promotional movie for a Prada art installation revolving around the famed game developer and movie d… [+2126 chars]
+4             Many of the commercial strips in Omaha, a city of about half a million people, have the air of a nineties college town, with low-slung blocks of row houses punctuated by dive bars and cafés, thrift s… [+3494 chars]
+5             Most photographers I know are in constant motion. New cities, new continents, new visual problems to solve. There’s truth in it. Unfamiliarity forces you to look. Familiarity gives you permission to … [+9550 chars]
+6             For years, Choice Privileges has been one of the best-value ways to book hotels in Japan with points. The program has offered relatively inexpensive yet centrally located award options, making it my … [+5374 chars]
+7           By Ju-min Park and Ben Blanchard\r\nBEIJING/TAIPEI, June 4 (Reuters) - China on Thursday blasted U.S. Secretary of State Marco Rubio's comments on the deadly crackdown on protesters in Beijing's Tianan… [+3208 chars]
+8             The 2026 Worldwide Developers Conference will take place this week from June 8 through June 12, and like the last six years, it will be an online event, although select developers and students will b… [+4233 chars]
+9  For its 14th iteration, Prada's itinerant private club takes over a New York landmark with Nicolas Winding Refn and Hideo Kojima\n\n\nRead\nCulture\r\n\n\n\n\n\nStatic and Signal: Prada Mode Tunes in at the Hot… [+6845 chars]
+10        Open House Group\r\nThis story is part of Forbes coverage of Japans Richest 2026. See the full list here.\r\nNearly three decades after founding property firm Open House Group in 1997, Masaaki Arai stepp… [+1147 chars]
+11  Posted onJune 4, 2026\r\n&nbsp;&nbsp;\r\nPosted byAthena Scalzi&nbsp;&nbsp;\r\n &nbsp;\r\n1 Comment\r\nAll the way back in 2022, I posted about a candy company I had recently discovered called Misaky Tokyo. They specialized in kohakut… [+2275 chars]
+12            Early in the 1990s, then-20-something Keiko Seya, founder of slow-fashion label Seya, moved to Paris from Tokyo. Back home, she had been building a career working for fashion magazines. But while she… [+6551 chars]
+13         The Next Paradigm of Artificial Intelligence\r\nAs the world enters the era of artificial intelligence, Japan has a unique opportunity to reclaim its position at the frontier of global innovation. Howe… [+10046 chars]
+14            Does the way information "sticks" to our brains differ depending on the medium? New research suggests it might, with readers engaging more with a story in a traditional book than one read on a digita… [+3704 chars]
+15          EXCLUSIVE: U.S. production outfit Storiesbound is gearing up to shoot psychological thriller The Degrees Of Pain in Japan with Luna Fujimoto, Show Kasamatsu and Takehiro Hira joining the cast.&nbsp;\r\nDire… [+1861 chars]
+16          It's a trail sneaker. It's a mule. It's a sandal. It's New Balance's HIESV1 shoe, or simply the Fresh Foam Hierro sandal.\r\nThe brand's lace-free model can't be categorized because, at some point, it … [+1723 chars]
+17           One of Asia’s largest LGBTUUDDLRLRBAS events took place in Tokyo on June 7, with thousands of participants joining a Pride Parade through the city’s Shibuya and Harajuku districts.\r\nThe annual event … [+734 chars]
+18          And just like that, the Stan Smith Lo ballet flats are back. They're even more delicious, too. \r\nIn 2025, adidas reworked the Stan Smith into a literal luxe ballet flat, creating the Stan Smith Lo Ba… [+1438 chars]
+19          Every New Balance shoe has its grey days, even the brand's Fresh Foam Hierro sandal. After all, it is the brand's signature color.\r\nThe Fresh Foam sandal, also known as the HIESV1, may have missed th… [+1433 chars]
+20          Posted in: Comics, Image, Preview | Tagged: Gehenna In Tokyo\r\nGehenna in Tokyo #1 hits stores Wednesday! Nothing says "cultural exchange" quite like hunting Yakuza while dodging international contrac… [+7481 chars]
+21             MetaFilter is a weblog that anyone can contribute a link or a comment to. A typical weblog is one person posting their thoughts on the unique things they find on the web. This website exists to break… [+120 chars]
+22          Japan-based analog photographer D.Daniel has delivered arguably the most comprehensive, efficient, and useful comparisons of color and black-and-white photographic film stocks ever. \r\nAnalog photogra… [+3373 chars]
+23          Now, a breakthrough. Portraying the couple at their best were not paparazzi, fans, or photographers hired for red carpets and covers, but cooks, waiters, and caterers.\r\nThe first selfie was shared on… [+1047 chars]
+24            Masayoshi Sons net worth plunged by more than $13 billion as shares of his SoftBank tumbled amid a broader tech sell-off on Thursday, ceding his title as the richest person in Asia to Mukesh Ambani.\r… [+384 chars]
+25          Four-time Grammy-nominated musician Charlie Puth took to social media to announce the cancellation of his Saturday night show in Orlando, Fla. \r\nThe latest stop on his Whatever’s Clever! World Tour, … [+1473 chars]
+26          A wandering bear that scared residents of a Japanese city just north of Tokyo was captured on Tuesday after several days of panic during which nearly 100 schools were closed.\r\nThe bear was first spot… [+3185 chars]
+27          Visitors to some of Tokyo’s busiest tourist districts can now be fined immediately for littering as local authorities crack down on growing trash problems linked to overtourism.\r\nThe new enforcement … [+1343 chars]
+28          Visitors to some of Tokyo’s busiest tourist districts can now be fined immediately for littering as local authorities crack down on growing trash problems linked to overtourism.\r\nThe new enforcement … [+1343 chars]
+29            For many visitors,paying a visit to Prada Mode at Hotel Chelsea is as simple as taking the subway to 23rd Street. But, if you’re Nicolas Winding Refn and Hideo Kojima, there’s a more interesting way … [+9120 chars]
+30            GaijinPot Celebrates: Japan Summer\r\nJoin us for an unforgettable evening of networking, aloha-inspired live music by SHEN and free flowing drinks and buffet at TWO ROOMS NIHOMBASHI. July 2 (Thurs), 7… [+52 chars]
+31            Sugar debuted on Apple TV in 2024, a neo-noir drama about a private eye tracking down a young woman whod gone missing somewhere between the bright lights of Hollywood and Los Angeles grimy underbelly… [+7562 chars]
+32            Developed by Tokyo-based design company KUMAnoTE, 1RIN is a collection of single-stem vases based on the form of the number 1. The project originated from the idea of placing a single flower in a sin… [+3679 chars]
+33            Forza Horizon 6 has opened its gates with the Welcome to Japan festival playlist, which introduces players to the game's open-world version of Japan with a variety of challenges across multiple seaso… [+1940 chars]
+34            Every four years, the World Cup arrives like a chic, summer-spanning version of the Super Bowl. And just like its American counterpart, it requires a massive musical spectaclethe World Cup anthem. Bu… [+4150 chars]
+35            The sidewalk outside The Hotel Chelsea is packed with people on the perfect spring morning of Wednesday, June 3. Producers clad in all black, PR people with perfectly straightened hair, and a number … [+5797 chars]
+36            They eventually collaborated on a project they called Satellites, which premiered at Herzog &amp;amp; de Meurons Prada Aoyama Tokyo in 2023, an installation that exists even though its creators cannot ve… [+3108 chars]
+37          Japan and Indonesia agreed Friday to begin working-level talks on the possible export of Asagiri-class destroyers to Jakarta as Tokyo accelerates defense cooperation with like-minded countries.\r\nJapa… [+2058 chars]
+38          Customizable Yukimi Daifuku shop makes an amazing variety of sweet treats so that you can find the perfect one for you.\r\nThere are certain problems in life that its nice to have. For example, Japan h… [+2816 chars]
+39             TOKYO, June 8 (Reuters) - Panasonic Holdings said on Monday it plans to start mass production of battery cells for data centre applications at a plant in the U.S. state of Kansas in the financial yea… [+775 chars]
+40            Capcom has said why it is using generative AI in its business, stating its policy is "to improve the efficiency of routine operations so that our developers can devote more time to essential value cr… [+3243 chars]
+41            BARCELONA, SPAIN - MAY 31: Andrea Kimi Antonelli of Italy driving the (12) Mercedes AMG Petronas F1 Team W16 on track during qualifying ahead of the F1 Grand Prix of Spain at Circuit de Barcelona-Cat… [+8470 chars]
+42          NC has released a new teaser trailer for Astrae Oratio, the upcoming RPG from Korean studio Dynamis One, giving fans their first real look at the game’s combat system.\r\nSet in an alternate version of… [+1119 chars]
+43          NC has released a new teaser trailer for Astrae Oratio, the upcoming RPG from Korean studio Dynamis One, giving fans their first real look at the game’s combat system.\r\nSet in an alternate version of… [+1119 chars]
+44          Posted in: Anime Expo, Conventions, Events, Pop Culture | Tagged: Animayhem Yokocho, anime, Anime Expo 2026, hulu\r\nHulu will bring back Animayhem Yokocho for Anime Expo 2026, giving fans some interac… [+3508 chars]
+45            GaijinPot Celebrates: Japan Summer\r\nJoin us for an unforgettable evening of networking, aloha-inspired live music by SHEN and free flowing drinks and buffet at TWO ROOMS NIHOMBASHI. July 2 (Thurs), 7… [+52 chars]
+46            GungHo announced during the "Nintendo Direct livestream" on Tuesday it is developing Ninjala 2: The Uncharted Planet, a sequel to its 2020 free-to-play online Switch game, for the Nintendo Switch 2 n… [+1115 chars]
+47   * \r\n Corresponding authors\r\na\r\n Division of Advanced Science and Engineering, Graduate School of Science and Engineering, Chiba University, 1-33 Yayoi-cho, Inage-ku, Chiba 263-8522, Japan\r\nb\r\n Depart… [+701 chars]
+48            EXCLUSIVE: Fifth Season has entered a multi-year first-look television deal with producer Theresa Kang’s Blue Marble Pictures (Pachinko). The TV slate under the deal will be overseen by Blue Marble S… [+2826 chars]</code></pre>
+</div>
+</div>
+</section>
+<section id="task-2---summarizing-roller-coaster-data" class="level2">
+<h2 class="anchored" data-anchor-id="task-2---summarizing-roller-coaster-data">Task 2 - Summarizing Roller Coaster Data</h2>
+<ul>
+<li>Read in the data. Confirm variable data types and identify factors</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>CoasterDataRaw <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"HW4DataFiles/635USrollercoasters.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 635 Columns: 21
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (12): Coaster, Park, City, State, Census Region, AgeGroup, Scale, Type, ...
+dbl  (9): Year Opened, TopSpeed, MaxHeight, Drop, Length, Duration, # of Inv...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>CoasterDataRaw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 635 × 21
+   Coaster     Park  City  State `Census Region` `Year Opened` AgeGroup TopSpeed
+   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
+ 1 Adrenaline… Oaks… Port… Oreg… West                     2018 3:Newest     45  
+ 2 Adventure … King… Mason Ohio  Midwest                  1991 2:Recent     35  
+ 3 Afterburn   Caro… Char… Nort… South                    1999 2:Recent     62  
+ 4 Aftershock  Silv… Athol Idaho West                     2008 3:Newest     65.6
+ 5 Air Grover  Busc… Tampa Flor… South                    2010 3:Newest     22  
+ 6 Alpengeist  Busc… Will… Virg… South                    1997 2:Recent     67  
+ 7 Alpine Bob… Grea… Quee… New … Northeast                1998 2:Recent     35  
+ 8 American E… Six … Gurn… Illi… Midwest                  1981 2:Recent     66  
+ 9 American T… Six … Eure… Miss… Midwest                  2008 3:Newest     48  
+10 Anaconda    King… Dosw… Virg… South                    1991 2:Recent     50  
+# ℹ 625 more rows
+# ℹ 13 more variables: MaxHeight &lt;dbl&gt;, Scale &lt;chr&gt;, Type &lt;chr&gt;, Design &lt;chr&gt;,
+#   Drop &lt;dbl&gt;, Length &lt;dbl&gt;, Duration &lt;dbl&gt;, `Inversions?` &lt;chr&gt;,
+#   `# of Inversions` &lt;dbl&gt;, Make &lt;chr&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;,
+#   Boundary &lt;chr&gt;</code></pre>
+</div>
+</div>
+<ul>
+<li>Delete Latitude, Longitude, and Boundary variables (not needed for the assignment)</li>
+<li>Fix variable names</li>
+<li>Variables to be converted to factors: CensusRegion, AgeGroup, Scale, Type, Design, InversionsYN</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>CoasterDataCleaned <span class="ot">&lt;-</span> CoasterDataRaw <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Latitude, <span class="sc">-</span>Longitude, <span class="sc">-</span>Boundary) <span class="co"># Remove undesired variables</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(CoasterDataCleaned) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Coaster"</span>, <span class="co"># Set variable names</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Park"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"City"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"State"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"CensusRegion"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"YearOpened"</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"AgeGroup"</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"TopSpeed"</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"MaxHeight"</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Scale"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Type"</span>,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Design"</span>,</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Drop"</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Length"</span>,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Duration"</span>,</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"InversionsYN"</span>,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"NumInversions"</span>,</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Make"</span>)  </span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>CoasterDataCleaned <span class="ot">&lt;-</span> CoasterDataCleaned <span class="sc">|&gt;</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CensusRegion =</span> <span class="fu">factor</span>(CensusRegion), <span class="co"># Convert select variables to factors</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">AgeGroup =</span> <span class="fu">factor</span>(AgeGroup),</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>         <span class="at">Scale =</span> <span class="fu">factor</span>(Scale),</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">Type =</span> <span class="fu">factor</span>(Type),</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">Design =</span> <span class="fu">factor</span>(Design),</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>         <span class="at">InversionsYN =</span> <span class="fu">factor</span>(InversionsYN))</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(CoasterDataCleaned) <span class="co"># Confirm remaining variables and types</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [635 × 18] (S3: tbl_df/tbl/data.frame)
+ $ Coaster      : chr [1:635] "Adrenaline Peak" "Adventure Express" "Afterburn" "Aftershock" ...
+ $ Park         : chr [1:635] "Oaks Amusement Park" "Kings Island" "Carowinds" "Silverwood Theme Park" ...
+ $ City         : chr [1:635] "Portland" "Mason" "Charlotte" "Athol" ...
+ $ State        : chr [1:635] "Oregon" "Ohio" "North Carolina" "Idaho" ...
+ $ CensusRegion : Factor w/ 4 levels "Midwest","Northeast",..: 4 1 3 4 3 3 2 1 1 3 ...
+ $ YearOpened   : num [1:635] 2018 1991 1999 2008 2010 ...
+ $ AgeGroup     : Factor w/ 3 levels "1:Older","2:Recent",..: 3 2 2 3 3 2 2 2 3 2 ...
+ $ TopSpeed     : num [1:635] 45 35 62 65.6 22 67 35 66 48 50 ...
+ $ MaxHeight    : num [1:635] 72 63 113 192 25 ...
+ $ Scale        : Factor w/ 4 levels "Extreme","Family",..: 1 4 1 1 2 1 4 1 4 1 ...
+ $ Type         : Factor w/ 2 levels "Steel","Wood": 1 1 1 1 1 1 1 2 2 1 ...
+ $ Design       : Factor w/ 7 levels "Bobsled","Flying",..: 4 4 3 3 4 3 1 4 4 4 ...
+ $ Drop         : num [1:635] 70 47 110 177 22.5 170 20 147 80 144 ...
+ $ Length       : num [1:635] 1050 2963 2956 1204 628 ...
+ $ Duration     : num [1:635] 66 140 167 92 47 190 100 143 110 110 ...
+ $ InversionsYN : Factor w/ 2 levels "No","Yes": 2 1 2 2 1 2 1 1 1 2 ...
+ $ NumInversions: num [1:635] 3 0 6 3 0 6 0 0 0 4 ...
+ $ Make         : chr [1:635] "Gerstlauer Amusement Rides GmbH" "Arrow Dynamics" "Bolliger &amp; Mabillard" "Vekoma" ...</code></pre>
+</div>
+</div>
 
 
 </section>

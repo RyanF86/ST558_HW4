@@ -26,10 +26,79 @@ RFKey <- "27554db1fa15488a995b7935d17bdf94" # R.Friedman API key for newsapi.org
 APIData <- GET(paste0("https://newsapi.org/v2/everything?q=SpaceX&from=2026-06-01&language=en&pageSize=50&apiKey=", RFKey)) # Gets data on topic "SpaceX" from 6/1/2026 onward.
 ```
 
-2. Parse what is returned and find your way to the data frame that has the actual article information in it. 
+2.  Parse what is returned and find your way to the data frame that has the actual article information in it.
 
 ```{r}
 parsed <- fromJSON(rawToChar(APIData$content))
-parsed
+parsed$articles
 ```
 
+3.  Write a function that allows the user to easily query NewsAPI. The inputs are the title/subject to search for, a time period to search from (i.e. from that time until the present), and an API key.
+
+```{r}
+NewsAPIQuery <- function (subject,TimePeriod, NewsAPIKey){
+  NewsURL <- paste0("https://newsapi.org/v2/everything?q=", subject,"&from=", TimePeriod, "&language=en&pageSize=50&apiKey=", NewsAPIKey) # creates the URL from the arguments
+  NewsData <- GET(NewsURL) # gets the API data
+  NewsParsed <- fromJSON(rawToChar(NewsData$content)) # convert content of API data into readable test
+  NewsParsed$articles # returns articles dataframe
+}
+```
+
+Testing function with search of "Disneyland" from "2026-06-08".
+
+```{r}
+NewsAPIQuery("Disneyland", "2026-06-08", RFKey)
+```
+
+Testing function with search of "Tokyo" from "2026-06-04".
+
+```{r}
+NewsAPIQuery("Tokyo", "2026-06-04", RFKey)
+```
+
+## Task 2 - Summarizing Roller Coaster Data
+
+- Read in the data. Confirm variable data types and identify factors
+
+```{r}
+CoasterDataRaw <-read_csv("HW4DataFiles/635USrollercoasters.csv")
+CoasterDataRaw
+```
+
+- Delete Latitude, Longitude, and Boundary variables (not needed for the assignment)
+- Fix variable names
+- Variables to be converted to factors: CensusRegion, AgeGroup, Scale, Type, Design, InversionsYN
+
+```{r}
+CoasterDataCleaned <- CoasterDataRaw |>
+  select(-Latitude, -Longitude, -Boundary) # Remove undesired variables
+
+colnames(CoasterDataCleaned) = c("Coaster", # Set variable names
+                                 "Park",
+                                 "City",
+                                 "State",
+                                 "CensusRegion",
+                                 "YearOpened",
+                                 "AgeGroup",
+                                 "TopSpeed",
+                                 "MaxHeight",
+                                 "Scale",
+                                 "Type",
+                                 "Design",
+                                 "Drop",
+                                 "Length",
+                                 "Duration",
+                                 "InversionsYN",
+                                 "NumInversions",
+                                 "Make")  
+
+CoasterDataCleaned <- CoasterDataCleaned |>
+  mutate(CensusRegion = factor(CensusRegion), # Convert select variables to factors
+         AgeGroup = factor(AgeGroup),
+         Scale = factor(Scale),
+         Type = factor(Type),
+         Design = factor(Design),
+         InversionsYN = factor(InversionsYN))
+
+str(CoasterDataCleaned) # Confirm remaining variables and types
+```
