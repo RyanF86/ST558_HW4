@@ -14,6 +14,7 @@ library(DBI)
 library(knitr)
 library(httr)
 library(jsonlite)
+library(psych)
 ```
 
 ## Task 1 - Querying an API and a Tidy-Style Function
@@ -102,3 +103,46 @@ CoasterDataCleaned <- CoasterDataCleaned |>
 
 str(CoasterDataCleaned) # Confirm remaining variables and types
 ```
+
+- Check for NA values in the data
+
+```{r}
+colSums(is.na(CoasterDataCleaned))
+```
+
+- Use the table() function to create a one-way contingency table for Design
+
+```{r}
+table(CoasterDataCleaned$Design)
+```
+
+Note: The most common design is 'Sit Down', with 560 out of the total 635 roller coasters in the data set.
+
+- Use the table() function to create a two-way contingency table for Type by InversionsYN
+
+```{r}
+table(CoasterDataCleaned$Type, CoasterDataCleaned$InversionsYN)
+```
+
+Note: Wood roller coasters with inversions are quite rare. The data set only identifies 4 out of the total 635.
+
+- Use the table() function to create a three-way contingency table for AgeGroup by Scale by CensusRegion
+
+```{r}
+table(CoasterDataCleaned$AgeGroup, CoasterDataCleaned$Scale, CoasterDataCleaned$CensusRegion)
+```
+
+Note: Across the three factors of age, scale, and region, the most common combination is Newest/Family/South, with 55 of 635 coasters
+
+- Use the table() and filter() functions to create a conditional two-way table for Scale by CensusRegion among Newest (AgeGroup) roller coasters
+```{r}
+FilteredData <- CoasterDataCleaned |>
+  filter(AgeGroup == "3:Newest") 
+
+table(FilteredData$Scale, FilteredData$CensusRegion)
+```
+- Recreate the conditional two-way table above using a subsetted three-way table
+```{r}
+table(CoasterDataCleaned$Scale, CoasterDataCleaned$CensusRegion, CoasterDataCleaned$AgeGroup)[ , , 3]
+```
+
