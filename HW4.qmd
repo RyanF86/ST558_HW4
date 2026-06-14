@@ -15,6 +15,7 @@ library(knitr)
 library(httr)
 library(jsonlite)
 library(psych)
+library(gt)
 ```
 
 ## Task 1 - Querying an API and a Tidy-Style Function
@@ -110,6 +111,10 @@ str(CoasterDataCleaned) # Confirm remaining variables and types
 colSums(is.na(CoasterDataCleaned))
 ```
 
+Note: There are no NA values for the factor variables.
+
+### Categorical Variables
+
 - Use the table() function to create a one-way contingency table for Design
 
 ```{r}
@@ -135,14 +140,127 @@ table(CoasterDataCleaned$AgeGroup, CoasterDataCleaned$Scale, CoasterDataCleaned$
 Note: Across the three factors of age, scale, and region, the most common combination is Newest/Family/South, with 55 of 635 coasters
 
 - Use the table() and filter() functions to create a conditional two-way table for Scale by CensusRegion among Newest (AgeGroup) roller coasters
+
 ```{r}
 FilteredData <- CoasterDataCleaned |>
   filter(AgeGroup == "3:Newest") 
 
 table(FilteredData$Scale, FilteredData$CensusRegion)
 ```
+
 - Recreate the conditional two-way table above using a subsetted three-way table
+
 ```{r}
 table(CoasterDataCleaned$Scale, CoasterDataCleaned$CensusRegion, CoasterDataCleaned$AgeGroup)[ , , 3]
+```
+
+- Create a two-way contingency table for Type by Design using group_by() and summarize() from dplyr. Then use pivot_wider() to make the result look more like the output from table().
+
+```{r}
+CoasterDataCleaned |>
+  group_by(Type, Design) |>
+  summarize(count = n()) |>
+  pivot_wider(names_from = Type, values_from = count)
+```
+
+- Create a stacked bar graph for Type by InversionsYN
+
+```{r}
+ggplot(data = CoasterDataCleaned, aes(x = Type, fill = InversionsYN)) +
+  geom_bar()+
+  labs(x = "Type") +
+  scale_fill_discrete("Inversions? Yes/No")
+```
+
+- Recreate the above as a side-by-side bar graph
+
+```{r}
+ggplot(data = CoasterDataCleaned, aes(x = Type, fill = InversionsYN)) +
+  geom_bar(position = "dodge")+
+  labs(x = "Type") +
+  scale_fill_discrete("Inversions? Yes/No")
+```
+
+### Numeric Variables
+
+- Find measures of center and spread for two numeric variables:  TopSpeed and MaxHeight
+
+```{r}
+CoasterDataCleaned |>
+  summarize(across(.cols = c(TopSpeed, MaxHeight), 
+            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            .names = "{.fn}_{.col}"))
+```
+
+- Now find center and spread of TopSpeed and MaxHeight for Extreme Scale roller coasters
+
+```{r}
+CoasterDataCleaned |>
+  filter(Scale == "Extreme") |>
+  summarize(across(.cols = c(TopSpeed, MaxHeight), 
+            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            .names = "{.fn}_{.col}"))
+```
+
+Note:  Compared to all roller coasters, Extreme roller coasters have higher mean TopSpeed (56.9 vs 42.2) and higher mean MaxHeight (126.5 vs 76.8).
+
+- Find measures of center and spread of Length and Duration across AgeGroup
+
+
+```{r}
+CoasterDataCleaned |>
+  group_by(AgeGroup) |>
+  summarize(across(.cols = c(Length, Duration), 
+            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            .names = "{.fn}_{.col}"))
+```
+
+
+- Find measures of center and spread of Drop and NumInversions across Type and CensusRegion 
+
+```{r}
+CoasterDataCleaned |>
+  group_by(Type, CensusRegion) |>
+  summarize(across(.cols = c(Drop, NumInversions), 
+            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            .names = "{.fn}_{.col}"))
+```
+
+- Create a correlation matrix between all of the numeric variables
+
+```{r}
+NumericVars <- CoasterDataCleaned |>
+  select(where(is.numeric)) 
+
+cor(NumericVars, use = "pairwise.complete.obs")
+```
+
+Note:  The three variables TopSpeed, MaxHeight, and Drop all have very strong positive correlations with each other (0.89 or greater).  Length also shows positive correlation with each of these variables (range 0.67 to 0.74).  
+
+- Create a histogram for MaxHeight and TopSpeed across Type
+
+```{r}
+g <- ggplot(CoasterDataCleaned |> drop_na(MaxHeight), aes(x = MaxHeight))
+g + geom_histogram(binwidth = 50, alpha = .5, aes(fill = Type))
+g <- ggplot(CoasterDataCleaned |> drop_na(TopSpeed), aes(x = TopSpeed))
+g + geom_histogram(binwidth = 15, alpha = .5, aes(fill = Type))
+```
+
+- Create a kernel density plot for MaxHeight and TopSpeed across Type
+
+```{r}
+g <- ggplot(CoasterDataCleaned |> drop_na(MaxHeight), aes(x = MaxHeight))
+g + geom_density(alpha = .5, aes(fill = Type))
+g <- ggplot(CoasterDataCleaned |> drop_na(TopSpeed), aes(x = TopSpeed))
+g + geom_density(alpha = .5, aes(fill = Type))
+```
+
+- Create a boxplot for MaxHeight and TopSpeed across Type
+
+```{r}
+g <- ggplot(CoasterDataCleaned |> drop_na(MaxHeight))
+g + geom_boxplot(aes(x = Type, y = MaxHeight, fill = Type))
+g <- ggplot(CoasterDataCleaned |> drop_na(TopSpeed))
+g + geom_boxplot(aes(x = Type, y = TopSpeed, fill = Type))
 ```
 
