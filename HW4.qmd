@@ -195,12 +195,16 @@ ggplot(data = CoasterDataCleaned, aes(x = Type, fill = InversionsYN)) +
 ```{r}
 CoasterDataCleaned |>
   summarize(across(.cols = c(TopSpeed, MaxHeight), 
-            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
             .names = "{.fn}_{.col}")) |>
   gt() |>
   tab_header(
     title = "Top Speed and Max Height",
-    subtitle = "Mean and SD for all Roller Coasters"
+    subtitle = "Mean, Median, Var, SD, and IQR for all Roller Coasters"
   )
 ```
 
@@ -210,12 +214,16 @@ CoasterDataCleaned |>
 CoasterDataCleaned |>
   filter(Scale == "Extreme") |>
   summarize(across(.cols = c(TopSpeed, MaxHeight), 
-            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
             .names = "{.fn}_{.col}")) |>
   gt() |>
   tab_header(
     title = "Top Speed and Max Height",
-    subtitle = "Mean and SD for Extreme Roller Coasters"
+    subtitle = "Mean, Median, Var, SD, and IQR for Extreme Roller Coasters"
   )
 ```
 
@@ -227,11 +235,15 @@ Note: Compared to all roller coasters, Extreme roller coasters have higher mean 
 CoasterDataCleaned |>
   group_by(AgeGroup) |>
   summarize(across(.cols = c(Length, Duration), 
-            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
             .names = "{.fn}_{.col}")) |>
   gt() |>
   tab_header(
-    title = "Length and Duration Mean and SD",
+    title = "Length and Duration Mean, Median, Var, SD, and IQR",
     subtitle = "Stratified by Age Group"
   )
 ```
@@ -242,11 +254,15 @@ CoasterDataCleaned |>
 CoasterDataCleaned |>
   group_by(Type, CensusRegion) |>
   summarize(across(.cols = c(Drop, NumInversions), 
-            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
             .names = "{.fn}_{.col}")) |>
   gt() |>
   tab_header(
-    title = "Drop and Number of Inversions Mean and SD",
+    title = "Drop and Number of Inversions Mean, Median, Var, SD, and IQR",
     subtitle = "Stratified by Type and Census Region"
   )
 ```
