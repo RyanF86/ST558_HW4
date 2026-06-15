@@ -1,0 +1,404 @@
+---
+title: "HW #4"
+author: "Ryan Friedman, Evan Whitfield, Ralph Church"
+format: html
+editor: visual
+---
+
+## Task 1:
+
+```{r}
+library(httr)
+library(jsonlite)
+api_key = "00d175b8040043d99f539951f704e7af"
+
+my_news <- function(topic, from_date, api_key) {
+  url <- paste0(
+  "https://newsapi.org/v2/everything?q=",
+  topic,
+  "&from=",
+  from_date,
+  "&language=en&pageSize=50&apiKey=",
+  api_key
+)
+  
+  response <- GET(url)
+
+  ans <- fromJSON(content(response,"text"),flatten=TRUE)
+  ans$articles$content
+}
+```
+
+```{r}
+my_news("Iran", "2026-06-10", api_key)
+my_news("Spain", "2026-06-01", api_key)
+```
+
+
+## Task 2:
+
+```{r}
+library(tidyverse)
+library(readr)
+
+rollercoaster_data <- read_csv(
+  "635USrollercoasters.csv",
+  col_names = FALSE
+)
+
+new_names <- as.character(rollercoaster_data[1, ]) #extract the first row which has the variable names
+
+rollercoaster_data <- rollercoaster_data[-1, ] #remove the first row
+
+colnames(rollercoaster_data) <- new_names
+
+rollercoaster_data
+
+rollercoaster_data <- rollercoaster_data |>
+  mutate(
+    AgeGroup = factor(
+      recode(
+        AgeGroup,
+        `1` = "Older",
+        `2` = "Recent",
+        `3` = "Newest"
+      )
+    )
+) |>
+  rename("CensusRegion" = `Census Region`, "YearOpened" = `Year Opened`, "NumberOfInversions" = `# of Inversions`)
+
+rollercoaster_data$Scale <- factor(rollercoaster_data$Scale)
+rollercoaster_data$Type <- factor(rollercoaster_data$Type)
+rollercoaster_data$Design <- factor(rollercoaster_data$Design)
+rollercoaster_data$`Inversions?` <- factor(rollercoaster_data$`Inversions?`)
+
+rollercoaster_data <- rollercoaster_data |>
+  mutate(
+    TopSpeed = as.numeric(TopSpeed),
+    MaxHeight = as.numeric(MaxHeight),
+    Drop = as.numeric(Drop),
+    Length = as.numeric(Length),
+    Duration = as.numeric(Duration),
+    NumberOfInversions = as.numeric(NumberOfInversions),
+    Latitude = as.numeric(Latitude),
+    Longitude = as.numeric(Longitude),
+    YearOpened = as.numeric(YearOpened)
+  )
+
+rollercoaster_data
+```
+
+##### First, we inspect the structure of the data set to verify that each variable has an appropriate data type and that the factor variables were created correctly.
+
+```{r}
+str(rollercoaster_data)
+```
+
+##### Next, we check for missing values in each variable to determine whether any observations require additional cleaning before analysis.
+
+```{r}
+colSums(is.na(rollercoaster_data)) #This gives the number of missing values in each column.
+```
+
+##### Several variables contain missing values. The largest number of missing observations occurs in Drop (128), followed by TopSpeed (74), Duration (66), Make (36), Length (33), and MaxHeight (8). All other variables contain no missing values. These missing observations should be considered when performing future analyses, visualizations, or statistical modeling.
+
+```{r}
+mean(rollercoaster_data$YearOpened)
+min(rollercoaster_data$YearOpened)
+max(rollercoaster_data$YearOpened)
+```
+
+##### Inspection of the data structure revealed that YearOpened was initially stored as a character variable. After converting it to numeric, the average opening year was approximately 1999, with the oldest coaster opening in 1920 and the newest opening in 2020. This confirms that the variable is now stored in a more appropriate format for analysis.
+
+### Categorical variables
+
+##### First, we create a *one-way* contingency table for the Type variable. A one-way contingency table summarizes the frequency of each category in a single categorical variable. **Looks at one categorical variable and counts how often each level occurs.**
+```{r}
+table(rollercoaster_data$Type)
+```
+
+##### The table shows that there are 530 steel roller coasters and 105 wooden roller coasters in the data set. This suggests that steel roller coasters are much more common than wooden roller coasters in the sample.
+
+##### Next, we look at a two-way contigency table. **These tables look at two categorical variables and counts how often each combination occurs.**
+
+```{r}
+rollercoaster_data |>
+  filter(Type == "Steel") |>
+  with(table(Scale, AgeGroup))
+```
+
+##### then:
+
+27
+
+##### would mean:
+
+##### There are 27 steel roller coasters that are both Thrill rides and belong to the Recent age group.
+
+##### Another way of doing the same thing is to first create a three-way table:
+
+```{r}
+three_way_table <- table(
+  Scale = rollercoaster_data$Scale,
+  AgeGroup = rollercoaster_data$AgeGroup,
+  Type = rollercoaster_data$Type
+)
+```
+
+
+##### Then subset one level of type
+
+```{r}
+three_way_table[, , "Steel"] #The first comma means all scale values, then all AgeGroup values, finally type = steel
+```
+
+##### Create a two-way contingency table using group_by() and summarize() from dplyr. 
+
+```{r}
+rollercoaster_data |>
+  group_by(Scale, AgeGroup) |>
+  summarize(Count = n(), .groups = "drop") |>
+  pivot_wider(
+    names_from = AgeGroup,
+    values_from = Count
+  )
+```
+
+
+#### Stacked Bar Graph
+##### First, we create a stacked bar graph showing the distribution of coaster age groups within each scale category.
+
+```{r}
+ggplot(rollercoaster_data,
+       aes(x = Scale, fill = AgeGroup)) +
+  geom_bar() +
+  labs(
+    title = "Roller Coasters by Scale and Age Group",
+    x = "Scale",
+    y = "Count"
+  )
+```
+
+#### Side-by-Side Bar Graph
+##### Next, we create a side-by-side bar graph to compare age groups within each scale category.
+
+```{r}
+ggplot(rollercoaster_data,
+       aes(x = Scale, fill = AgeGroup)) +
+  geom_bar(position = "dodge") +
+  labs(
+    title = "Roller Coasters by Scale and Age Group",
+    x = "Scale",
+    y = "Count"
+  )
+```
+
+##### Both plots display the same contingency table information but present it differently. The stacked bar chart emphasizes the total number of observations within each scale category, while the side-by-side bar chart makes it easier to compare age groups within and across scale categories.
+
+### Numerical variables
+
+##### Measuring center and the different kinds of spread for both TopSpeed and MaxHeight:
+```{r}
+library(knitr)
+rollercoaster_data |>
+  summarize(
+    across(
+      c(TopSpeed, MaxHeight),
+      .fns = list(
+        mean = mean,
+        median = median,
+        var = var,
+        sd = sd,
+        IQR = IQR
+      ),
+      na.rm = TRUE,
+      .names = "{.fn}_{.col}"
+    )
+  ) |>
+  kable(
+    caption = "Measures of Center and Spread by Roller Coaster Type",
+    digits = 2
+  )
+```
+
+##### Now using two grouping variables:
+
+```{r}
+rollercoaster_data |>
+  group_by(Type, Scale) |>
+  summarize(
+    across(
+      c(TopSpeed, MaxHeight),
+      .fns = list(
+        mean = mean,
+        median = median,
+        var = var,
+        sd = sd,
+        IQR = IQR
+      ),
+      na.rm = TRUE,
+      .names = "{.fn}_{.col}"
+    ),
+    .groups = "drop"
+  ) |>
+  kable(
+    caption = "Measures of Center and Spread by Type and Scale",
+    digits = 2
+  )
+```
+
+##### Create a correlation matrix between all of the numeric variables
+
+```{r}
+rollercoaster_data |>
+  select(
+    YearOpened,
+    TopSpeed,
+    MaxHeight,
+    Drop,
+    Length,
+    Duration,
+    NumberOfInversions,
+    Latitude,
+    Longitude
+  ) |>
+  cor(use = "pairwise.complete.obs") |>
+  round(2) |>
+  kable(caption = "Correlation Matrix for Numeric Variables")
+```
+
+##### Create a histogram, kernel density plot, and boxplot for two of the numeric variables across one of the categorical variables 
+
+### Histogram
+```{r}
+ggplot(
+  rollercoaster_data,
+  aes(x = TopSpeed, fill = Type)
+) +
+  geom_histogram(
+    position = "identity",
+    alpha = 0.5,
+    bins = 20
+  ) +
+  labs(
+    title = "Distribution of Top Speed by Coaster Type",
+    x = "Top Speed (mph)",
+    y = "Count"
+  )
+```
+
+### Kernel Density Plot
+
+```{r}
+ggplot(
+  rollercoaster_data,
+  aes(x = TopSpeed, fill = Type)
+) +
+  geom_density(alpha = 0.5) +
+  labs(
+    title = "Density of Top Speed by Coaster Type",
+    x = "Top Speed (mph)",
+    y = "Density"
+  )
+```
+
+### Boxplot
+
+```{r}
+ggplot(
+  rollercoaster_data,
+  aes(x = Type, y = MaxHeight, fill = Type)
+) +
+  geom_boxplot() +
+  labs(
+    title = "Maximum Height by Coaster Type",
+    x = "Coaster Type",
+    y = "Maximum Height (ft)"
+  )
+```
+##### Next, we create two scatterplots to examine relationships between numeric variables. Points are colored according to categorical variables to determine whether patterns differ across coaster types and scales.
+
+### Scatterplot 1: MaxHeight vs TopSpeed
+
+```{r}
+ggplot(
+  rollercoaster_data,
+  aes(
+    x = MaxHeight,
+    y = TopSpeed,
+    color = Type
+  )
+) +
+  geom_point() +
+  labs(
+    title = "Top Speed vs Maximum Height by Coaster Type",
+    x = "Maximum Height (ft)",
+    y = "Top Speed (mph)",
+    color = "Type"
+  )
+```
+
+### Scatterplot 2: Drop vs Length
+
+```{r}
+ggplot(
+  rollercoaster_data,
+  aes(
+    x = Length,
+    y = Drop,
+    color = Scale
+  )
+) +
+  geom_point() +
+  labs(
+    title = "Drop Height vs Track Length by Scale",
+    x = "Length (ft)",
+    y = "Drop (ft)",
+    color = "Scale"
+  )
+```
+
+##### Next, we repeat the scatterplot analysis using faceting. Faceting creates separate plots for each level of a categorical variable, making it easier to compare relationships between numeric variables across different groups while still using color to distinguish an additional categorical variable.
+
+### Scatterplot 1 with faceting
+
+```{r}
+ggplot(
+  rollercoaster_data,
+  aes(
+    x = MaxHeight,
+    y = TopSpeed,
+    color = Type # (color overlays groups on one plot)
+  )
+) +
+  geom_point() +
+  facet_wrap(~ Scale) +
+  labs(
+    title = "Top Speed vs Maximum Height by Scale",
+    x = "Maximum Height (ft)",
+    y = "Top Speed (mph)",
+    color = "Type"
+  )
+```
+
+### Scatterplot 2 with faceting
+
+```{r}
+ggplot(
+  rollercoaster_data,
+  aes(
+    x = Length,
+    y = Drop,
+    color = Scale
+  )
+) +
+  geom_point() +
+  facet_wrap(~ AgeGroup) + #(facet creates separate plots for each group).
+  labs(
+    title = "Drop Height vs Length by Age Group",
+    x = "Length (ft)",
+    y = "Drop (ft)",
+    color = "Scale"
+  )
+```
+
