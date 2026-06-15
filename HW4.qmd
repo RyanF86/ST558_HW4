@@ -32,7 +32,8 @@ APIData <- GET(paste0("https://newsapi.org/v2/everything?q=SpaceX&from=2026-06-0
 
 ```{r}
 parsed <- fromJSON(rawToChar(APIData$content))
-parsed$articles # this is the data frame with information for the articles
+head(parsed$articles) # this is the data frame with information for the articles
+str(parsed$articles) # here is the structure of the articles data frame
 parsed$articles$content[1] # this is the actual text from the first article
 ```
 
@@ -50,13 +51,13 @@ NewsAPIQuery <- function (subject,TimePeriod, NewsAPIKey){
 Testing function with search of "Disneyland" from "2026-06-08".
 
 ```{r}
-NewsAPIQuery("Disneyland", "2026-06-08", RFKey)
+head(NewsAPIQuery("Disneyland", "2026-06-08", RFKey))
 ```
 
 Testing function with search of "Tokyo" from "2026-06-04".
 
 ```{r}
-NewsAPIQuery("Tokyo", "2026-06-04", RFKey)
+head(NewsAPIQuery("Tokyo", "2026-06-04", RFKey))
 ```
 
 ## Task 2 - Summarizing Roller Coaster Data
@@ -65,9 +66,11 @@ NewsAPIQuery("Tokyo", "2026-06-04", RFKey)
 
 ```{r}
 CoasterDataRaw <-read_csv("HW4DataFiles/635USrollercoasters.csv")
-CoasterDataRaw
+CoasterDataRaw 
+describe(CoasterDataRaw) # shows summary statistics on all variables in order to look for anything awry
 ```
 
+- Nothing unusual identified in looking at mean, min, and max with describe()
 - Delete Latitude, Longitude, and Boundary variables (not needed for the assignment)
 - Fix variable names
 - Variables to be converted to factors: CensusRegion, AgeGroup, Scale, Type, Design, InversionsYN
@@ -138,7 +141,7 @@ Note: Wood roller coasters with inversions are quite rare. The data set only ide
 table(CoasterDataCleaned$AgeGroup, CoasterDataCleaned$Scale, CoasterDataCleaned$CensusRegion)
 ```
 
-Note: Across the three factors of age, scale, and region, the most common combination is Newest/Family/South, with 55 of 635 coasters
+Note: Across the three factors of age, scale, and region, the most common combination is Newest/Family/South, with 55 of 635 coasters.
 
 - Use the table() and filter() functions to create a conditional two-way table for Scale by CensusRegion among Newest (AgeGroup) roller coasters
 
@@ -154,6 +157,7 @@ table(FilteredData$Scale, FilteredData$CensusRegion)
 ```{r}
 table(CoasterDataCleaned$Scale, CoasterDataCleaned$CensusRegion, CoasterDataCleaned$AgeGroup)[ , , 3]
 ```
+Note: The South is the only region with more Family coasters than Extreme coasters.
 
 - Create a two-way contingency table for Type by Design using group_by() and summarize() from dplyr. Then use pivot_wider() to make the result look more like the output from table().
 
@@ -168,6 +172,8 @@ CoasterDataCleaned |>
   )
 ```
 
+Note:  Wood coasters are almost exclusively Sit Down design.
+
 - Create a stacked bar graph for Type by InversionsYN
 
 ```{r}
@@ -177,6 +183,8 @@ ggplot(data = CoasterDataCleaned, aes(x = Type, fill = InversionsYN)) +
   scale_fill_discrete("Inversion Status") +
   theme(plot.title = element_text(hjust = 0.5))
 ```
+
+Note: Steel coasters with inversions are in the minority, but wood coasters with inversions are very rare.
 
 - Recreate the above as a side-by-side bar graph
 
@@ -195,12 +203,16 @@ ggplot(data = CoasterDataCleaned, aes(x = Type, fill = InversionsYN)) +
 ```{r}
 CoasterDataCleaned |>
   summarize(across(.cols = c(TopSpeed, MaxHeight), 
-            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
             .names = "{.fn}_{.col}")) |>
   gt() |>
   tab_header(
     title = "Top Speed and Max Height",
-    subtitle = "Mean and SD for all Roller Coasters"
+    subtitle = "Mean, Median, Var, SD, and IQR for all Roller Coasters"
   )
 ```
 
@@ -210,12 +222,16 @@ CoasterDataCleaned |>
 CoasterDataCleaned |>
   filter(Scale == "Extreme") |>
   summarize(across(.cols = c(TopSpeed, MaxHeight), 
-            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
             .names = "{.fn}_{.col}")) |>
   gt() |>
   tab_header(
     title = "Top Speed and Max Height",
-    subtitle = "Mean and SD for Extreme Roller Coasters"
+    subtitle = "Mean, Median, Var, SD, and IQR for Extreme Roller Coasters"
   )
 ```
 
@@ -227,11 +243,15 @@ Note: Compared to all roller coasters, Extreme roller coasters have higher mean 
 CoasterDataCleaned |>
   group_by(AgeGroup) |>
   summarize(across(.cols = c(Length, Duration), 
-            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
             .names = "{.fn}_{.col}")) |>
   gt() |>
   tab_header(
-    title = "Length and Duration Mean and SD",
+    title = "Length and Duration Mean, Median, Var, SD, and IQR",
     subtitle = "Stratified by Age Group"
   )
 ```
@@ -242,11 +262,15 @@ CoasterDataCleaned |>
 CoasterDataCleaned |>
   group_by(Type, CensusRegion) |>
   summarize(across(.cols = c(Drop, NumInversions), 
-            list("mean" = ~ mean(.x, na.rm = TRUE), "sd" = ~ sd(.x, na.rm = TRUE)),
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
             .names = "{.fn}_{.col}")) |>
   gt() |>
   tab_header(
-    title = "Drop and Number of Inversions Mean and SD",
+    title = "Drop and Number of Inversions Mean, Median, Var, SD, and IQR",
     subtitle = "Stratified by Type and Census Region"
   )
 ```
@@ -318,6 +342,8 @@ g + geom_point() +
   theme(plot.title = element_text(hjust = 0.5)) # Centers the title
 ```
 
+Note:  Scatter plot shows a positive correlation between Duration and Length, though no clear distinction between categories of AgeGroup
+
 - Create a scatterplot relating Drop and MaxHeight by Scale
 
 ```{r}
@@ -328,6 +354,8 @@ g + geom_point()  +
   labs(title = "Max Height vs Drop by Scale") + 
   theme(plot.title = element_text(hjust = 0.5)) # Centers the title
 ```
+
+Note: Scatter plot shows very clear linear relationship between Drop and MaxHeight.  Additionally, greater values of Drop and MaxHeight correspond with increasing Scale categories.
 
 - Create a scatterplot relating Length and Duration by AgeGroup and facet by CensusRegion
 
@@ -341,8 +369,9 @@ g + geom_point() + facet_wrap(~ CensusRegion)  +
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5)) # Centers the title and subtitle
 ```
+Note:  Faceting does not appear to shows any distinction between categories of CensusRegion
 
-- Create a relating Drop and MaxHeight by Scale and facet by Type
+- Create a scatterplot relating Drop and MaxHeight by Scale and facet by Type
 
 ```{r}
 g <- ggplot(CoasterDataCleaned |>
@@ -354,6 +383,8 @@ g + geom_point() + facet_wrap(~ Type) +
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5)) # Centers the title and subtitle
 ```
+
+Note:  Both scatter plots show a strong linear correlation between MaxHeight and Drop.  The high end outliers of MaxHeight and Drop are only observed among steel coasters.
 
 - Create a scatterplot relating Length and Duration by AgeGroup and facet by CensusRegion and Type
 
@@ -368,6 +399,8 @@ g + geom_point() + facet_grid(CensusRegion ~ Type) +
         plot.subtitle = element_text(hjust = 0.5)) # Centers the title and subtitle
 ```
 
+Note:  Additional faceting here does not appear to provide additional insight.  There are not enough wood coasters in the West region to identify a correlation in the plot.    
+
 - Create a relating Drop and MaxHeight by Scale and facet by CensusRegion and Type
 
 ```{r}
@@ -380,3 +413,5 @@ g + geom_point() + facet_grid(CensusRegion ~ Type) +
   theme(plot.title = element_text(hjust = 0.5),
         plot.subtitle = element_text(hjust = 0.5)) # Centers the title and subtitle
 ```
+
+Note: Again, additional faceting does not appear to provide additional insight.  Linear relationship between MaxHeight and Drop is still apparent in all facets.
