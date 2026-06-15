@@ -138,18 +138,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readxl' was built under R version 4.4.1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'DBI' was built under R version 4.4.1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'knitr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'httr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'jsonlite' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'jsonlite'
+
+The following object is masked from 'package:purrr':
+
+    flatten</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'psych'
+
+The following objects are masked from 'package:ggplot2':
+
+    %+%, alpha</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gt' was built under R version 4.4.3</code></pre>
+</div>
+</div>
 <section id="task-1---querying-an-api-and-a-tidy-style-function" class="level1">
 <h1>Task 1 - Querying an API and a Tidy-Style Function</h1>
 <section id="number-1" class="level2">
 <h2 class="anchored" data-anchor-id="number-1">Number 1</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'httr' was built under R version 4.4.1</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>response <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="st">"https://newsapi.org/v2/everything?q=Iran&amp;from=2026-05-20&amp;language=en&amp;pageSize=50&amp;apiKey=173ec253cb06408abbf28061323e5fb4"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(response, <span class="at">max.level =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>response <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="st">"https://newsapi.org/v2/everything?q=Iran&amp;from=2026-05-20&amp;language=en&amp;pageSize=50&amp;apiKey=173ec253cb06408abbf28061323e5fb4"</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(response, <span class="at">max.level =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 10
  $ url        : chr "https://newsapi.org/v2/everything?q=Iran&amp;from=2026-05-20&amp;language=en&amp;pageSize=50&amp;apiKey=173ec253cb06408abbf28061323e5fb4"
@@ -158,9 +241,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ..- attr(*, "class")= chr [1:2] "insensitive" "list"
  $ all_headers:List of 1
  $ cookies    :'data.frame':    0 obs. of  7 variables:
- $ content    : raw [1:37383] 7b 22 73 74 ...
- $ date       : POSIXct[1:1], format: "2026-06-11 15:10:18"
- $ times      : Named num [1:6] 0 0.124 0.15 0.203 0.321 ...
+ $ content    : raw [1:38197] 7b 22 73 74 ...
+ $ date       : POSIXct[1:1], format: "2026-06-15 14:24:51"
+ $ times      : Named num [1:6] 0 0.053 0.0843 0.1363 0.3192 ...
   ..- attr(*, "names")= chr [1:6] "redirect" "namelookup" "connect" "pretransfer" ...
  $ request    :List of 7
   ..- attr(*, "class")= chr "request"
@@ -170,27 +253,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Look at the <code>content</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'jsonlite' was built under R version 4.4.1</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tibble' was built under R version 4.4.1</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>parsed_response <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(response<span class="sc">$</span>content))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(parsed_response, <span class="at">max.level =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>parsed_response <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(response<span class="sc">$</span>content))</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(parsed_response, <span class="at">max.level =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ status      : chr "ok"
- $ totalResults: int 18460
+ $ totalResults: int 22328
  $ articles    :'data.frame':   50 obs. of  8 variables:</code></pre>
 </div>
 </div>
 <p>Pull a single article.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>trump_article <span class="ot">&lt;-</span> parsed_response<span class="sc">$</span>articles[<span class="dv">4</span>, ]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(trump_article, <span class="at">max.level =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>trump_article <span class="ot">&lt;-</span> parsed_response<span class="sc">$</span>articles[<span class="dv">4</span>, ]</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(trump_article, <span class="at">max.level =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   1 obs. of  8 variables:
  $ source     :'data.frame':    1 obs. of  2 variables:
@@ -205,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Ehh. Let’s print it out better.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(trump_article)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(trump_article)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  source.id source.name author
 4      &lt;NA&gt;    BBC News   &lt;NA&gt;
@@ -224,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>trump_article<span class="sc">$</span>content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>trump_article<span class="sc">$</span>content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "It has emerged that the Saudis have attacked Iran, they say in retaliation for Iranian attacks. But significantly, senior Saudi sources say they made it clear to Tehran that they were acting independ… [+45 chars]"</code></pre>
 </div>
@@ -233,58 +310,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="function-making" class="level2">
 <h2 class="anchored" data-anchor-id="function-making">Function Making</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>article_finder <span class="ot">&lt;-</span> <span class="cf">function</span>(subject, </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">date =</span> <span class="fu">format</span>(<span class="fu">Sys.Date</span>() <span class="sc">-</span> <span class="dv">30</span>, <span class="st">"%Y-%m-%d"</span>), </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">key =</span> <span class="st">"173ec253cb06408abbf28061323e5fb4"</span>) {</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  URL <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"https://newsapi.org/v2/everything?q="</span>,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                 subject,</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"&amp;from="</span>,</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                 date,</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"&amp;language=en&amp;pageSize=50&amp;apiKey="</span>,</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                 key)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  response <span class="ot">&lt;-</span> httr<span class="sc">::</span><span class="fu">GET</span>(URL)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  parsed_response <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(response<span class="sc">$</span>content))</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>article_finder <span class="ot">&lt;-</span> <span class="cf">function</span>(subject, </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">date =</span> <span class="fu">format</span>(<span class="fu">Sys.Date</span>() <span class="sc">-</span> <span class="dv">30</span>, <span class="st">"%Y-%m-%d"</span>), </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">key =</span> <span class="st">"173ec253cb06408abbf28061323e5fb4"</span>) {</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  URL <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"https://newsapi.org/v2/everything?q="</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>                 subject,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"&amp;from="</span>,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>                 date,</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"&amp;language=en&amp;pageSize=50&amp;apiKey="</span>,</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>                 key)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  response <span class="ot">&lt;-</span> httr<span class="sc">::</span><span class="fu">GET</span>(URL)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  parsed_response <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(response<span class="sc">$</span>content))</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>football_articles <span class="ot">&lt;-</span> <span class="fu">article_finder</span>(<span class="st">"Football"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(football_articles, <span class="at">max.level =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>football_articles <span class="ot">&lt;-</span> <span class="fu">article_finder</span>(<span class="st">"Football"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(football_articles, <span class="at">max.level =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ status      : chr "ok"
- $ totalResults: int 27742
+ $ totalResults: int 28067
  $ articles    :'data.frame':   50 obs. of  8 variables:
   ..$ source     :'data.frame': 50 obs. of  2 variables:
   ..$ author     : chr [1:50] NA NA NA NA ...
-  ..$ title      : chr [1:50] "Kevin Bridges asks if football still has beauty at its heart" "Football regulator 'in contact' with West Ham over Sullivan" "The real-life story of the original rebel girls of football" "When will Taylor Swift get married - fans have some ideas" ...
-  ..$ description: chr [1:50] "Kevin Bridges embarks on a journey to see if the beautiful game still exists. He meets Brazil football icon Caf"| __truncated__ "Multiple women accuse the billionaire of abusing his power and preying on them for sex, in some cases when they"| __truncated__ "The real-life story of the original rebel girls of football, Corinthians Ladies FC, who defied the English Foot"| __truncated__ "Swifties worldwide are looking for clues about the superstar's nuptials to American football star Travis Kelce." ...
-  ..$ url        : chr [1:50] "https://www.bbc.co.uk/iplayer/episode/m002xb10/kevin-bridges-in-search-of-the-beautiful-game?at_mid=hhSWQQLCvb&amp;"| __truncated__ "https://www.bbc.com/news/articles/c1ky7gndnlyo" "https://www.bbc.co.uk/iplayer/episode/m002wnjw/the-corinthians-we-were-the-champions?at_mid=6iX2NFdM9d&amp;at_campa"| __truncated__ "https://www.bbc.com/news/articles/cqjpj80qz1ro" ...
-  ..$ urlToImage : chr [1:50] "https://ichef.bbci.co.uk/images/ic/1200x675/p0npy37b.jpg" "https://ichef.bbci.co.uk/news/1024/branded_news/424f/live/a8622b90-639c-11f1-b1db-af71d47507d6.jpg" "https://ichef.bbci.co.uk/images/ic/1200x675/p0nm797d.jpg" "https://ichef.bbci.co.uk/news/1024/branded_news/3613/live/78999b30-60f6-11f1-bb63-4f1168d17ecf.jpg" ...
-  ..$ publishedAt: chr [1:50] "2026-06-05T05:00:00Z" "2026-06-09T04:29:06Z" "2026-05-19T05:00:00Z" "2026-06-05T23:21:53Z" ...
-  ..$ content    : chr [1:50] "Kevin Bridges embarks on a journey to see if the beautiful game still exists. He meets Brazil football icon Caf"| __truncated__ "A Department for Digital, Culture, Media and Sport spokesperson said: \"These deeply concerning allegations mus"| __truncated__ "The real-life story of the original rebel girls of football, Corinthians Ladies FC, who defied the English Foot"| __truncated__ "Fans, like Curley, who spoke to the BBC, pondered whether the superstar will wear a romantic lace gown or if sh"| __truncated__ ...</code></pre>
+  ..$ title      : chr [1:50] "Football regulator 'in contact' with West Ham over Sullivan" "Kevin Bridges asks if football still has beauty at its heart" "The real-life story of the original rebel girls of football" "When will Taylor Swift get married - fans have some ideas" ...
+  ..$ description: chr [1:50] "Multiple women accuse the billionaire of abusing his power and preying on them for sex, in some cases when they"| __truncated__ "Kevin Bridges embarks on a journey to see if the beautiful game still exists. He meets Brazil football icon Caf"| __truncated__ "The real-life story of the original rebel girls of football, Corinthians Ladies FC, who defied the English Foot"| __truncated__ "Swifties worldwide are looking for clues about the superstar's nuptials to American football star Travis Kelce." ...
+  ..$ url        : chr [1:50] "https://www.bbc.com/news/articles/c1ky7gndnlyo" "https://www.bbc.co.uk/iplayer/episode/m002xb10/kevin-bridges-in-search-of-the-beautiful-game?at_mid=hhSWQQLCvb&amp;"| __truncated__ "https://www.bbc.co.uk/iplayer/episode/m002wnjw/the-corinthians-we-were-the-champions?at_mid=6iX2NFdM9d&amp;at_campa"| __truncated__ "https://www.bbc.com/news/articles/cqjpj80qz1ro" ...
+  ..$ urlToImage : chr [1:50] "https://ichef.bbci.co.uk/news/1024/branded_news/424f/live/a8622b90-639c-11f1-b1db-af71d47507d6.jpg" "https://ichef.bbci.co.uk/images/ic/1200x675/p0npy37b.jpg" "https://ichef.bbci.co.uk/images/ic/1200x675/p0nm797d.jpg" "https://ichef.bbci.co.uk/news/1024/branded_news/3613/live/78999b30-60f6-11f1-bb63-4f1168d17ecf.jpg" ...
+  ..$ publishedAt: chr [1:50] "2026-06-09T04:29:06Z" "2026-06-05T05:00:00Z" "2026-05-19T05:00:00Z" "2026-06-05T23:21:53Z" ...
+  ..$ content    : chr [1:50] "A Department for Digital, Culture, Media and Sport spokesperson said: \"These deeply concerning allegations mus"| __truncated__ "Kevin Bridges embarks on a journey to see if the beautiful game still exists. He meets Brazil football icon Caf"| __truncated__ "The real-life story of the original rebel girls of football, Corinthians Ladies FC, who defied the English Foot"| __truncated__ "Fans, like Curley, who spoke to the BBC, pondered whether the superstar will wear a romantic lace gown or if sh"| __truncated__ ...</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Liverpool_articles <span class="ot">&lt;-</span> <span class="fu">article_finder</span>(<span class="st">"Liverpool"</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Liverpool_articles, <span class="at">max.level =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Liverpool_articles <span class="ot">&lt;-</span> <span class="fu">article_finder</span>(<span class="st">"Liverpool"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Liverpool_articles, <span class="at">max.level =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 3
  $ status      : chr "ok"
- $ totalResults: int 5198
+ $ totalResults: int 4974
  $ articles    :'data.frame':   50 obs. of  8 variables:
   ..$ source     :'data.frame': 50 obs. of  2 variables:
-  ..$ author     : chr [1:50] "BBC Sport" "Aadam Patel" "Ben Collins" "Harry Poole" ...
-  ..$ title      : chr [1:50] "Liverpool sack head coach Slot" "Liverpool to open formal talks with Iraola" "Chelsea appoint Alonso on four-year deal" "Every reason to believe I'll stay with Liverpool - Slot" ...
-  ..$ description: chr [1:50] "Liverpool sack head coach Arne Slot after two seasons in charge." "Liverpool will open formal talks with Andoni Iraola this week over becoming their new head coach." "Chelsea appoint former Liverpool midfielder Xabi Alonso as their manager on a four‑year contract." "Liverpool manager Arne Slot says he has \"every reason to believe\" he will remain in charge of the club next season." ...
-  ..$ url        : chr [1:50] "https://www.bbc.com/sport/football/articles/cglp7kelrljo" "https://www.bbc.com/sport/football/articles/c5y7ezzqge8o" "https://www.bbc.com/sport/football/articles/ckgpklg078go" "https://www.bbc.com/sport/football/articles/czx2pry99ldo" ...
-  ..$ urlToImage : chr [1:50] "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/eb7a/live/5c0f70d0-6139-11ee-ac8c-9d18dbc280ea.png" "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/3561/live/6c5e0670-5d0f-11f1-ac21-9b9cfe1eeb69.jpg" "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/86ca/live/b3ee32b0-51c7-11f1-a719-87164179ee6c.jpg" "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/1383/live/1dfa8660-4f7d-11f1-9bf8-a147799c023a.jpg" ...
-  ..$ publishedAt: chr [1:50] "2026-05-30T11:30:16Z" "2026-05-31T17:02:07Z" "2026-05-17T08:10:29Z" "2026-05-14T10:36:41Z" ...
-  ..$ content    : chr [1:50] "Head coach Arne Slot has been sacked by Liverpool after two seasons in charge.\r\nThe Dutchman, 47, guided the "| __truncated__ "Carl: If he doesn't have us playing like crabs going side to side again for another season and understands that"| __truncated__ "\"Chelsea is one of the biggest clubs in world football and it fills me with immense pride to become manager of"| __truncated__ "Liverpool manager Arne Slot says he has \"every reason to believe\" he will remain in charge of the club next s"| __truncated__ ...</code></pre>
+  ..$ author     : chr [1:50] "BBC Sport" "Aadam Patel" "Ben Collins" NA ...
+  ..$ title      : chr [1:50] "Liverpool sack head coach Slot" "Liverpool to open formal talks with Iraola" "Chelsea appoint Alonso on four-year deal" "Race Across the World pals Jo and Kush on fame, friendship and family" ...
+  ..$ description: chr [1:50] "Liverpool sack head coach Arne Slot after two seasons in charge." "Liverpool will open formal talks with Andoni Iraola this week over becoming their new head coach." "Chelsea appoint former Liverpool midfielder Xabi Alonso as their manager on a four‑year contract." "The childhood best friends from Liverpool are the youngest duo in this series of the BBC show." ...
+  ..$ url        : chr [1:50] "https://www.bbc.com/sport/football/articles/cglp7kelrljo" "https://www.bbc.com/sport/football/articles/c5y7ezzqge8o" "https://www.bbc.com/sport/football/articles/ckgpklg078go" "https://www.bbc.com/news/articles/cy02prwpw01o" ...
+  ..$ urlToImage : chr [1:50] "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/eb7a/live/5c0f70d0-6139-11ee-ac8c-9d18dbc280ea.png" "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/3561/live/6c5e0670-5d0f-11f1-ac21-9b9cfe1eeb69.jpg" "https://ichef.bbci.co.uk/ace/branded_sport/1200/cpsprodpb/86ca/live/b3ee32b0-51c7-11f1-a719-87164179ee6c.jpg" "https://ichef.bbci.co.uk/news/1024/branded_news/d3c8/live/e9417b30-3eed-11f1-a821-9161fbfb806d.jpg" ...
+  ..$ publishedAt: chr [1:50] "2026-05-30T11:30:16Z" "2026-05-31T17:02:07Z" "2026-05-17T08:10:29Z" "2026-05-20T23:37:02Z" ...
+  ..$ content    : chr [1:50] "Head coach Arne Slot has been sacked by Liverpool after two seasons in charge.\r\nThe Dutchman, 47, guided the "| __truncated__ "Carl: If he doesn't have us playing like crabs going side to side again for another season and understands that"| __truncated__ "\"Chelsea is one of the biggest clubs in world football and it fills me with immense pride to become manager of"| __truncated__ "\"Half my mates, they're like: 'I can't lie, I've still got to catch up on the past few episodes, but I'm loving it so far'.\"" ...</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(Liverpool_articles<span class="sc">$</span>articles[<span class="dv">1</span>,]<span class="sc">$</span>content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(Liverpool_articles<span class="sc">$</span>articles[<span class="dv">1</span>,]<span class="sc">$</span>content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Head coach Arne Slot has been sacked by Liverpool after two seasons in charge.
 The Dutchman, 47, guided the Reds to their 20th league title in his debut season but they have struggled during his sec… [+870 chars]</code></pre>
@@ -297,17 +374,17 @@ The Dutchman, 47, guided the Reds to their 20th league title in his debut season
 <section id="read-in-data" class="level2">
 <h2 class="anchored" data-anchor-id="read-in-data">Read in Data</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../HW4DataFiles/635USrollercoasters.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../HW4DataFiles/635USrollercoasters.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="basic-eda" class="level2">
 <h2 class="anchored" data-anchor-id="basic-eda">Basic EDA</h2>
 <p>Initial Data Look</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(coaster_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(coaster_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>spc_tbl_ [635 × 20] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<pre><code>spc_tbl_ [635 × 21] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ Coaster        : chr [1:635] "Adrenaline Peak" "Adventure Express" "Afterburn" "Aftershock" ...
  $ Park           : chr [1:635] "Oaks Amusement Park" "Kings Island" "Carowinds" "Silverwood Theme Park" ...
  $ City           : chr [1:635] "Portland" "Mason" "Charlotte" "Athol" ...
@@ -328,6 +405,7 @@ The Dutchman, 47, guided the Reds to their 20th league title in his debut season
  $ Make           : chr [1:635] "Gerstlauer Amusement Rides GmbH" "Arrow Dynamics" "Bolliger &amp; Mabillard" "Vekoma" ...
  $ Latitude       : num [1:635] 45.5 39.4 35.3 47.9 28 ...
  $ Longitude      : num [1:635] -122.7 -84.3 -80.8 -116.7 -82.6 ...
+ $ Boundary       : chr [1:635] "{\"type\":\"Feature\",\"properties\":{\"CENSUSAREA\":95988.013,\"NAME\":\"Oregon\",\"GEO_ID\":\"0400000US41\",\"| __truncated__ "{\"type\":\"Feature\",\"properties\":{\"CENSUSAREA\":40860.694,\"NAME\":\"Ohio\",\"GEO_ID\":\"0400000US39\",\"L"| __truncated__ "{\"type\":\"Feature\",\"properties\":{\"CENSUSAREA\":48617.905,\"NAME\":\"North Carolina\",\"GEO_ID\":\"0400000"| __truncated__ "{\"type\":\"Feature\",\"properties\":{\"CENSUSAREA\":82643.117,\"NAME\":\"Idaho\",\"GEO_ID\":\"0400000US16\",\""| __truncated__ ...
  - attr(*, "spec")=
   .. cols(
   ..   Coaster = col_character(),
@@ -349,16 +427,17 @@ The Dutchman, 47, guided the Reds to their 20th league title in his debut season
   ..   `# of Inversions` = col_double(),
   ..   Make = col_character(),
   ..   Latitude = col_double(),
-  ..   Longitude = col_double()
+  ..   Longitude = col_double(),
+  ..   Boundary = col_character()
   .. )
  - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
 </div>
 </div>
 <p>It does not look like any of the variables (num or chr) need to be switched. We will want to switch some factors.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>coaster_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>coaster_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 635 × 20
+<pre><code># A tibble: 635 × 21
    Coaster     Park  City  State `Census Region` `Year Opened` AgeGroup TopSpeed
    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
  1 Adrenaline… Oaks… Port… Oreg… West                     2018 3:Newest     45  
@@ -372,80 +451,3773 @@ The Dutchman, 47, guided the Reds to their 20th league title in his debut season
  9 American T… Six … Eure… Miss… Midwest                  2008 3:Newest     48  
 10 Anaconda    King… Dosw… Virg… South                    1991 2:Recent     50  
 # ℹ 625 more rows
-# ℹ 12 more variables: MaxHeight &lt;dbl&gt;, Scale &lt;chr&gt;, Type &lt;chr&gt;, Design &lt;chr&gt;,
+# ℹ 13 more variables: MaxHeight &lt;dbl&gt;, Scale &lt;chr&gt;, Type &lt;chr&gt;, Design &lt;chr&gt;,
 #   Drop &lt;dbl&gt;, Length &lt;dbl&gt;, Duration &lt;dbl&gt;, `Inversions?` &lt;chr&gt;,
-#   `# of Inversions` &lt;dbl&gt;, Make &lt;chr&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;</code></pre>
+#   `# of Inversions` &lt;dbl&gt;, Make &lt;chr&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;,
+#   Boundary &lt;chr&gt;</code></pre>
 </div>
 </div>
 <p>Removing Latitude and Longitude</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="ot">&lt;-</span> coaster_data <span class="sc">|&gt;</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">"Latitude"</span>, <span class="sc">-</span><span class="st">"Longitude"</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(coaster_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="ot">&lt;-</span> coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">"Latitude"</span>, <span class="sc">-</span><span class="st">"Longitude"</span>, <span class="sc">-</span><span class="st">"Boundary"</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(coaster_data) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Coaster"</span>, <span class="co"># Set variable names</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Park"</span>,</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"City"</span>,</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"State"</span>,</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"CensusRegion"</span>,</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"YearOpened"</span>,</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"AgeGroup"</span>,</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"TopSpeed"</span>,</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"MaxHeight"</span>,</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Scale"</span>,</span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Type"</span>,</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Design"</span>,</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Drop"</span>,</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Length"</span>,</span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Duration"</span>,</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"InversionsYN"</span>,</span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"NumInversions"</span>,</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Make"</span>)  </span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="ot">&lt;-</span> coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CensusRegion =</span> <span class="fu">factor</span>(CensusRegion), <span class="co"># Convert select variables to factors</span></span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>         <span class="at">AgeGroup =</span> <span class="fu">factor</span>(AgeGroup),</span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">Scale =</span> <span class="fu">factor</span>(Scale),</span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">Type =</span> <span class="fu">factor</span>(Type),</span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a>         <span class="at">Design =</span> <span class="fu">factor</span>(Design),</span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>         <span class="at">InversionsYN =</span> <span class="fu">factor</span>(InversionsYN))</span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(coaster_data) <span class="co"># Confirm remaining variables and types</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                vars   n    mean      sd median trimmed     mad  min  max range
-Coaster*           1 635  241.13  141.17  238.0  239.90  182.36    1  482   481
-Park*              2 635  106.90   56.46  108.0  108.63   77.10    1  197   196
-City*              3 635   85.79   51.50   83.0   85.92   69.68    1  171   170
-State*             4 635   19.74   11.41   21.0   19.63   14.83    1   40    39
-Census Region*     5 635    2.52    1.03    3.0    2.53    1.48    1    4     3
-Year Opened        6 635 1999.42   18.20 2002.0 2002.40   13.34 1920 2020   100
-AgeGroup*          7 635    2.48    0.68    3.0    2.60    0.00    1    3     2
-TopSpeed           8 561   42.24   19.37   45.0   42.17   20.76    6  128   122
-MaxHeight          9 627   76.80   61.51   64.3   68.59   59.75    5  456   451
-Scale*            10 635    2.12    1.21    2.0    2.03    1.48    1    4     3
-Type*             11 635    1.17    0.37    1.0    1.08    0.00    1    2     1
-Design*           12 635    3.96    0.60    4.0    4.00    0.00    1    7     6
-Drop              13 507   77.18   63.63   70.0   68.93   63.75    0  418   418
-Length            14 602 1938.41 1401.86 1490.0 1794.54 1570.07   48 7359  7311
-Duration          15 569  106.04   52.75  101.0  101.53   43.00   20  540   520
-Inversions?*      16 635    1.27    0.44    1.0    1.21    0.00    1    2     1
-# of Inversions   17 635    0.92    1.77    0.0    0.49    0.00    0    8     8
-Make*             18 599   27.86   17.84   27.0   28.02   25.20    1   53    52
-                 skew kurtosis    se
-Coaster*         0.06    -1.20  5.60
-Park*           -0.26    -1.25  2.24
-City*            0.00    -1.29  2.04
-State*          -0.04    -1.37  0.45
-Census Region*  -0.12    -1.13  0.04
-Year Opened     -2.01     5.09  0.72
-AgeGroup*       -0.96    -0.33  0.03
-TopSpeed         0.21     0.38  0.82
-MaxHeight        1.66     5.14  2.46
-Scale*           0.62    -1.21  0.05
-Type*            1.80     1.23  0.01
-Design*          0.81    14.02  0.02
-Drop             1.43     3.38  2.83
-Length           0.83     0.29 57.14
-Duration         2.30    13.10  2.21
-Inversions?*     1.05    -0.91  0.02
-# of Inversions  1.88     2.49  0.07
-Make*           -0.04    -1.50  0.73</code></pre>
+<pre><code>tibble [635 × 18] (S3: tbl_df/tbl/data.frame)
+ $ Coaster      : chr [1:635] "Adrenaline Peak" "Adventure Express" "Afterburn" "Aftershock" ...
+ $ Park         : chr [1:635] "Oaks Amusement Park" "Kings Island" "Carowinds" "Silverwood Theme Park" ...
+ $ City         : chr [1:635] "Portland" "Mason" "Charlotte" "Athol" ...
+ $ State        : chr [1:635] "Oregon" "Ohio" "North Carolina" "Idaho" ...
+ $ CensusRegion : Factor w/ 4 levels "Midwest","Northeast",..: 4 1 3 4 3 3 2 1 1 3 ...
+ $ YearOpened   : num [1:635] 2018 1991 1999 2008 2010 ...
+ $ AgeGroup     : Factor w/ 3 levels "1:Older","2:Recent",..: 3 2 2 3 3 2 2 2 3 2 ...
+ $ TopSpeed     : num [1:635] 45 35 62 65.6 22 67 35 66 48 50 ...
+ $ MaxHeight    : num [1:635] 72 63 113 192 25 ...
+ $ Scale        : Factor w/ 4 levels "Extreme","Family",..: 1 4 1 1 2 1 4 1 4 1 ...
+ $ Type         : Factor w/ 2 levels "Steel","Wood": 1 1 1 1 1 1 1 2 2 1 ...
+ $ Design       : Factor w/ 7 levels "Bobsled","Flying",..: 4 4 3 3 4 3 1 4 4 4 ...
+ $ Drop         : num [1:635] 70 47 110 177 22.5 170 20 147 80 144 ...
+ $ Length       : num [1:635] 1050 2963 2956 1204 628 ...
+ $ Duration     : num [1:635] 66 140 167 92 47 190 100 143 110 110 ...
+ $ InversionsYN : Factor w/ 2 levels "No","Yes": 2 1 2 2 1 2 1 1 1 2 ...
+ $ NumInversions: num [1:635] 3 0 6 3 0 6 0 0 0 4 ...
+ $ Make         : chr [1:635] "Gerstlauer Amusement Rides GmbH" "Arrow Dynamics" "Bolliger &amp; Mabillard" "Vekoma" ...</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(coaster_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              vars   n    mean      sd median trimmed     mad  min  max range
+Coaster*         1 635  241.13  141.17  238.0  239.90  182.36    1  482   481
+Park*            2 635  106.90   56.46  108.0  108.63   77.10    1  197   196
+City*            3 635   85.79   51.50   83.0   85.92   69.68    1  171   170
+State*           4 635   19.74   11.41   21.0   19.63   14.83    1   40    39
+CensusRegion*    5 635    2.52    1.03    3.0    2.53    1.48    1    4     3
+YearOpened       6 635 1999.42   18.20 2002.0 2002.40   13.34 1920 2020   100
+AgeGroup*        7 635    2.48    0.68    3.0    2.60    0.00    1    3     2
+TopSpeed         8 561   42.24   19.37   45.0   42.17   20.76    6  128   122
+MaxHeight        9 627   76.80   61.51   64.3   68.59   59.75    5  456   451
+Scale*          10 635    2.12    1.21    2.0    2.03    1.48    1    4     3
+Type*           11 635    1.17    0.37    1.0    1.08    0.00    1    2     1
+Design*         12 635    3.96    0.60    4.0    4.00    0.00    1    7     6
+Drop            13 507   77.18   63.63   70.0   68.93   63.75    0  418   418
+Length          14 602 1938.41 1401.86 1490.0 1794.54 1570.07   48 7359  7311
+Duration        15 569  106.04   52.75  101.0  101.53   43.00   20  540   520
+InversionsYN*   16 635    1.27    0.44    1.0    1.21    0.00    1    2     1
+NumInversions   17 635    0.92    1.77    0.0    0.49    0.00    0    8     8
+Make*           18 599   27.86   17.84   27.0   28.02   25.20    1   53    52
+               skew kurtosis    se
+Coaster*       0.06    -1.20  5.60
+Park*         -0.26    -1.25  2.24
+City*          0.00    -1.29  2.04
+State*        -0.04    -1.37  0.45
+CensusRegion* -0.12    -1.13  0.04
+YearOpened    -2.01     5.09  0.72
+AgeGroup*     -0.96    -0.33  0.03
+TopSpeed       0.21     0.38  0.82
+MaxHeight      1.66     5.14  2.46
+Scale*         0.62    -1.21  0.05
+Type*          1.80     1.23  0.01
+Design*        0.81    14.02  0.02
+Drop           1.43     3.38  2.83
+Length         0.83     0.29 57.14
+Duration       2.30    13.10  2.21
+InversionsYN*  1.05    -0.91  0.02
+NumInversions  1.88     2.49  0.07
+Make*         -0.04    -1.50  0.73</code></pre>
 </div>
 </div>
 <p>Now let’s look and see the rate of missing values.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(coaster_data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(coaster_data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        Coaster            Park            City           State   Census Region 
-              0               0               0               0               0 
-    Year Opened        AgeGroup        TopSpeed       MaxHeight           Scale 
-              0               0              74               8               0 
-           Type          Design            Drop          Length        Duration 
-              0               0             128              33              66 
-    Inversions? # of Inversions            Make 
-              0               0              36 </code></pre>
+<pre><code>      Coaster          Park          City         State  CensusRegion 
+            0             0             0             0             0 
+   YearOpened      AgeGroup      TopSpeed     MaxHeight         Scale 
+            0             0            74             8             0 
+         Type        Design          Drop        Length      Duration 
+            0             0           128            33            66 
+ InversionsYN NumInversions          Make 
+            0             0            36 </code></pre>
 </div>
 </div>
 </section>
 <section id="categorical-variables" class="level2">
 <h2 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h2>
+<ul>
+<li>Use the table() function to create a one-way contingency table for Design</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(coaster_data<span class="sc">$</span>Design)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  Bobsled    Flying  Inverted  Sit Down  Stand Up Suspended      Wing 
+        4         9        42       560         4         7         9 </code></pre>
+</div>
+</div>
+<p>Note: The most common design is ‘Sit Down’, with 560 out of the total 635 roller coasters in the data set.</p>
+<ul>
+<li>Use the table() function to create a two-way contingency table for Type by InversionsYN</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(coaster_data<span class="sc">$</span>Type, coaster_data<span class="sc">$</span>InversionsYN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       
+         No Yes
+  Steel 364 166
+  Wood  101   4</code></pre>
+</div>
+</div>
+<p>Note: Wood roller coasters with inversions are quite rare. The data set only identifies 4 out of the total 635.</p>
+<ul>
+<li>Use the table() function to create a three-way contingency table for AgeGroup by Scale by CensusRegion</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(coaster_data<span class="sc">$</span>AgeGroup, coaster_data<span class="sc">$</span>Scale, coaster_data<span class="sc">$</span>CensusRegion)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>, ,  = Midwest
+
+          
+           Extreme Family Kiddie Thrill
+  1:Older        6      2      1      8
+  2:Recent      21      9      3     12
+  3:Newest      34     21      4     13
+
+, ,  = Northeast
+
+          
+           Extreme Family Kiddie Thrill
+  1:Older        3      7      3      8
+  2:Recent      22     13      3     10
+  3:Newest      37     29      1     20
+
+, ,  = South
+
+          
+           Extreme Family Kiddie Thrill
+  1:Older        5      4      0      8
+  2:Recent      38      9      0     10
+  3:Newest      49     55      6     39
+
+, ,  = West
+
+          
+           Extreme Family Kiddie Thrill
+  1:Older        3      0      1     10
+  2:Recent      24      9      3      4
+  3:Newest      27     20      3     18</code></pre>
+</div>
+</div>
+<p>Note: Across the three factors of age, scale, and region, the most common combination is Newest/Family/South, with 55 of 635 coasters.</p>
+<ul>
+<li>Use the table() and filter() functions to create a conditional two-way table for Scale by CensusRegion among Newest (AgeGroup) roller coasters</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>FilteredData <span class="ot">&lt;-</span> coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(AgeGroup <span class="sc">==</span> <span class="st">"3:Newest"</span>) </span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(FilteredData<span class="sc">$</span>Scale, FilteredData<span class="sc">$</span>CensusRegion)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         
+          Midwest Northeast South West
+  Extreme      34        37    49   27
+  Family       21        29    55   20
+  Kiddie        4         1     6    3
+  Thrill       13        20    39   18</code></pre>
+</div>
+</div>
+<ul>
+<li>Recreate the conditional two-way table above using a subsetted three-way table</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(coaster_data<span class="sc">$</span>Scale, coaster_data<span class="sc">$</span>CensusRegion, coaster_data<span class="sc">$</span>AgeGroup)[ , , <span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         
+          Midwest Northeast South West
+  Extreme      34        37    49   27
+  Family       21        29    55   20
+  Kiddie        4         1     6    3
+  Thrill       13        20    39   18</code></pre>
+</div>
+</div>
+<p>Note: The South is the only region with more Family coasters than Extreme coasters.</p>
+<ul>
+<li>Create a two-way contingency table for Type by Design using group_by() and summarize() from dplyr. Then use pivot_wider() to make the result look more like the output from table().</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Type, Design) <span class="sc">|&gt;</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Type, <span class="at">values_from =</span> count) <span class="sc">|&gt;</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Type by Design"</span></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Type'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="yjyxfcyesm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yjyxfcyesm table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#yjyxfcyesm thead, #yjyxfcyesm tbody, #yjyxfcyesm tfoot, #yjyxfcyesm tr, #yjyxfcyesm td, #yjyxfcyesm th {
+  border-style: none;
+}
+
+#yjyxfcyesm p {
+  margin: 0;
+  padding: 0;
+}
+
+#yjyxfcyesm .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#yjyxfcyesm .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yjyxfcyesm .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yjyxfcyesm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yjyxfcyesm .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yjyxfcyesm .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yjyxfcyesm .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yjyxfcyesm .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yjyxfcyesm .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yjyxfcyesm .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#yjyxfcyesm .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yjyxfcyesm .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yjyxfcyesm .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yjyxfcyesm .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yjyxfcyesm .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yjyxfcyesm .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#yjyxfcyesm .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yjyxfcyesm .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yjyxfcyesm .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yjyxfcyesm .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yjyxfcyesm .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yjyxfcyesm .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yjyxfcyesm .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yjyxfcyesm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yjyxfcyesm .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yjyxfcyesm .gt_left {
+  text-align: left;
+}
+
+#yjyxfcyesm .gt_center {
+  text-align: center;
+}
+
+#yjyxfcyesm .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yjyxfcyesm .gt_font_normal {
+  font-weight: normal;
+}
+
+#yjyxfcyesm .gt_font_bold {
+  font-weight: bold;
+}
+
+#yjyxfcyesm .gt_font_italic {
+  font-style: italic;
+}
+
+#yjyxfcyesm .gt_super {
+  font-size: 65%;
+}
+
+#yjyxfcyesm .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#yjyxfcyesm .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yjyxfcyesm .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#yjyxfcyesm .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#yjyxfcyesm .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yjyxfcyesm .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yjyxfcyesm .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#yjyxfcyesm .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#yjyxfcyesm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">Type by Design</td>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Design" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">Design</th>
+<th id="Steel" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Steel</th>
+<th id="Wood" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Wood</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Design">Bobsled</td>
+<td class="gt_row gt_right" headers="Steel">3</td>
+<td class="gt_row gt_right" headers="Wood">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Design">Flying</td>
+<td class="gt_row gt_right" headers="Steel">9</td>
+<td class="gt_row gt_right" headers="Wood">NA</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Design">Inverted</td>
+<td class="gt_row gt_right" headers="Steel">42</td>
+<td class="gt_row gt_right" headers="Wood">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Design">Sit Down</td>
+<td class="gt_row gt_right" headers="Steel">456</td>
+<td class="gt_row gt_right" headers="Wood">104</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Design">Stand Up</td>
+<td class="gt_row gt_right" headers="Steel">4</td>
+<td class="gt_row gt_right" headers="Wood">NA</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Design">Suspended</td>
+<td class="gt_row gt_right" headers="Steel">7</td>
+<td class="gt_row gt_right" headers="Wood">NA</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Design">Wing</td>
+<td class="gt_row gt_right" headers="Steel">9</td>
+<td class="gt_row gt_right" headers="Wood">NA</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Note: Wood coasters are almost exclusively Sit Down design.</p>
+<ul>
+<li>Create a stacked bar graph for Type by InversionsYN</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> coaster_data, <span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">fill =</span> InversionsYN)) <span class="sc">+</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Type"</span>, <span class="at">title =</span> <span class="st">"Roller Coaster Type by Inversion Status"</span>) <span class="sc">+</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="st">"Inversion Status"</span>) <span class="sc">+</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note: Steel coasters with inversions are in the minority, but wood coasters with inversions are very rare.</p>
+<ul>
+<li>Recreate the above as a side-by-side bar graph</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> coaster_data, <span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">fill =</span> InversionsYN)) <span class="sc">+</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Type"</span>, <span class="at">title =</span> <span class="st">"Roller Coaster Type by Inversion Status"</span>) <span class="sc">+</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="st">"Inversion Status"</span>) <span class="sc">+</span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="numeric-variables" class="level3">
+<h3 class="anchored" data-anchor-id="numeric-variables">Numeric Variables</h3>
+<ul>
+<li>Find measures of center and spread for two numeric variables: TopSpeed and MaxHeight</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(TopSpeed, MaxHeight), </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">list</span>(<span class="st">"mean"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"median"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">median</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"var"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">var</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"sd"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"IQR"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">IQR</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">.names =</span> <span class="st">"{.fn}_{.col}"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">everything</span>(),</span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"Statistic"</span>, <span class="st">"Variable"</span>),</span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="st">"_"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> Statistic,</span>
+<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> value) <span class="sc">|&gt;</span></span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Variable, mean, var, sd, median, IQR) <span class="sc">|&gt;</span></span>
+<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top Speed and Max Height"</span>,</span>
+<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Mean, Median, Var, SD, and IQR for all Roller Coasters"</span></span>
+<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="tpoxbmlhfh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tpoxbmlhfh table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#tpoxbmlhfh thead, #tpoxbmlhfh tbody, #tpoxbmlhfh tfoot, #tpoxbmlhfh tr, #tpoxbmlhfh td, #tpoxbmlhfh th {
+  border-style: none;
+}
+
+#tpoxbmlhfh p {
+  margin: 0;
+  padding: 0;
+}
+
+#tpoxbmlhfh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tpoxbmlhfh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tpoxbmlhfh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tpoxbmlhfh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tpoxbmlhfh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tpoxbmlhfh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tpoxbmlhfh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tpoxbmlhfh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tpoxbmlhfh .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#tpoxbmlhfh .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#tpoxbmlhfh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tpoxbmlhfh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tpoxbmlhfh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tpoxbmlhfh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tpoxbmlhfh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tpoxbmlhfh .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#tpoxbmlhfh .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#tpoxbmlhfh .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#tpoxbmlhfh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tpoxbmlhfh .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#tpoxbmlhfh .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tpoxbmlhfh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tpoxbmlhfh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tpoxbmlhfh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tpoxbmlhfh .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tpoxbmlhfh .gt_left {
+  text-align: left;
+}
+
+#tpoxbmlhfh .gt_center {
+  text-align: center;
+}
+
+#tpoxbmlhfh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tpoxbmlhfh .gt_font_normal {
+  font-weight: normal;
+}
+
+#tpoxbmlhfh .gt_font_bold {
+  font-weight: bold;
+}
+
+#tpoxbmlhfh .gt_font_italic {
+  font-style: italic;
+}
+
+#tpoxbmlhfh .gt_super {
+  font-size: 65%;
+}
+
+#tpoxbmlhfh .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#tpoxbmlhfh .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#tpoxbmlhfh .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#tpoxbmlhfh .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#tpoxbmlhfh .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tpoxbmlhfh .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tpoxbmlhfh .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#tpoxbmlhfh .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#tpoxbmlhfh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="6" class="gt_heading gt_title gt_font_normal">Top Speed and Max Height</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Mean, Median, Var, SD, and IQR for all Roller Coasters</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Variable</th>
+<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean</th>
+<th id="var" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">var</th>
+<th id="sd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd</th>
+<th id="median" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median</th>
+<th id="IQR" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">IQR</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Variable">TopSpeed</td>
+<td class="gt_row gt_right" headers="mean">42.24456</td>
+<td class="gt_row gt_right" headers="var">375.2168</td>
+<td class="gt_row gt_right" headers="sd">19.37051</td>
+<td class="gt_row gt_right" headers="median">45.0</td>
+<td class="gt_row gt_right" headers="IQR">26.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Variable">MaxHeight</td>
+<td class="gt_row gt_right" headers="mean">76.80399</td>
+<td class="gt_row gt_right" headers="var">3783.6485</td>
+<td class="gt_row gt_right" headers="sd">61.51137</td>
+<td class="gt_row gt_right" headers="median">64.3</td>
+<td class="gt_row gt_right" headers="IQR">81.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li>Now find center and spread of TopSpeed and MaxHeight for Extreme Scale roller coasters</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Scale <span class="sc">==</span> <span class="st">"Extreme"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(TopSpeed, MaxHeight), </span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">list</span>(<span class="st">"mean"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"median"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">median</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"var"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">var</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"sd"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"IQR"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">IQR</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">.names =</span> <span class="st">"{.fn}_{.col}"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">everything</span>(),</span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"Statistic"</span>, <span class="st">"Variable"</span>),</span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="st">"_"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> Statistic,</span>
+<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> value) <span class="sc">|&gt;</span></span>
+<span id="cb71-17"><a href="#cb71-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Variable, mean, var, sd, median, IQR) <span class="sc">|&gt;</span></span>
+<span id="cb71-18"><a href="#cb71-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb71-19"><a href="#cb71-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb71-20"><a href="#cb71-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top Speed and Max Height"</span>,</span>
+<span id="cb71-21"><a href="#cb71-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Mean, Median, Var, SD, and IQR for Extreme Roller Coasters"</span></span>
+<span id="cb71-22"><a href="#cb71-22" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="uycpoqynuw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uycpoqynuw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uycpoqynuw thead, #uycpoqynuw tbody, #uycpoqynuw tfoot, #uycpoqynuw tr, #uycpoqynuw td, #uycpoqynuw th {
+  border-style: none;
+}
+
+#uycpoqynuw p {
+  margin: 0;
+  padding: 0;
+}
+
+#uycpoqynuw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uycpoqynuw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uycpoqynuw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uycpoqynuw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uycpoqynuw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uycpoqynuw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uycpoqynuw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uycpoqynuw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uycpoqynuw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uycpoqynuw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uycpoqynuw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uycpoqynuw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uycpoqynuw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uycpoqynuw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uycpoqynuw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uycpoqynuw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uycpoqynuw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uycpoqynuw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uycpoqynuw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uycpoqynuw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uycpoqynuw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uycpoqynuw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uycpoqynuw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uycpoqynuw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uycpoqynuw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uycpoqynuw .gt_left {
+  text-align: left;
+}
+
+#uycpoqynuw .gt_center {
+  text-align: center;
+}
+
+#uycpoqynuw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uycpoqynuw .gt_font_normal {
+  font-weight: normal;
+}
+
+#uycpoqynuw .gt_font_bold {
+  font-weight: bold;
+}
+
+#uycpoqynuw .gt_font_italic {
+  font-style: italic;
+}
+
+#uycpoqynuw .gt_super {
+  font-size: 65%;
+}
+
+#uycpoqynuw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uycpoqynuw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uycpoqynuw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uycpoqynuw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uycpoqynuw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uycpoqynuw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uycpoqynuw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#uycpoqynuw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uycpoqynuw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="6" class="gt_heading gt_title gt_font_normal">Top Speed and Max Height</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Mean, Median, Var, SD, and IQR for Extreme Roller Coasters</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Variable</th>
+<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean</th>
+<th id="var" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">var</th>
+<th id="sd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd</th>
+<th id="median" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median</th>
+<th id="IQR" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">IQR</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Variable">TopSpeed</td>
+<td class="gt_row gt_right" headers="mean">56.9056</td>
+<td class="gt_row gt_right" headers="var">173.5542</td>
+<td class="gt_row gt_right" headers="sd">13.17400</td>
+<td class="gt_row gt_right" headers="median">54.85</td>
+<td class="gt_row gt_right" headers="IQR">15</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Variable">MaxHeight</td>
+<td class="gt_row gt_right" headers="mean">126.4955</td>
+<td class="gt_row gt_right" headers="var">3469.5183</td>
+<td class="gt_row gt_right" headers="sd">58.90262</td>
+<td class="gt_row gt_right" headers="median">110.00</td>
+<td class="gt_row gt_right" headers="IQR">55</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Note: Compared to all roller coasters, Extreme roller coasters have higher mean TopSpeed (56.9 vs 42.2) and higher mean MaxHeight (126.5 vs 76.8).</p>
+<ul>
+<li>Find measures of center and spread of Length and Duration across AgeGroup</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(AgeGroup) <span class="sc">|&gt;</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(Length, Duration), </span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">list</span>(<span class="st">"mean"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"median"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">median</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"var"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">var</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"sd"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"IQR"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">IQR</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">.names =</span> <span class="st">"{.fn}_{.col}"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Length and Duration Mean, Median, Var, SD, and IQR"</span>,</span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Stratified by Age Group"</span></span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Length"</span>,</span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">ends_with</span>(<span class="st">"Length"</span>)</span>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_spanner</span>(</span>
+<span id="cb72-20"><a href="#cb72-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">"Duration"</span>,</span>
+<span id="cb72-21"><a href="#cb72-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">ends_with</span>(<span class="st">"Duration"</span>)</span>
+<span id="cb72-22"><a href="#cb72-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb72-23"><a href="#cb72-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb72-24"><a href="#cb72-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_Length =</span> <span class="st">"Mean"</span>,</span>
+<span id="cb72-25"><a href="#cb72-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_Length =</span> <span class="st">"Median"</span>,</span>
+<span id="cb72-26"><a href="#cb72-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_Length =</span> <span class="st">"Variance"</span>,</span>
+<span id="cb72-27"><a href="#cb72-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_Length =</span> <span class="st">"SD"</span>,</span>
+<span id="cb72-28"><a href="#cb72-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">IQR_Length =</span> <span class="st">"IQR"</span>,</span>
+<span id="cb72-29"><a href="#cb72-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_Duration =</span> <span class="st">"Mean"</span>,</span>
+<span id="cb72-30"><a href="#cb72-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_Duration =</span> <span class="st">"Median"</span>,</span>
+<span id="cb72-31"><a href="#cb72-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">var_Duration =</span> <span class="st">"Variance"</span>,</span>
+<span id="cb72-32"><a href="#cb72-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_Duration =</span> <span class="st">"SD"</span>,</span>
+<span id="cb72-33"><a href="#cb72-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">IQR_Duration =</span> <span class="st">"IQR"</span></span>
+<span id="cb72-34"><a href="#cb72-34" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="gmyjbpffkj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gmyjbpffkj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#gmyjbpffkj thead, #gmyjbpffkj tbody, #gmyjbpffkj tfoot, #gmyjbpffkj tr, #gmyjbpffkj td, #gmyjbpffkj th {
+  border-style: none;
+}
+
+#gmyjbpffkj p {
+  margin: 0;
+  padding: 0;
+}
+
+#gmyjbpffkj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#gmyjbpffkj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gmyjbpffkj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gmyjbpffkj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gmyjbpffkj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gmyjbpffkj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gmyjbpffkj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gmyjbpffkj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gmyjbpffkj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#gmyjbpffkj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#gmyjbpffkj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gmyjbpffkj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gmyjbpffkj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gmyjbpffkj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gmyjbpffkj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmyjbpffkj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gmyjbpffkj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gmyjbpffkj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#gmyjbpffkj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmyjbpffkj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gmyjbpffkj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmyjbpffkj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gmyjbpffkj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmyjbpffkj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gmyjbpffkj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gmyjbpffkj .gt_left {
+  text-align: left;
+}
+
+#gmyjbpffkj .gt_center {
+  text-align: center;
+}
+
+#gmyjbpffkj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gmyjbpffkj .gt_font_normal {
+  font-weight: normal;
+}
+
+#gmyjbpffkj .gt_font_bold {
+  font-weight: bold;
+}
+
+#gmyjbpffkj .gt_font_italic {
+  font-style: italic;
+}
+
+#gmyjbpffkj .gt_super {
+  font-size: 65%;
+}
+
+#gmyjbpffkj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#gmyjbpffkj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gmyjbpffkj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gmyjbpffkj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gmyjbpffkj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gmyjbpffkj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gmyjbpffkj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#gmyjbpffkj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#gmyjbpffkj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<td colspan="11" class="gt_heading gt_title gt_font_normal">Length and Duration Mean, Median, Var, SD, and IQR</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="11" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Stratified by Age Group</td>
+</tr>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="AgeGroup" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">AgeGroup</th>
+<th colspan="5" id="Length" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Length
+</div></th>
+<th colspan="5" id="Duration" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Duration
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="mean_Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="median_Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Median</th>
+<th id="var_Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Variance</th>
+<th id="sd_Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SD</th>
+<th id="IQR_Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">IQR</th>
+<th id="mean_Duration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="median_Duration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Median</th>
+<th id="var_Duration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Variance</th>
+<th id="sd_Duration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SD</th>
+<th id="IQR_Duration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">IQR</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="AgeGroup">1:Older</td>
+<td class="gt_row gt_right" headers="mean_Length">2269.149</td>
+<td class="gt_row gt_right" headers="median_Length">2520</td>
+<td class="gt_row gt_right" headers="var_Length">1540188</td>
+<td class="gt_row gt_right" headers="sd_Length">1241.043</td>
+<td class="gt_row gt_right" headers="IQR_Length">1605.5</td>
+<td class="gt_row gt_right" headers="mean_Duration">110.4615</td>
+<td class="gt_row gt_right" headers="median_Duration">110.0</td>
+<td class="gt_row gt_right" headers="var_Duration">1713.315</td>
+<td class="gt_row gt_right" headers="sd_Duration">41.39221</td>
+<td class="gt_row gt_right" headers="IQR_Duration">54.00</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="AgeGroup">2:Recent</td>
+<td class="gt_row gt_right" headers="mean_Length">2122.310</td>
+<td class="gt_row gt_right" headers="median_Length">2100</td>
+<td class="gt_row gt_right" headers="var_Length">1927911</td>
+<td class="gt_row gt_right" headers="sd_Length">1388.492</td>
+<td class="gt_row gt_right" headers="IQR_Length">1988.5</td>
+<td class="gt_row gt_right" headers="mean_Duration">109.3242</td>
+<td class="gt_row gt_right" headers="median_Duration">108.0</td>
+<td class="gt_row gt_right" headers="var_Duration">2713.944</td>
+<td class="gt_row gt_right" headers="sd_Duration">52.09553</td>
+<td class="gt_row gt_right" headers="IQR_Duration">49.75</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="AgeGroup">3:Newest</td>
+<td class="gt_row gt_right" headers="mean_Length">1774.484</td>
+<td class="gt_row gt_right" headers="median_Length">1300</td>
+<td class="gt_row gt_right" headers="var_Length">2012191</td>
+<td class="gt_row gt_right" headers="sd_Length">1418.517</td>
+<td class="gt_row gt_right" headers="IQR_Length">1973.1</td>
+<td class="gt_row gt_right" headers="mean_Duration">103.2857</td>
+<td class="gt_row gt_right" headers="median_Duration">94.5</td>
+<td class="gt_row gt_right" headers="var_Duration">3034.728</td>
+<td class="gt_row gt_right" headers="sd_Duration">55.08837</td>
+<td class="gt_row gt_right" headers="IQR_Duration">61.75</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li>Find measures of center and spread of Drop and NumInversions across Type and CensusRegion</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Type, CensusRegion) <span class="sc">|&gt;</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">c</span>(Drop, NumInversions), </span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">list</span>(<span class="st">"mean"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"median"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">median</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"var"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">var</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"sd"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">sd</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"IQR"</span> <span class="ot">=</span> <span class="er">~</span> <span class="fu">IQR</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">.names =</span> <span class="st">"{.fn}_{.col}"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Drop and Number of Inversions Mean, Median, Var, SD, and IQR"</span>,</span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Stratified by Type and Census Region"</span></span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Type'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="yzvvxfdrok" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yzvvxfdrok table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#yzvvxfdrok thead, #yzvvxfdrok tbody, #yzvvxfdrok tfoot, #yzvvxfdrok tr, #yzvvxfdrok td, #yzvvxfdrok th {
+  border-style: none;
+}
+
+#yzvvxfdrok p {
+  margin: 0;
+  padding: 0;
+}
+
+#yzvvxfdrok .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#yzvvxfdrok .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yzvvxfdrok .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yzvvxfdrok .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yzvvxfdrok .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yzvvxfdrok .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yzvvxfdrok .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yzvvxfdrok .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yzvvxfdrok .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yzvvxfdrok .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#yzvvxfdrok .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yzvvxfdrok .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yzvvxfdrok .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yzvvxfdrok .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yzvvxfdrok .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzvvxfdrok .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#yzvvxfdrok .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yzvvxfdrok .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yzvvxfdrok .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzvvxfdrok .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yzvvxfdrok .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzvvxfdrok .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yzvvxfdrok .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzvvxfdrok .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yzvvxfdrok .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yzvvxfdrok .gt_left {
+  text-align: left;
+}
+
+#yzvvxfdrok .gt_center {
+  text-align: center;
+}
+
+#yzvvxfdrok .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yzvvxfdrok .gt_font_normal {
+  font-weight: normal;
+}
+
+#yzvvxfdrok .gt_font_bold {
+  font-weight: bold;
+}
+
+#yzvvxfdrok .gt_font_italic {
+  font-style: italic;
+}
+
+#yzvvxfdrok .gt_super {
+  font-size: 65%;
+}
+
+#yzvvxfdrok .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#yzvvxfdrok .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yzvvxfdrok .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#yzvvxfdrok .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#yzvvxfdrok .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yzvvxfdrok .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yzvvxfdrok .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#yzvvxfdrok .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#yzvvxfdrok div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="11" class="gt_heading gt_title gt_font_normal">Drop and Number of Inversions Mean, Median, Var, SD, and IQR</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="11" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Stratified by Type and Census Region</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="CensusRegion" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">CensusRegion</th>
+<th id="mean_Drop" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean_Drop</th>
+<th id="median_Drop" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median_Drop</th>
+<th id="var_Drop" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">var_Drop</th>
+<th id="sd_Drop" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd_Drop</th>
+<th id="IQR_Drop" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">IQR_Drop</th>
+<th id="mean_NumInversions" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean_NumInversions</th>
+<th id="median_NumInversions" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median_NumInversions</th>
+<th id="var_NumInversions" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">var_NumInversions</th>
+<th id="sd_NumInversions" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd_NumInversions</th>
+<th id="IQR_NumInversions" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">IQR_NumInversions</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="gt_group_heading_row odd">
+<th colspan="11" id="Steel" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Steel</th>
+</tr>
+<tr class="gt_row_group_first even">
+<td class="gt_row gt_center" headers="Steel  CensusRegion">Midwest</td>
+<td class="gt_row gt_right" headers="Steel  mean_Drop">82.76429</td>
+<td class="gt_row gt_right" headers="Steel  median_Drop">65.0</td>
+<td class="gt_row gt_right" headers="Steel  var_Drop">6090.2549</td>
+<td class="gt_row gt_right" headers="Steel  sd_Drop">78.04008</td>
+<td class="gt_row gt_right" headers="Steel  IQR_Drop">113.00</td>
+<td class="gt_row gt_right" headers="Steel  mean_NumInversions">1.10000000</td>
+<td class="gt_row gt_right" headers="Steel  median_NumInversions">0</td>
+<td class="gt_row gt_right" headers="Steel  var_NumInversions">3.50505051</td>
+<td class="gt_row gt_right" headers="Steel  sd_NumInversions">1.8721780</td>
+<td class="gt_row gt_right" headers="Steel  IQR_NumInversions">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Steel  CensusRegion">Northeast</td>
+<td class="gt_row gt_right" headers="Steel  mean_Drop">76.76207</td>
+<td class="gt_row gt_right" headers="Steel  median_Drop">54.0</td>
+<td class="gt_row gt_right" headers="Steel  var_Drop">5134.3717</td>
+<td class="gt_row gt_right" headers="Steel  sd_Drop">71.65453</td>
+<td class="gt_row gt_right" headers="Steel  IQR_Drop">93.00</td>
+<td class="gt_row gt_right" headers="Steel  mean_NumInversions">1.09523810</td>
+<td class="gt_row gt_right" headers="Steel  median_NumInversions">0</td>
+<td class="gt_row gt_right" headers="Steel  var_NumInversions">3.79885714</td>
+<td class="gt_row gt_right" headers="Steel  sd_NumInversions">1.9490657</td>
+<td class="gt_row gt_right" headers="Steel  IQR_NumInversions">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Steel  CensusRegion">South</td>
+<td class="gt_row gt_right" headers="Steel  mean_Drop">73.07434</td>
+<td class="gt_row gt_right" headers="Steel  median_Drop">60.0</td>
+<td class="gt_row gt_right" headers="Steel  var_Drop">4016.4074</td>
+<td class="gt_row gt_right" headers="Steel  sd_Drop">63.37513</td>
+<td class="gt_row gt_right" headers="Steel  IQR_Drop">90.00</td>
+<td class="gt_row gt_right" headers="Steel  mean_NumInversions">1.06122449</td>
+<td class="gt_row gt_right" headers="Steel  median_NumInversions">0</td>
+<td class="gt_row gt_right" headers="Steel  var_NumInversions">3.53469388</td>
+<td class="gt_row gt_right" headers="Steel  sd_NumInversions">1.8800782</td>
+<td class="gt_row gt_right" headers="Steel  IQR_NumInversions">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Steel  CensusRegion">West</td>
+<td class="gt_row gt_right" headers="Steel  mean_Drop">75.77857</td>
+<td class="gt_row gt_right" headers="Steel  median_Drop">61.0</td>
+<td class="gt_row gt_right" headers="Steel  var_Drop">4501.9757</td>
+<td class="gt_row gt_right" headers="Steel  sd_Drop">67.09676</td>
+<td class="gt_row gt_right" headers="Steel  IQR_Drop">84.50</td>
+<td class="gt_row gt_right" headers="Steel  mean_NumInversions">1.12962963</td>
+<td class="gt_row gt_right" headers="Steel  median_NumInversions">0</td>
+<td class="gt_row gt_right" headers="Steel  var_NumInversions">3.49705781</td>
+<td class="gt_row gt_right" headers="Steel  sd_NumInversions">1.8700422</td>
+<td class="gt_row gt_right" headers="Steel  IQR_NumInversions">2</td>
+</tr>
+<tr class="gt_group_heading_row even">
+<th colspan="11" id="Wood" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Wood</th>
+</tr>
+<tr class="gt_row_group_first odd">
+<td class="gt_row gt_center" headers="Wood  CensusRegion">Midwest</td>
+<td class="gt_row gt_right" headers="Wood  mean_Drop">88.22121</td>
+<td class="gt_row gt_right" headers="Wood  median_Drop">83.0</td>
+<td class="gt_row gt_right" headers="Wood  var_Drop">1853.6423</td>
+<td class="gt_row gt_right" headers="Wood  sd_Drop">43.05395</td>
+<td class="gt_row gt_right" headers="Wood  IQR_Drop">50.00</td>
+<td class="gt_row gt_right" headers="Wood  mean_NumInversions">0.17647059</td>
+<td class="gt_row gt_right" headers="Wood  median_NumInversions">0</td>
+<td class="gt_row gt_right" headers="Wood  var_NumInversions">0.39215686</td>
+<td class="gt_row gt_right" headers="Wood  sd_NumInversions">0.6262243</td>
+<td class="gt_row gt_right" headers="Wood  IQR_NumInversions">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Wood  CensusRegion">Northeast</td>
+<td class="gt_row gt_right" headers="Wood  mean_Drop">72.66897</td>
+<td class="gt_row gt_right" headers="Wood  median_Drop">75.0</td>
+<td class="gt_row gt_right" headers="Wood  var_Drop">1069.5922</td>
+<td class="gt_row gt_right" headers="Wood  sd_Drop">32.70462</td>
+<td class="gt_row gt_right" headers="Wood  IQR_Drop">37.00</td>
+<td class="gt_row gt_right" headers="Wood  mean_NumInversions">0.00000000</td>
+<td class="gt_row gt_right" headers="Wood  median_NumInversions">0</td>
+<td class="gt_row gt_right" headers="Wood  var_NumInversions">0.00000000</td>
+<td class="gt_row gt_right" headers="Wood  sd_NumInversions">0.0000000</td>
+<td class="gt_row gt_right" headers="Wood  IQR_NumInversions">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Wood  CensusRegion">South</td>
+<td class="gt_row gt_right" headers="Wood  mean_Drop">77.95769</td>
+<td class="gt_row gt_right" headers="Wood  median_Drop">80.1</td>
+<td class="gt_row gt_right" headers="Wood  var_Drop">764.9073</td>
+<td class="gt_row gt_right" headers="Wood  sd_Drop">27.65696</td>
+<td class="gt_row gt_right" headers="Wood  IQR_Drop">24.20</td>
+<td class="gt_row gt_right" headers="Wood  mean_NumInversions">0.03703704</td>
+<td class="gt_row gt_right" headers="Wood  median_NumInversions">0</td>
+<td class="gt_row gt_right" headers="Wood  var_NumInversions">0.03703704</td>
+<td class="gt_row gt_right" headers="Wood  sd_NumInversions">0.1924501</td>
+<td class="gt_row gt_right" headers="Wood  IQR_NumInversions">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Wood  CensusRegion">West</td>
+<td class="gt_row gt_right" headers="Wood  mean_Drop">81.69167</td>
+<td class="gt_row gt_right" headers="Wood  median_Drop">80.5</td>
+<td class="gt_row gt_right" headers="Wood  var_Drop">283.2681</td>
+<td class="gt_row gt_right" headers="Wood  sd_Drop">16.83057</td>
+<td class="gt_row gt_right" headers="Wood  IQR_Drop">18.25</td>
+<td class="gt_row gt_right" headers="Wood  mean_NumInversions">0.00000000</td>
+<td class="gt_row gt_right" headers="Wood  median_NumInversions">0</td>
+<td class="gt_row gt_right" headers="Wood  var_NumInversions">0.00000000</td>
+<td class="gt_row gt_right" headers="Wood  sd_NumInversions">0.0000000</td>
+<td class="gt_row gt_right" headers="Wood  IQR_NumInversions">0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li>Create a correlation matrix between all of the numeric variables</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>NumericVars <span class="ot">&lt;-</span> coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) </span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(NumericVars, <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="co"># forces gt() to use rownames (omitted by default)</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Roller Coaster Data Numeric Variables"</span>,</span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Correlation Matrix"</span></span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="mkloxecena" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mkloxecena table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mkloxecena thead, #mkloxecena tbody, #mkloxecena tfoot, #mkloxecena tr, #mkloxecena td, #mkloxecena th {
+  border-style: none;
+}
+
+#mkloxecena p {
+  margin: 0;
+  padding: 0;
+}
+
+#mkloxecena .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mkloxecena .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mkloxecena .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mkloxecena .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mkloxecena .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mkloxecena .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mkloxecena .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mkloxecena .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mkloxecena .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mkloxecena .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mkloxecena .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mkloxecena .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mkloxecena .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mkloxecena .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mkloxecena .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mkloxecena .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mkloxecena .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mkloxecena .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mkloxecena .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mkloxecena .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mkloxecena .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mkloxecena .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mkloxecena .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mkloxecena .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mkloxecena .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mkloxecena .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mkloxecena .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mkloxecena .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mkloxecena .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mkloxecena .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mkloxecena .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mkloxecena .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mkloxecena .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mkloxecena .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mkloxecena .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mkloxecena .gt_left {
+  text-align: left;
+}
+
+#mkloxecena .gt_center {
+  text-align: center;
+}
+
+#mkloxecena .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mkloxecena .gt_font_normal {
+  font-weight: normal;
+}
+
+#mkloxecena .gt_font_bold {
+  font-weight: bold;
+}
+
+#mkloxecena .gt_font_italic {
+  font-style: italic;
+}
+
+#mkloxecena .gt_super {
+  font-size: 65%;
+}
+
+#mkloxecena .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mkloxecena .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mkloxecena .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mkloxecena .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mkloxecena .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mkloxecena .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mkloxecena .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mkloxecena .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mkloxecena div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="8" class="gt_heading gt_title gt_font_normal">Roller Coaster Data Numeric Variables</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="8" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Correlation Matrix</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="YearOpened" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">YearOpened</th>
+<th id="TopSpeed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">TopSpeed</th>
+<th id="MaxHeight" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">MaxHeight</th>
+<th id="Drop" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Drop</th>
+<th id="Length" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Length</th>
+<th id="Duration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Duration</th>
+<th id="NumInversions" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">NumInversions</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">YearOpened</th>
+<td class="gt_row gt_right" headers="stub_1_1 YearOpened">1.000000000</td>
+<td class="gt_row gt_right" headers="stub_1_1 TopSpeed">0.01392135</td>
+<td class="gt_row gt_right" headers="stub_1_1 MaxHeight">0.03884265</td>
+<td class="gt_row gt_right" headers="stub_1_1 Drop">0.1044485</td>
+<td class="gt_row gt_right" headers="stub_1_1 Length">-0.1344045</td>
+<td class="gt_row gt_right" headers="stub_1_1 Duration">-0.009649587</td>
+<td class="gt_row gt_right" headers="stub_1_1 NumInversions">0.07559183</td>
+</tr>
+<tr class="even">
+<th id="stub_1_2" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">TopSpeed</th>
+<td class="gt_row gt_right" headers="stub_1_2 YearOpened">0.013921347</td>
+<td class="gt_row gt_right" headers="stub_1_2 TopSpeed">1.00000000</td>
+<td class="gt_row gt_right" headers="stub_1_2 MaxHeight">0.90384443</td>
+<td class="gt_row gt_right" headers="stub_1_2 Drop">0.8919588</td>
+<td class="gt_row gt_right" headers="stub_1_2 Length">0.7399484</td>
+<td class="gt_row gt_right" headers="stub_1_2 Duration">0.316547964</td>
+<td class="gt_row gt_right" headers="stub_1_2 NumInversions">0.39529838</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_3" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">MaxHeight</th>
+<td class="gt_row gt_right" headers="stub_1_3 YearOpened">0.038842645</td>
+<td class="gt_row gt_right" headers="stub_1_3 TopSpeed">0.90384443</td>
+<td class="gt_row gt_right" headers="stub_1_3 MaxHeight">1.00000000</td>
+<td class="gt_row gt_right" headers="stub_1_3 Drop">0.9639765</td>
+<td class="gt_row gt_right" headers="stub_1_3 Length">0.6777836</td>
+<td class="gt_row gt_right" headers="stub_1_3 Duration">0.320254481</td>
+<td class="gt_row gt_right" headers="stub_1_3 NumInversions">0.39858096</td>
+</tr>
+<tr class="even">
+<th id="stub_1_4" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Drop</th>
+<td class="gt_row gt_right" headers="stub_1_4 YearOpened">0.104448500</td>
+<td class="gt_row gt_right" headers="stub_1_4 TopSpeed">0.89195878</td>
+<td class="gt_row gt_right" headers="stub_1_4 MaxHeight">0.96397646</td>
+<td class="gt_row gt_right" headers="stub_1_4 Drop">1.0000000</td>
+<td class="gt_row gt_right" headers="stub_1_4 Length">0.6681925</td>
+<td class="gt_row gt_right" headers="stub_1_4 Duration">0.297297845</td>
+<td class="gt_row gt_right" headers="stub_1_4 NumInversions">0.33128047</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_5" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Length</th>
+<td class="gt_row gt_right" headers="stub_1_5 YearOpened">-0.134404533</td>
+<td class="gt_row gt_right" headers="stub_1_5 TopSpeed">0.73994844</td>
+<td class="gt_row gt_right" headers="stub_1_5 MaxHeight">0.67778363</td>
+<td class="gt_row gt_right" headers="stub_1_5 Drop">0.6681925</td>
+<td class="gt_row gt_right" headers="stub_1_5 Length">1.0000000</td>
+<td class="gt_row gt_right" headers="stub_1_5 Duration">0.495995807</td>
+<td class="gt_row gt_right" headers="stub_1_5 NumInversions">0.29150316</td>
+</tr>
+<tr class="even">
+<th id="stub_1_6" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">Duration</th>
+<td class="gt_row gt_right" headers="stub_1_6 YearOpened">-0.009649587</td>
+<td class="gt_row gt_right" headers="stub_1_6 TopSpeed">0.31654796</td>
+<td class="gt_row gt_right" headers="stub_1_6 MaxHeight">0.32025448</td>
+<td class="gt_row gt_right" headers="stub_1_6 Drop">0.2972978</td>
+<td class="gt_row gt_right" headers="stub_1_6 Length">0.4959958</td>
+<td class="gt_row gt_right" headers="stub_1_6 Duration">1.000000000</td>
+<td class="gt_row gt_right" headers="stub_1_6 NumInversions">0.12583474</td>
+</tr>
+<tr class="odd">
+<th id="stub_1_7" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">NumInversions</th>
+<td class="gt_row gt_right" headers="stub_1_7 YearOpened">0.075591831</td>
+<td class="gt_row gt_right" headers="stub_1_7 TopSpeed">0.39529838</td>
+<td class="gt_row gt_right" headers="stub_1_7 MaxHeight">0.39858096</td>
+<td class="gt_row gt_right" headers="stub_1_7 Drop">0.3312805</td>
+<td class="gt_row gt_right" headers="stub_1_7 Length">0.2915032</td>
+<td class="gt_row gt_right" headers="stub_1_7 Duration">0.125834744</td>
+<td class="gt_row gt_right" headers="stub_1_7 NumInversions">1.00000000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Note: The three variables TopSpeed, MaxHeight, and Drop all have very strong positive correlations with each other (0.89 or greater). Length also shows positive correlation with each of these variables (range 0.67 to 0.74).</p>
+<ul>
+<li>Create a histogram for MaxHeight and TopSpeed across Type</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(MaxHeight), <span class="fu">aes</span>(<span class="at">x =</span> MaxHeight))</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">50</span>, <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">fill =</span> Type)) <span class="sc">+</span> </span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Max Height by Type"</span>) <span class="sc">+</span> </span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(TopSpeed), <span class="fu">aes</span>(<span class="at">x =</span> TopSpeed))</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">15</span>, <span class="at">alpha =</span> .<span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">fill =</span> Type)) <span class="sc">+</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top Speed by Type"</span>) <span class="sc">+</span> </span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-29-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Create a kernel density plot for MaxHeight and TopSpeed across Type</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(MaxHeight), <span class="fu">aes</span>(<span class="at">x =</span> MaxHeight))</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">fill =</span> Type)) <span class="sc">+</span> </span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Max Height by Type"</span>) <span class="sc">+</span> </span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(TopSpeed), <span class="fu">aes</span>(<span class="at">x =</span> TopSpeed))</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">5</span>, <span class="fu">aes</span>(<span class="at">fill =</span> Type)) <span class="sc">+</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top Speed by Type"</span>) <span class="sc">+</span> </span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-30-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Create a boxplot for MaxHeight and TopSpeed across Type</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(MaxHeight))</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">y =</span> MaxHeight, <span class="at">fill =</span> Type))  <span class="sc">+</span> </span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Max Height by Type"</span>) <span class="sc">+</span> </span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(TopSpeed))</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Type, <span class="at">y =</span> TopSpeed, <span class="at">fill =</span> Type)) <span class="sc">+</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top Speed by Type"</span>) <span class="sc">+</span> </span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-31-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Create a scatterplot relating Length and Duration by AgeGroup</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">drop_na</span>(Length, Duration),</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Length, <span class="at">y =</span> Duration, <span class="at">color =</span> AgeGroup))</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Duration vs Length by Age Group"</span>) <span class="sc">+</span> </span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note: Scatter plot shows a positive correlation between Duration and Length, though no clear distinction between categories of AgeGroup</p>
+<ul>
+<li>Create a scatterplot relating Drop and MaxHeight by Scale</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">drop_na</span>(Drop, MaxHeight),</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Drop, <span class="at">y =</span> MaxHeight, <span class="at">color =</span> Scale))</span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>()  <span class="sc">+</span> </span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Max Height vs Drop by Scale"</span>) <span class="sc">+</span> </span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note: Scatter plot shows very clear linear relationship between Drop and MaxHeight. Additionally, greater values of Drop and MaxHeight correspond with increasing Scale categories.</p>
+<ul>
+<li>Create a scatterplot relating Length and Duration by AgeGroup and facet by CensusRegion</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">drop_na</span>(Length, Duration),</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Length, <span class="at">y =</span> Duration, <span class="at">color =</span> AgeGroup))</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span> CensusRegion)  <span class="sc">+</span> </span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Duration vs Length by Age Group"</span>,</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Faceted by Census Region"</span>) <span class="sc">+</span> </span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title and subtitle</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note: Faceting does not appear to shows any distinction between categories of CensusRegion</p>
+<ul>
+<li>Create a scatterplot relating Drop and MaxHeight by Scale and facet by Type</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">drop_na</span>(Drop, MaxHeight),</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Drop, <span class="at">y =</span> MaxHeight, <span class="at">color =</span> Scale))</span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span> Type) <span class="sc">+</span> </span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Max Height vs Drop by Scale"</span>,</span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Faceted by Type"</span>) <span class="sc">+</span> </span>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title and subtitle</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note: Both scatter plots show a strong linear correlation between MaxHeight and Drop. The high end outliers of MaxHeight and Drop are only observed among steel coasters.</p>
+<ul>
+<li>Create a scatterplot relating Length and Duration by AgeGroup and facet by CensusRegion and Type</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">drop_na</span>(Length, Duration),</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Length, <span class="at">y =</span> Duration, <span class="at">color =</span> AgeGroup))</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(CensusRegion <span class="sc">~</span> Type) <span class="sc">+</span> </span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Duration vs Length by Age Group"</span>,</span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Faceted by Type and Census Region"</span>) <span class="sc">+</span> </span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title and subtitle</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note: Additional faceting here does not appear to provide additional insight. There are not enough wood coasters in the West region to identify a correlation in the plot.</p>
+<ul>
+<li>Create a relating Drop and MaxHeight by Scale and facet by CensusRegion and Type</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(coaster_data <span class="sc">|&gt;</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>              <span class="fu">drop_na</span>(Drop, MaxHeight),</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Drop, <span class="at">y =</span> MaxHeight, <span class="at">color =</span> Scale))</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>g <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(CensusRegion <span class="sc">~</span> Type) <span class="sc">+</span> </span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Max Height vs Drop by Scale"</span>,</span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Faceted by Type and Census Region"</span>) <span class="sc">+</span> </span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="co"># Centers the title and subtitle</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Evans_Version_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note: Again, additional faceting does not appear to provide additional insight. Linear relationship between MaxHeight and Drop is still apparent in all facets.</p>
+
+
 </section>
-<section id="numeric-variables-and-across-groups" class="level2">
-<h2 class="anchored" data-anchor-id="numeric-variables-and-across-groups">Numeric Variables (and across groups)</h2>
-
-
 </section>
 </section>
 

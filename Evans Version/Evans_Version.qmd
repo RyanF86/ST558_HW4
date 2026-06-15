@@ -2,7 +2,21 @@
 title: "Evans_Version"
 format: html
 Author: Evan Whitfield (For this file)
+editor_options: 
+  chunk_output_type: inline
 ---
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(DBI)
+library(knitr)
+library(httr)
+library(jsonlite)
+library(psych)
+library(gt)
+```
+
 
 # Task 1 - Querying an API and a Tidy-Style Function
 
@@ -95,7 +109,37 @@ coaster_data
 Removing Latitude and Longitude 
 ```{r}
 coaster_data <- coaster_data |>
-  select(-"Latitude", -"Longitude")
+  select(-"Latitude", -"Longitude", -"Boundary")
+
+
+colnames(coaster_data) = c("Coaster", # Set variable names
+                           "Park",
+                           "City",
+                           "State",
+                           "CensusRegion",
+                           "YearOpened",
+                           "AgeGroup",
+                           "TopSpeed",
+                           "MaxHeight",
+                           "Scale",
+                           "Type",
+                           "Design",
+                           "Drop",
+                           "Length",
+                           "Duration",
+                           "InversionsYN",
+                           "NumInversions",
+                           "Make")  
+
+coaster_data <- coaster_data |>
+  mutate(CensusRegion = factor(CensusRegion), # Convert select variables to factors
+         AgeGroup = factor(AgeGroup),
+         Scale = factor(Scale),
+         Type = factor(Type),
+         Design = factor(Design),
+         InversionsYN = factor(InversionsYN))
+
+str(coaster_data) # Confirm remaining variables and types
 
 psych::describe(coaster_data)
 ```
@@ -107,7 +151,342 @@ colSums(is.na(coaster_data))
 
 ## Categorical Variables
 
-## Numeric Variables (and across groups)
+
+- Use the table() function to create a one-way contingency table for Design
+
+```{r}
+table(coaster_data$Design)
+```
+
+Note: The most common design is 'Sit Down', with 560 out of the total 635 roller coasters in the data set.
+
+- Use the table() function to create a two-way contingency table for Type by InversionsYN
+
+```{r}
+table(coaster_data$Type, coaster_data$InversionsYN)
+```
+
+Note: Wood roller coasters with inversions are quite rare. The data set only identifies 4 out of the total 635.
+
+- Use the table() function to create a three-way contingency table for AgeGroup by Scale by CensusRegion
+
+```{r}
+table(coaster_data$AgeGroup, coaster_data$Scale, coaster_data$CensusRegion)
+```
+
+Note: Across the three factors of age, scale, and region, the most common combination is Newest/Family/South, with 55 of 635 coasters.
+
+- Use the table() and filter() functions to create a conditional two-way table for Scale by CensusRegion among Newest (AgeGroup) roller coasters
+
+```{r}
+FilteredData <- coaster_data |>
+  filter(AgeGroup == "3:Newest") 
+
+table(FilteredData$Scale, FilteredData$CensusRegion)
+```
+
+- Recreate the conditional two-way table above using a subsetted three-way table
+
+```{r}
+table(coaster_data$Scale, coaster_data$CensusRegion, coaster_data$AgeGroup)[ , , 3]
+```
+
+Note: The South is the only region with more Family coasters than Extreme coasters.
+
+- Create a two-way contingency table for Type by Design using group_by() and summarize() from dplyr. Then use pivot_wider() to make the result look more like the output from table().
+
+```{r}
+coaster_data |>
+  group_by(Type, Design) |>
+  summarize(count = n()) |>
+  pivot_wider(names_from = Type, values_from = count) |>
+  gt() |> 
+  tab_header(
+    title = "Type by Design"
+  )
+```
+
+Note: Wood coasters are almost exclusively Sit Down design.
+
+- Create a stacked bar graph for Type by InversionsYN
+
+```{r}
+ggplot(data = coaster_data, aes(x = Type, fill = InversionsYN)) +
+  geom_bar() +
+  labs(x = "Type", title = "Roller Coaster Type by Inversion Status") +
+  scale_fill_discrete("Inversion Status") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Note: Steel coasters with inversions are in the minority, but wood coasters with inversions are very rare.
+
+- Recreate the above as a side-by-side bar graph
+
+```{r}
+ggplot(data = coaster_data, aes(x = Type, fill = InversionsYN)) +
+  geom_bar(position = "dodge") +
+  labs(x = "Type", title = "Roller Coaster Type by Inversion Status") +
+  scale_fill_discrete("Inversion Status") +
+  theme(plot.title = element_text(hjust = 0.5)) # Centers the title
+```
+
+### Numeric Variables
+
+- Find measures of center and spread for two numeric variables: TopSpeed and MaxHeight
+
+```{r}
+coaster_data |>
+  summarize(across(.cols = c(TopSpeed, MaxHeight), 
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
+            .names = "{.fn}_{.col}")) |>
+  pivot_longer(
+    everything(),
+    names_to = c("Statistic", "Variable"),
+    names_sep = "_") |>
+  pivot_wider(
+    names_from = Statistic,
+    values_from = value) |>
+  select(Variable, mean, var, sd, median, IQR) |>
+  gt() |>
+  tab_header(
+    title = "Top Speed and Max Height",
+    subtitle = "Mean, Median, Var, SD, and IQR for all Roller Coasters"
+  )
+```
+
+- Now find center and spread of TopSpeed and MaxHeight for Extreme Scale roller coasters
+
+```{r}
+coaster_data |>
+  filter(Scale == "Extreme") |>
+  summarize(across(.cols = c(TopSpeed, MaxHeight), 
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
+            .names = "{.fn}_{.col}")) |>
+  pivot_longer(
+    everything(),
+    names_to = c("Statistic", "Variable"),
+    names_sep = "_") |>
+  pivot_wider(
+    names_from = Statistic,
+    values_from = value) |>
+  select(Variable, mean, var, sd, median, IQR) |>
+  gt() |>
+  tab_header(
+    title = "Top Speed and Max Height",
+    subtitle = "Mean, Median, Var, SD, and IQR for Extreme Roller Coasters"
+  )
+```
+
+Note: Compared to all roller coasters, Extreme roller coasters have higher mean TopSpeed (56.9 vs 42.2) and higher mean MaxHeight (126.5 vs 76.8).
+
+- Find measures of center and spread of Length and Duration across AgeGroup
+
+```{r}
+coaster_data |>
+  group_by(AgeGroup) |>
+  summarize(across(.cols = c(Length, Duration), 
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
+            .names = "{.fn}_{.col}")) |>
+  gt() |>
+  tab_header(
+    title = "Length and Duration Mean, Median, Var, SD, and IQR",
+    subtitle = "Stratified by Age Group"
+  ) |>
+  tab_spanner(
+    label = "Length",
+    columns = ends_with("Length")
+  ) |>
+  tab_spanner(
+    label = "Duration",
+    columns = ends_with("Duration")
+  ) |>
+  cols_label(
+    mean_Length = "Mean",
+    median_Length = "Median",
+    var_Length = "Variance",
+    sd_Length = "SD",
+    IQR_Length = "IQR",
+    mean_Duration = "Mean",
+    median_Duration = "Median",
+    var_Duration = "Variance",
+    sd_Duration = "SD",
+    IQR_Duration = "IQR"
+  )
+```
+
+- Find measures of center and spread of Drop and NumInversions across Type and CensusRegion
+
+```{r}
+coaster_data |>
+  group_by(Type, CensusRegion) |>
+  summarize(across(.cols = c(Drop, NumInversions), 
+            list("mean" = ~ mean(.x, na.rm = TRUE),
+                 "median" = ~ median(.x, na.rm = TRUE),
+                 "var" = ~ var(.x, na.rm = TRUE),
+                 "sd" = ~ sd(.x, na.rm = TRUE),
+                 "IQR" = ~ IQR(.x, na.rm = TRUE)),
+            .names = "{.fn}_{.col}")) |>
+  gt() |>
+  tab_header(
+    title = "Drop and Number of Inversions Mean, Median, Var, SD, and IQR",
+    subtitle = "Stratified by Type and Census Region"
+  )
+```
+
+- Create a correlation matrix between all of the numeric variables
+
+```{r}
+NumericVars <- coaster_data |>
+  select(where(is.numeric)) 
+
+cor(NumericVars, use = "pairwise.complete.obs") |> 
+  as.data.frame() |> 
+  gt(rownames_to_stub = TRUE) |> # forces gt() to use rownames (omitted by default)
+  tab_header(
+    title = "Roller Coaster Data Numeric Variables",
+    subtitle = "Correlation Matrix"
+    )
+```
+
+Note: The three variables TopSpeed, MaxHeight, and Drop all have very strong positive correlations with each other (0.89 or greater). Length also shows positive correlation with each of these variables (range 0.67 to 0.74).
+
+- Create a histogram for MaxHeight and TopSpeed across Type
+
+```{r}
+g <- ggplot(coaster_data |> drop_na(MaxHeight), aes(x = MaxHeight))
+g + geom_histogram(binwidth = 50, alpha = .5, aes(fill = Type)) + 
+  labs(title = "Max Height by Type") + 
+  theme(plot.title = element_text(hjust = 0.5)) # Centers the title
+g <- ggplot(coaster_data |> drop_na(TopSpeed), aes(x = TopSpeed))
+g + geom_histogram(binwidth = 15, alpha = .5, aes(fill = Type)) +
+  labs(title = "Top Speed by Type") + 
+  theme(plot.title = element_text(hjust = 0.5)) # Centers the title
+```
+
+- Create a kernel density plot for MaxHeight and TopSpeed across Type
+
+```{r}
+g <- ggplot(coaster_data |> drop_na(MaxHeight), aes(x = MaxHeight))
+g + geom_density(alpha = .5, aes(fill = Type)) + 
+  labs(title = "Max Height by Type") + 
+  theme(plot.title = element_text(hjust = 0.5)) # Centers the title
+g <- ggplot(coaster_data |> drop_na(TopSpeed), aes(x = TopSpeed))
+g + geom_density(alpha = .5, aes(fill = Type)) +
+  labs(title = "Top Speed by Type") + 
+  theme(plot.title = element_text(hjust = 0.5)) # Centers the title
+```
+
+- Create a boxplot for MaxHeight and TopSpeed across Type
+
+```{r}
+g <- ggplot(coaster_data |> drop_na(MaxHeight))
+g + geom_boxplot(aes(x = Type, y = MaxHeight, fill = Type))  + 
+  labs(title = "Max Height by Type") + 
+  theme(plot.title = element_text(hjust = 0.5)) # Centers the title
+g <- ggplot(coaster_data |> drop_na(TopSpeed))
+g + geom_boxplot(aes(x = Type, y = TopSpeed, fill = Type)) +
+  labs(title = "Top Speed by Type") + 
+  theme(plot.title = element_text(hjust = 0.5)) # Centers the title
+```
+
+- Create a scatterplot relating Length and Duration by AgeGroup
+
+```{r}
+g <- ggplot(coaster_data |>
+              drop_na(Length, Duration),
+            aes(x = Length, y = Duration, color = AgeGroup))
+g + geom_point() + 
+  labs(title = "Duration vs Length by Age Group") + 
+  theme(plot.title = element_text(hjust = 0.5)) # Centers the title
+```
+
+Note: Scatter plot shows a positive correlation between Duration and Length, though no clear distinction between categories of AgeGroup
+
+- Create a scatterplot relating Drop and MaxHeight by Scale
+
+```{r}
+g <- ggplot(coaster_data |>
+              drop_na(Drop, MaxHeight),
+            aes(x = Drop, y = MaxHeight, color = Scale))
+g + geom_point()  + 
+  labs(title = "Max Height vs Drop by Scale") + 
+  theme(plot.title = element_text(hjust = 0.5)) # Centers the title
+```
+
+Note: Scatter plot shows very clear linear relationship between Drop and MaxHeight. Additionally, greater values of Drop and MaxHeight correspond with increasing Scale categories.
+
+- Create a scatterplot relating Length and Duration by AgeGroup and facet by CensusRegion
+
+```{r}
+g <- ggplot(coaster_data |>
+              drop_na(Length, Duration),
+            aes(x = Length, y = Duration, color = AgeGroup))
+g + geom_point() + facet_wrap(~ CensusRegion)  + 
+  labs(title = "Duration vs Length by Age Group",
+       subtitle = "Faceted by Census Region") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) # Centers the title and subtitle
+```
+
+Note: Faceting does not appear to shows any distinction between categories of CensusRegion
+
+- Create a scatterplot relating Drop and MaxHeight by Scale and facet by Type
+
+```{r}
+g <- ggplot(coaster_data |>
+              drop_na(Drop, MaxHeight),
+            aes(x = Drop, y = MaxHeight, color = Scale))
+g + geom_point() + facet_wrap(~ Type) + 
+  labs(title = "Max Height vs Drop by Scale",
+       subtitle = "Faceted by Type") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) # Centers the title and subtitle
+```
+
+Note: Both scatter plots show a strong linear correlation between MaxHeight and Drop. The high end outliers of MaxHeight and Drop are only observed among steel coasters.
+
+- Create a scatterplot relating Length and Duration by AgeGroup and facet by CensusRegion and Type
+
+```{r}
+g <- ggplot(coaster_data |>
+              drop_na(Length, Duration),
+            aes(x = Length, y = Duration, color = AgeGroup))
+g + geom_point() + facet_grid(CensusRegion ~ Type) + 
+  labs(title = "Duration vs Length by Age Group",
+       subtitle = "Faceted by Type and Census Region") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) # Centers the title and subtitle
+```
+
+Note: Additional faceting here does not appear to provide additional insight. There are not enough wood coasters in the West region to identify a correlation in the plot.
+
+- Create a relating Drop and MaxHeight by Scale and facet by CensusRegion and Type
+
+```{r}
+g <- ggplot(coaster_data |>
+              drop_na(Drop, MaxHeight),
+            aes(x = Drop, y = MaxHeight, color = Scale))
+g + geom_point() + facet_grid(CensusRegion ~ Type) + 
+  labs(title = "Max Height vs Drop by Scale",
+       subtitle = "Faceted by Type and Census Region") + 
+  theme(plot.title = element_text(hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5)) # Centers the title and subtitle
+```
+
+Note: Again, additional faceting does not appear to provide additional insight. Linear relationship between MaxHeight and Drop is still apparent in all facets.
+
 
 
 
